@@ -1,0 +1,1205 @@
+﻿{
+  "lap_number": 150,
+  "elapsed_time": 3220,
+  "flag_state": 9,
+  "race_id": 10000,
+  "laps_in_race": 150,
+  "laps_to_go": 0,
+  "vehicles": [
+    {
+      "average_restart_speed": 115.239,
+      "average_running_position": 1.02,
+      "average_speed": 90.366,
+      "best_lap": 110,
+      "best_lap_speed": 124.082,
+      "best_lap_time": 15.464,
+      "vehicle_manufacturer": "Chv",
+      "vehicle_number": "21",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Sam Mayer *",
+        "first_name": "Sam",
+        "last_name": "Mayer *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3185.062,
+      "fastest_laps_run": 65,
+      "laps_position_improved": 3,
+      "laps_completed": 150,
+      "laps_led": [
+        {
+          "start_lap": 0,
+          "end_lap": 11
+        },
+        {
+          "start_lap": 13,
+          "end_lap": 21
+        },
+        {
+          "start_lap": 23,
+          "end_lap": 103
+        },
+        {
+          "start_lap": 105,
+          "end_lap": 150
+        }
+      ],
+      "last_lap_speed": 115.737,
+      "last_lap_time": 16.579,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 1,
+      "status": 1,
+      "delta": 0.0,
+      "sponsor_name": "Chevy Accessories Chevrolet",
+      "starting_position": 1,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 113.836,
+      "average_running_position": 2.027,
+      "average_speed": 90.263,
+      "best_lap": 110,
+      "best_lap_speed": 122.811,
+      "best_lap_time": 15.624,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "4",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Chase Cabre",
+        "first_name": "Chase",
+        "last_name": "Cabre",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3188.696,
+      "fastest_laps_run": 20,
+      "laps_position_improved": 4,
+      "laps_completed": 150,
+      "laps_led": [
+        {
+          "start_lap": 12,
+          "end_lap": 12
+        },
+        {
+          "start_lap": 22,
+          "end_lap": 22
+        },
+        {
+          "start_lap": 104,
+          "end_lap": 104
+        }
+      ],
+      "last_lap_speed": 117.833,
+      "last_lap_time": 16.284,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 3210.905,
+          "pit_in_lap_count": 150,
+          "pit_in_leader_lap": 150,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 2,
+      "status": 1,
+      "delta": 3.634,
+      "sponsor_name": "Honda Generators/E3 Spark Plugs Toyota",
+      "starting_position": 4,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 110.332,
+      "average_running_position": 4.56,
+      "average_speed": 90.193,
+      "best_lap": 113,
+      "best_lap_speed": 121.466,
+      "best_lap_time": 15.797,
+      "vehicle_manufacturer": "Chv",
+      "vehicle_number": "74",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Brandon McReynolds",
+        "first_name": "Brandon",
+        "last_name": "McReynolds",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3191.163,
+      "fastest_laps_run": 15,
+      "laps_position_improved": 9,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 117.819,
+      "last_lap_time": 16.286,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 3213.876,
+          "pit_in_lap_count": 150,
+          "pit_in_leader_lap": 150,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 3,
+      "status": 1,
+      "delta": 6.101,
+      "sponsor_name": "The Reichert Group Chevrolet",
+      "starting_position": 11,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 111.422,
+      "average_running_position": 3.747,
+      "average_speed": 90.11,
+      "best_lap": 108,
+      "best_lap_speed": 121.597,
+      "best_lap_time": 15.78,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "54",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Drew Dollar",
+        "first_name": "Drew",
+        "last_name": "Dollar",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3194.104,
+      "fastest_laps_run": 7,
+      "laps_position_improved": 8,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 118.474,
+      "last_lap_time": 16.196,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 4,
+      "status": 1,
+      "delta": 9.042,
+      "sponsor_name": "Dollar Concrete Construction Toyota",
+      "starting_position": 8,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 111.62,
+      "average_running_position": 4.613,
+      "average_speed": 90.039,
+      "best_lap": 59,
+      "best_lap_speed": 121.366,
+      "best_lap_time": 15.81,
+      "vehicle_manufacturer": "Frd",
+      "vehicle_number": "30",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Spencer Davis",
+        "first_name": "Spencer",
+        "last_name": "Davis",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3196.603,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 7,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 117.877,
+      "last_lap_time": 16.278,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 102,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 5,
+      "status": 1,
+      "delta": 11.541,
+      "sponsor_name": "JRI Shocks/Tower Sealants Ford",
+      "starting_position": 6,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 110.639,
+      "average_running_position": 5.647,
+      "average_speed": 89.982,
+      "best_lap": 111,
+      "best_lap_speed": 120.907,
+      "best_lap_time": 15.87,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "16",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Derek Kraus",
+        "first_name": "Derek",
+        "last_name": "Kraus",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3198.641,
+      "fastest_laps_run": 4,
+      "laps_position_improved": 6,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 118.007,
+      "last_lap_time": 16.26,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 6,
+      "status": 1,
+      "delta": 13.579,
+      "sponsor_name": "NAPA Auto Parts/Curb Records Toyota",
+      "starting_position": 9,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 108.547,
+      "average_running_position": 8.307,
+      "average_speed": 89.973,
+      "best_lap": 109,
+      "best_lap_speed": 121.045,
+      "best_lap_time": 15.852,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "18",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Colin Garrett *",
+        "first_name": "Colin",
+        "last_name": "Garrett *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3198.952,
+      "fastest_laps_run": 8,
+      "laps_position_improved": 12,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 117.365,
+      "last_lap_time": 16.349,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 7,
+      "status": 1,
+      "delta": 13.89,
+      "sponsor_name": "Racing for Heroes Toyota",
+      "starting_position": 12,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 109.211,
+      "average_running_position": 9.273,
+      "average_speed": 89.926,
+      "best_lap": 114,
+      "best_lap_speed": 120.763,
+      "best_lap_time": 15.889,
+      "vehicle_manufacturer": "Frd",
+      "vehicle_number": "24",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Mason Diaz *",
+        "first_name": "Mason",
+        "last_name": "Diaz *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3200.631,
+      "fastest_laps_run": 1,
+      "laps_position_improved": 11,
+      "laps_completed": 150,
+      "laps_led": [],
+      "last_lap_speed": 117.739,
+      "last_lap_time": 16.297,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 102,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 8,
+      "status": 1,
+      "delta": 15.569,
+      "sponsor_name": "Solid Rock Carriers Ford",
+      "starting_position": 15,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 107.699,
+      "average_running_position": 10.74,
+      "average_speed": 89.535,
+      "best_lap": 74,
+      "best_lap_speed": 119.85,
+      "best_lap_time": 16.01,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "50",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Raphael Lessard *",
+        "first_name": "Raphael",
+        "last_name": "Lessard *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3193.19,
+      "fastest_laps_run": 1,
+      "laps_position_improved": 13,
+      "laps_completed": 149,
+      "laps_led": [],
+      "last_lap_speed": 115.319,
+      "last_lap_time": 16.639,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 797.207,
+          "pit_in_lap_count": 20,
+          "pit_in_leader_lap": 20,
+          "pit_out_elapsed_time": 846.759
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 9,
+      "status": 1,
+      "delta": -1.0,
+      "sponsor_name": "FRL Express Toyota",
+      "starting_position": 17,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 109.559,
+      "average_running_position": 11.913,
+      "average_speed": 88.874,
+      "best_lap": 59,
+      "best_lap_speed": 119.783,
+      "best_lap_time": 16.019,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "15",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Tanner Gray *",
+        "first_name": "Tanner",
+        "last_name": "Gray *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3195.322,
+      "fastest_laps_run": 2,
+      "laps_position_improved": 13,
+      "laps_completed": 148,
+      "laps_led": [],
+      "last_lap_speed": 115.022,
+      "last_lap_time": 16.682,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 361.949,
+          "pit_in_lap_count": 7,
+          "pit_in_leader_lap": 8,
+          "pit_out_elapsed_time": 416.969
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 462.961,
+          "pit_in_lap_count": 9,
+          "pit_in_leader_lap": 10,
+          "pit_out_elapsed_time": 516.643
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 569.085,
+          "pit_in_lap_count": 11,
+          "pit_in_leader_lap": 12,
+          "pit_out_elapsed_time": 594.175
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 797.64,
+          "pit_in_lap_count": 20,
+          "pit_in_leader_lap": 20,
+          "pit_out_elapsed_time": 848.942
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 101,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 10,
+      "status": 1,
+      "delta": -2.0,
+      "sponsor_name": "Gray Motorsport/Valvoine/Durst Toyota",
+      "starting_position": 2,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 108.114,
+      "average_running_position": 10.493,
+      "average_speed": 88.865,
+      "best_lap": 57,
+      "best_lap_speed": 119.529,
+      "best_lap_time": 16.053,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "99",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Brittney Zamora *",
+        "first_name": "Brittney",
+        "last_name": "Zamora *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3195.651,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 10,
+      "laps_completed": 148,
+      "laps_led": [],
+      "last_lap_speed": 115.723,
+      "last_lap_time": 16.581,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 101,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 11,
+      "status": 1,
+      "delta": -2.0,
+      "sponsor_name": "NAPA Filters Toyota",
+      "starting_position": 10,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 107.432,
+      "average_running_position": 12.76,
+      "average_speed": 88.861,
+      "best_lap": 112,
+      "best_lap_speed": 119.701,
+      "best_lap_time": 16.03,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "20",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Anthony Sergi *",
+        "first_name": "Anthony",
+        "last_name": "Sergi *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3195.822,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 11,
+      "laps_completed": 148,
+      "laps_led": [],
+      "last_lap_speed": 116.368,
+      "last_lap_time": 16.489,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 101,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 12,
+      "status": 1,
+      "delta": -2.0,
+      "sponsor_name": "MJS Concrete Toyota",
+      "starting_position": 16,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 108.788,
+      "average_running_position": 9.48,
+      "average_speed": 87.83,
+      "best_lap": 60,
+      "best_lap_speed": 119.835,
+      "best_lap_time": 16.012,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "1",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Max McLaughlin *",
+        "first_name": "Max",
+        "last_name": "McLaughlin *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3189.621,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 8,
+      "laps_completed": 146,
+      "laps_led": [],
+      "last_lap_speed": 111.087,
+      "last_lap_time": 17.273,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 101,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 3212.574,
+          "pit_in_lap_count": 146,
+          "pit_in_leader_lap": 150,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 13,
+      "status": 1,
+      "delta": -4.0,
+      "sponsor_name": "Mohawk Northeast Toyota",
+      "starting_position": 14,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 106.729,
+      "average_running_position": 14.14,
+      "average_speed": 87.18,
+      "best_lap": 59,
+      "best_lap_speed": 119.723,
+      "best_lap_time": 16.027,
+      "vehicle_manufacturer": "Chv",
+      "vehicle_number": "22",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Brandon Oakley",
+        "first_name": "Brandon",
+        "last_name": "Oakley",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3191.401,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 8,
+      "laps_completed": 145,
+      "laps_led": [],
+      "last_lap_speed": 111.196,
+      "last_lap_time": 17.256,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 800.272,
+          "pit_in_lap_count": 20,
+          "pit_in_leader_lap": 21,
+          "pit_out_elapsed_time": 837.475
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 100,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 14,
+      "status": 1,
+      "delta": -5.0,
+      "sponsor_name": "Duncan Oil/Oakley Blacktop Chevrolet",
+      "starting_position": 13,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 102.285,
+      "average_running_position": 15.747,
+      "average_speed": 84.601,
+      "best_lap": 103,
+      "best_lap_speed": 115.849,
+      "best_lap_time": 16.563,
+      "vehicle_manufacturer": "Chv",
+      "vehicle_number": "87",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Charles Buchanan",
+        "first_name": "Charles",
+        "last_name": "Buchanan",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 3197.948,
+      "fastest_laps_run": 1,
+      "laps_position_improved": 5,
+      "laps_completed": 141,
+      "laps_led": [],
+      "last_lap_speed": 113.03,
+      "last_lap_time": 16.976,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 50,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 2352.134,
+          "pit_in_lap_count": 97,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 2451.801
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 15,
+      "status": 1,
+      "delta": -9.0,
+      "sponsor_name": "Spring Drug Chevrolet",
+      "starting_position": 19,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": true,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 107.501,
+      "average_running_position": 12.02,
+      "average_speed": 83.323,
+      "best_lap": 110,
+      "best_lap_speed": 120.475,
+      "best_lap_time": 15.927,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "19",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Hailie Deegan",
+        "first_name": "Hailie",
+        "last_name": "Deegan",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 2602.225,
+      "fastest_laps_run": 3,
+      "laps_position_improved": 16,
+      "laps_completed": 113,
+      "laps_led": [],
+      "last_lap_speed": 115.569,
+      "last_lap_time": 16.603,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 1440.52,
+          "pit_in_lap_count": 52,
+          "pit_in_leader_lap": 52,
+          "pit_out_elapsed_time": 1469.45
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 53,
+          "pit_in_leader_lap": 53,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 2618.024,
+          "pit_in_lap_count": 102,
+          "pit_in_leader_lap": 102,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 16,
+      "status": 6,
+      "delta": -36.0,
+      "sponsor_name": "iK9/NAPA Power Premium Plus Toyota",
+      "starting_position": 18,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": false,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 111.292,
+      "average_running_position": 16.847,
+      "average_speed": 107.454,
+      "best_lap": 1,
+      "best_lap_speed": 111.293,
+      "best_lap_time": 17.241,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "6",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Ruben Garcia",
+        "first_name": "Ruben",
+        "last_name": "Garcia",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 17.857,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 1,
+      "laps_completed": 1,
+      "laps_led": [],
+      "last_lap_speed": 111.293,
+      "last_lap_time": 17.241,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 17,
+      "status": 6,
+      "delta": -148.0,
+      "sponsor_name": "UTI-NTI/Max Siegel Inc Toyota",
+      "starting_position": 5,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": false,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 110.212,
+      "average_running_position": 17.827,
+      "average_speed": 107.394,
+      "best_lap": 1,
+      "best_lap_speed": 110.213,
+      "best_lap_time": 17.41,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "17",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Riley Herbst",
+        "first_name": "Riley",
+        "last_name": "Herbst",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 17.867,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 0,
+      "laps_completed": 1,
+      "laps_led": [],
+      "last_lap_speed": 110.213,
+      "last_lap_time": 17.41,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 23.833,
+          "pit_in_lap_count": 1,
+          "pit_in_leader_lap": 1,
+          "pit_out_elapsed_time": 27.74
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 58.441,
+          "pit_in_lap_count": 1,
+          "pit_in_leader_lap": 2,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 18,
+      "status": 6,
+      "delta": -148.0,
+      "sponsor_name": "Monster/Terrible Herbst/Advance Auto Toyota",
+      "starting_position": 3,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": false,
+      "is_on_dvp": false
+    },
+    {
+      "average_restart_speed": 112.099,
+      "average_running_position": 18.84,
+      "average_speed": 106.748,
+      "best_lap": 1,
+      "best_lap_speed": 112.099,
+      "best_lap_time": 17.117,
+      "vehicle_manufacturer": "Tyt",
+      "vehicle_number": "98",
+      "driver": {
+        "driver_id": 0,
+        "full_name": "Natalie Decker *",
+        "first_name": "Natalie",
+        "last_name": "Decker *",
+        "is_in_chase": false
+      },
+      "vehicle_elapsed_time": 17.975,
+      "fastest_laps_run": 0,
+      "laps_position_improved": 0,
+      "laps_completed": 1,
+      "laps_led": [],
+      "last_lap_speed": 112.099,
+      "last_lap_time": 17.117,
+      "passes_made": 0,
+      "passing_differential": 0,
+      "position_differential_last_10_percent": 0,
+      "pit_stops": [
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 0.0,
+          "pit_in_lap_count": 0,
+          "pit_in_leader_lap": 0,
+          "pit_out_elapsed_time": 0.0
+        },
+        {
+          "positions_gained_lossed": 0,
+          "pit_in_elapsed_time": 60.582,
+          "pit_in_lap_count": 1,
+          "pit_in_leader_lap": 2,
+          "pit_out_elapsed_time": 0.0
+        }
+      ],
+      "qualifying_status": 0,
+      "running_position": 19,
+      "status": 6,
+      "delta": -148.0,
+      "sponsor_name": "N29 Technologies/Yamaha Power Products Toyota",
+      "starting_position": 7,
+      "times_passed": 0,
+      "quality_passes": 0,
+      "is_on_track": false,
+      "is_on_dvp": false
+    }
+  ],
+  "run_id": 20,
+  "run_name": "Zombie Auto 150",
+  "series_id": 999,
+  "time_of_day": 38438,
+  "track_id": 14,
+  "track_length": 0.533,
+  "track_name": "Bristol Motor Speedway",
+  "run_type": 3,
+  "number_of_caution_segments": 4,
+  "number_of_caution_laps": 22,
+  "number_of_lead_changes": 6,
+  "number_of_leaders": 2,
+  "avg_diff_1to3": 3216,
+  "stage": {
+    "stage_num": 1,
+    "finish_at_lap": 150,
+    "laps_in_stage": 150
+  }
+}
