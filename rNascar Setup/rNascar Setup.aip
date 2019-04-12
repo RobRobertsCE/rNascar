@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="15.8" version="15.8" Modules="simple" RootPath="." Language="en" Id="{EC5EF243-69D9-4BB0-99F9-42116CAEB7BF}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll" Value="..\packages\Microsoft.EntityFrameworkCore.Abstractions.2.2.3\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.EntityFrameworkCore.dll" Value="..\packages\Microsoft.EntityFrameworkCore.2.2.3\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll" Value="..\packages\Microsoft.Extensions.Caching.Abstractions.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Caching.Memory.dll" Value="..\packages\Microsoft.Extensions.Caching.Memory.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Value="..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Value="..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.dll" Value="..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Value="..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Value="..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Value="..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.dll" Value="..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.dll" Value="..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Primitives.dll" Value="..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.Data.dll" Value="..\NascarFeed.Data\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.dll" Value="..\NascarFeed\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Remotion.Linq.dll" Value="..\packages\Remotion.Linq.2.2.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_RestSharp.dll" Value="..\packages\RestSharp.106.6.9\lib\net452"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Buffers.dll" Value="..\packages\System.Buffers.4.4.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Collections.Immutable.dll" Value="..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.ComponentModel.Annotations.dll" Value="..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Value="..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Interactive.Async.dll" Value="..\packages\System.Interactive.Async.3.2.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Memory.dll" Value="..\packages\System.Memory.4.5.1\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Numerics.Vectors.dll" Value="..\packages\System.Numerics.Vectors.4.4.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll" Value="..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe" Value="..\rNascarFeed\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe.config" Value="..\rNascarFeed\bin\Release"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll" Value="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.dll" Value="Microsoft.EntityFrameworkCore.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll" Value="Microsoft.Extensions.Caching.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Memory.dll" Value="Microsoft.Extensions.Caching.Memory.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Value="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Value="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll" Value="Microsoft.Extensions.Configuration.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Value="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Value="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Value="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll" Value="Microsoft.Extensions.Logging.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll" Value="Microsoft.Extensions.Options.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll" Value="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.Data.dll" Value="NascarFeed.Data.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.dll" Value="NascarFeed.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Remotion.Linq.dll" Value="Remotion.Linq.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_RestSharp.dll" Value="RestSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll" Value="System.Buffers.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Collections.Immutable.dll" Value="System.Collections.Immutable.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.ComponentModel.Annotations.dll" Value="System.ComponentModel.Annotations.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Value="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Interactive.Async.dll" Value="System.Interactive.Async.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Memory.dll" Value="System.Memory.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Numerics.Vectors.dll" Value="System.Numerics.Vectors.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll" Value="System.Runtime.CompilerServices.Unsafe.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe" Value="rNascarTimingAndScoring.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe.config" Value="rNascarTimingAndScoring.exe.config"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPCONTACT" Value="u/GoDuke4382"/>
+    <ROW Property="ARPPRODUCTICON" Value="rNascarTS.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://github.com/RobRobertsCE/rNascar"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="https://github.com/RobRobertsCE/rNascar/releases"/>
+    <ROW Property="Manufacturer" Value="GoDuke4382"/>
+    <ROW Property="ProductCode" Value="1033:{8ABDDD37-3228-4A7B-BFB9-B344B9D07C38} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="rNascar T&amp;S"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{DA3DB53C-468C-461D-B7E6-E45386F66AF8}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="rNascarTimingAndScoring_Dir" Directory_Parent="APPDIR" DefaultDir="RNASCA~1|rNascarTimingAndScoring"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="ProductInformation" ComponentId="{1B3B5263-42D9-4B7C-80A8-40236B5B2D11}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{FF568926-2932-4739-9C22-C96F7DD75E2B}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="rNascarTimingAndScoring_PrimaryOutput" ComponentId="{D59D8BCC-DC29-4163-95FE-9825507C56F3}" Directory_="rNascarTimingAndScoring_Dir" Attributes="0" KeyPath="rNascarTimingAndScoring.exe"/>
+    <ROW Component="rNascarTimingAndScoring_References" ComponentId="{F9B0AC1E-D864-447C-B962-221C05E05E91}" Directory_="rNascarTimingAndScoring_Dir" Attributes="0" KeyPath="RestSharp.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="ProductInformation SHORTCUTDIR rNascarTimingAndScoring_PrimaryOutput rNascarTimingAndScoring_References"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Microsoft.EntityFrameworkCore.Abstractions.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll&gt;" SelfReg="false" NextFile="Microsoft.EntityFrameworkCore.dll"/>
+    <ROW File="Microsoft.EntityFrameworkCore.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.EntityFrameworkCore.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Caching.Abstractions.dll"/>
+    <ROW File="Microsoft.Extensions.Caching.Abstractions.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Caching.Memory.dll"/>
+    <ROW File="Microsoft.Extensions.Caching.Memory.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Memory.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Caching.Memory.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW File="Microsoft.Extensions.Configuration.Abstractions.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW File="Microsoft.Extensions.Configuration.Binder.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Configuration.dll"/>
+    <ROW File="Microsoft.Extensions.Configuration.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Component_="rNascarTimingAndScoring_References" FileName="MICROS~9.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.dll" Component_="rNascarTimingAndScoring_References" FileName="MICRO~10.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW File="Microsoft.Extensions.Logging.Abstractions.dll" Component_="rNascarTimingAndScoring_References" FileName="MICRO~11.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Logging.dll"/>
+    <ROW File="Microsoft.Extensions.Logging.dll" Component_="rNascarTimingAndScoring_References" FileName="MICRO~12.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Options.dll"/>
+    <ROW File="Microsoft.Extensions.Options.dll" Component_="rNascarTimingAndScoring_References" FileName="MICRO~13.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.dll&gt;" SelfReg="false" NextFile="Microsoft.Extensions.Primitives.dll"/>
+    <ROW File="Microsoft.Extensions.Primitives.dll" Component_="rNascarTimingAndScoring_References" FileName="MICRO~14.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Microsoft.Extensions.Primitives.dll&gt;" SelfReg="false" NextFile="Remotion.Linq.dll"/>
+    <ROW File="NascarFeed.Data.dll" Component_="rNascarTimingAndScoring_References" FileName="NASCAR~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.Data.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_NascarFeed.Data.dll&gt;" SelfReg="false" NextFile="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
+    <ROW File="NascarFeed.dll" Component_="rNascarTimingAndScoring_References" FileName="NASCAR~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_NascarFeed.dll&gt;" SelfReg="false" NextFile="NascarFeed.Data.dll"/>
+    <ROW File="Remotion.Linq.dll" Component_="rNascarTimingAndScoring_References" FileName="REMOTI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Remotion.Linq.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Remotion.Linq.dll&gt;" SelfReg="false" NextFile="System.Buffers.dll"/>
+    <ROW File="RestSharp.dll" Component_="rNascarTimingAndScoring_References" FileName="RESTSH~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_RestSharp.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_RestSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Buffers.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Buffers.dll&gt;" SelfReg="false" NextFile="System.Collections.Immutable.dll"/>
+    <ROW File="System.Collections.Immutable.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Collections.Immutable.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Collections.Immutable.dll&gt;" SelfReg="false" NextFile="System.ComponentModel.Annotations.dll"/>
+    <ROW File="System.ComponentModel.Annotations.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.ComponentModel.Annotations.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.ComponentModel.Annotations.dll&gt;" SelfReg="false" NextFile="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW File="System.Diagnostics.DiagnosticSource.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Diagnostics.DiagnosticSource.dll&gt;" SelfReg="false" NextFile="System.Interactive.Async.dll"/>
+    <ROW File="System.Interactive.Async.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Interactive.Async.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Interactive.Async.dll&gt;" SelfReg="false" NextFile="System.Memory.dll"/>
+    <ROW File="System.Memory.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Memory.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Memory.dll&gt;" SelfReg="false" NextFile="System.Numerics.Vectors.dll"/>
+    <ROW File="System.Numerics.Vectors.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Numerics.Vectors.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Numerics.Vectors.dll&gt;" SelfReg="false" NextFile="System.Runtime.CompilerServices.Unsafe.dll"/>
+    <ROW File="System.Runtime.CompilerServices.Unsafe.dll" Component_="rNascarTimingAndScoring_References" FileName="SYSTEM~9.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll&gt;" SelfReg="false" NextFile="RestSharp.dll"/>
+    <ROW File="rNascarTimingAndScoring.exe" Component_="rNascarTimingAndScoring_PrimaryOutput" FileName="RNASCA~2.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_rNascarTimingAndScoring.exe&gt;" SelfReg="false" NextFile="rNascarTimingAndScoring.exe.config" DigSign="true"/>
+    <ROW File="rNascarTimingAndScoring.exe.config" Component_="rNascarTimingAndScoring_PrimaryOutput" FileName="RNASCA~2.CON|[|AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_rNascarTimingAndScoring.exe.config&gt;" SelfReg="false" NextFile="NascarFeed.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.EntityFrameworkCore.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.EntityFrameworkCore.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Caching.Memory.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Caching.Memory.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Memory.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.Binder.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Configuration.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Configuration.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Configuration.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.DependencyInjection.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.DependencyInjection.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.Abstractions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Logging.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Logging.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Options.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Options.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Microsoft.Extensions.Primitives.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Primitives.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Primitives.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_NascarFeed.Data.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_NascarFeed.Data.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.Data.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_NascarFeed.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_NascarFeed.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_NascarFeed.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Remotion.Linq.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Remotion.Linq.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Remotion.Linq.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_RestSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_RestSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_RestSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Buffers.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Buffers.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Collections.Immutable.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Collections.Immutable.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Collections.Immutable.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.ComponentModel.Annotations.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.ComponentModel.Annotations.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.ComponentModel.Annotations.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Diagnostics.DiagnosticSource.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Interactive.Async.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Interactive.Async.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Interactive.Async.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Memory.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Memory.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Memory.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Numerics.Vectors.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Numerics.Vectors.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Numerics.Vectors.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_rNascarTimingAndScoring.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_rNascarTimingAndScoring.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_rNascarTimingAndScoring.exe.config]" Type="2" Content="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="rNascarTS.exe" SourcePath="..\..\..\..\..\..\Pictures\Timing and Scoring\rNascarT&amp;S.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT64 OR ((VersionNT &lt;&gt; 501) OR (ServicePackLevel = 3))) AND ((VersionNT &lt;&gt; 502) OR (ServicePackLevel = 2))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="rNascarTimingAndScoring" Directory_="SHORTCUTDIR" Name="RNASCA~1|rNascarTimingAndScoring" Component_="rNascarTimingAndScoring_PrimaryOutput" Target="[#rNascarTimingAndScoring.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="PrimaryOutput" OutputFile="rNascarTimingAndScoring.exe" OutputFileShortcut="rNascarTimingAndScoring"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="PrimaryOutput" OutputFile="rNascarTimingAndScoring.exe.config"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="NascarFeed.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="NascarFeed.Data.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.EntityFrameworkCore.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Caching.Abstractions.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Caching.Memory.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Configuration.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Logging.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Options.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Microsoft.Extensions.Primitives.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="Remotion.Linq.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Buffers.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Collections.Immutable.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.ComponentModel.Annotations.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Interactive.Async.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Memory.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Numerics.Vectors.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="System.Runtime.CompilerServices.Unsafe.dll"/>
+    <ROW ProjectId="{c0c080db-33d2-441f-aa87-43b30f974afd}" ProjectName="rNascarTimingAndScoring" OutputGroup="References" OutputFile="RestSharp.dll"/>
+  </COMPONENT>
+</DOCUMENT>

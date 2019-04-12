@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\rNascarT_S.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.3\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
@@ -411,6 +414,8 @@
   <ItemGroup>
     <Content Include="links.txt" />
     <Content Include="raw-feed.js" />
+    <None Include="Resources\rNascarT&amp;S.ico" />
+    <None Include="Resources\rNascarT_S.ico" />
     <None Include="Resources\toyota-logo.png" />
     <None Include="Resources\ford-logo.png" />
     <None Include="Resources\chevy-logo.png" />

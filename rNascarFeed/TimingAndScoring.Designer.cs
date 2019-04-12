@@ -32,9 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimingAndScoring));
             this.pnlTop = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.tsLeaders1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
+            this.tsCautions1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
+            this.tsTrackState = new rNascarTimingAndScoring.Views.TSTrackState();
             this.pollFeedTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tsBiggestMoversGrid1 = new rNascarTimingAndScoring.Views.TSBiggestMoversGrid();
+            this.tsLapLeaderGrid1 = new rNascarTimingAndScoring.Views.TSLapLeaderGrid();
+            this.tsOffThePaceGrid1 = new rNascarTimingAndScoring.Views.TSOffThePaceGrid();
+            this.tsPitPenaltiesGrid1 = new rNascarTimingAndScoring.Views.TSPitPenaltiesGrid();
             this.pnlLeaderboard = new System.Windows.Forms.Panel();
+            this.tsLeaderboard1 = new rNascarTimingAndScoring.Views.TSLeaderboard();
             this.pnlRaceInfo = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
@@ -55,6 +63,8 @@
             this.lblOnLeadLap = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pnlFastLapsAndPoints = new System.Windows.Forms.Panel();
+            this.tsPoints1 = new rNascarTimingAndScoring.Views.TSPoints();
+            this.tsFastestLaps1 = new rNascarTimingAndScoring.Views.TSFastestLaps();
             this.ctxMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,16 +73,6 @@
             this.getFeedDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.getLiveEventSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsLeaderboard1 = new rNascarTimingAndScoring.Views.TSLeaderboard();
-            this.tsBiggestMoversGrid1 = new rNascarTimingAndScoring.Views.TSBiggestMoversGrid();
-            this.tsLapLeaderGrid1 = new rNascarTimingAndScoring.Views.TSLapLeaderGrid();
-            this.tsOffThePaceGrid1 = new rNascarTimingAndScoring.Views.TSOffThePaceGrid();
-            this.tsPitPenaltiesGrid1 = new rNascarTimingAndScoring.Views.TSPitPenaltiesGrid();
-            this.tsPoints1 = new rNascarTimingAndScoring.Views.TSPoints();
-            this.tsFastestLaps1 = new rNascarTimingAndScoring.Views.TSFastestLaps();
-            this.tsLeaders1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
-            this.tsCautions1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
-            this.tsTrackState = new rNascarTimingAndScoring.Views.TSTrackState();
             this.tsLeaderboardGrid1 = new rNascarTimingAndScoring.Views.TSLeaderboardGrid();
             this.tsLeaderboardGrid2 = new rNascarTimingAndScoring.Views.TSLeaderboardGrid();
             this.pnlTop.SuspendLayout();
@@ -113,6 +113,49 @@
             this.picLogo.TabIndex = 8;
             this.picLogo.TabStop = false;
             // 
+            // tsLeaders1
+            // 
+            this.tsLeaders1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsLeaders1.BackColor = System.Drawing.Color.Black;
+            this.tsLeaders1.DetailBackColor = System.Drawing.Color.MediumBlue;
+            this.tsLeaders1.DetailCaption = "CHANGES";
+            this.tsLeaders1.DetailForeColor = System.Drawing.Color.White;
+            this.tsLeaders1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLeaders1.Header = "LEADERS";
+            this.tsLeaders1.Location = new System.Drawing.Point(1070, 8);
+            this.tsLeaders1.Margin = new System.Windows.Forms.Padding(4);
+            this.tsLeaders1.Name = "tsLeaders1";
+            this.tsLeaders1.Size = new System.Drawing.Size(233, 67);
+            this.tsLeaders1.TabIndex = 7;
+            // 
+            // tsCautions1
+            // 
+            this.tsCautions1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsCautions1.BackColor = System.Drawing.Color.Black;
+            this.tsCautions1.DetailBackColor = System.Drawing.Color.Yellow;
+            this.tsCautions1.DetailCaption = "LAPS";
+            this.tsCautions1.DetailForeColor = System.Drawing.Color.Black;
+            this.tsCautions1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCautions1.Header = "CAUTIONS";
+            this.tsCautions1.Location = new System.Drawing.Point(1311, 8);
+            this.tsCautions1.Margin = new System.Windows.Forms.Padding(4);
+            this.tsCautions1.Name = "tsCautions1";
+            this.tsCautions1.Size = new System.Drawing.Size(200, 67);
+            this.tsCautions1.TabIndex = 6;
+            // 
+            // tsTrackState
+            // 
+            this.tsTrackState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsTrackState.BackColor = System.Drawing.Color.SteelBlue;
+            this.tsTrackState.LapInfo = "";
+            this.tsTrackState.Location = new System.Drawing.Point(508, 8);
+            this.tsTrackState.Name = "tsTrackState";
+            this.tsTrackState.Padding = new System.Windows.Forms.Padding(1);
+            this.tsTrackState.Size = new System.Drawing.Size(554, 67);
+            this.tsTrackState.TabIndex = 3;
+            this.tsTrackState.TrackState = rNascarTimingAndScoring.Models.TrackStates.NotActive;
+            // 
             // pollFeedTimer
             // 
             this.pollFeedTimer.Interval = 5000;
@@ -139,6 +182,62 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1197, 241);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // tsBiggestMoversGrid1
+            // 
+            this.tsBiggestMoversGrid1.BackColor = System.Drawing.Color.Black;
+            this.tsBiggestMoversGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsBiggestMoversGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsBiggestMoversGrid1.Location = new System.Drawing.Point(1, 1);
+            this.tsBiggestMoversGrid1.Margin = new System.Windows.Forms.Padding(1);
+            this.tsBiggestMoversGrid1.MaxRows = 8;
+            this.tsBiggestMoversGrid1.Name = "tsBiggestMoversGrid1";
+            this.tsBiggestMoversGrid1.Padding = new System.Windows.Forms.Padding(1);
+            this.tsBiggestMoversGrid1.Size = new System.Drawing.Size(297, 239);
+            this.tsBiggestMoversGrid1.TabIndex = 3;
+            this.tsBiggestMoversGrid1.ValueColumnWidth = 50;
+            // 
+            // tsLapLeaderGrid1
+            // 
+            this.tsLapLeaderGrid1.BackColor = System.Drawing.Color.Black;
+            this.tsLapLeaderGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsLapLeaderGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLapLeaderGrid1.Location = new System.Drawing.Point(599, 1);
+            this.tsLapLeaderGrid1.Margin = new System.Windows.Forms.Padding(1);
+            this.tsLapLeaderGrid1.MaxRows = 8;
+            this.tsLapLeaderGrid1.Name = "tsLapLeaderGrid1";
+            this.tsLapLeaderGrid1.Padding = new System.Windows.Forms.Padding(1);
+            this.tsLapLeaderGrid1.Size = new System.Drawing.Size(297, 239);
+            this.tsLapLeaderGrid1.TabIndex = 4;
+            this.tsLapLeaderGrid1.ValueColumnWidth = 120;
+            // 
+            // tsOffThePaceGrid1
+            // 
+            this.tsOffThePaceGrid1.BackColor = System.Drawing.Color.Black;
+            this.tsOffThePaceGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsOffThePaceGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsOffThePaceGrid1.Location = new System.Drawing.Point(300, 1);
+            this.tsOffThePaceGrid1.Margin = new System.Windows.Forms.Padding(1);
+            this.tsOffThePaceGrid1.MaxRows = 8;
+            this.tsOffThePaceGrid1.Name = "tsOffThePaceGrid1";
+            this.tsOffThePaceGrid1.Padding = new System.Windows.Forms.Padding(1);
+            this.tsOffThePaceGrid1.Size = new System.Drawing.Size(297, 239);
+            this.tsOffThePaceGrid1.TabIndex = 5;
+            this.tsOffThePaceGrid1.ValueColumnWidth = 50;
+            // 
+            // tsPitPenaltiesGrid1
+            // 
+            this.tsPitPenaltiesGrid1.BackColor = System.Drawing.Color.Black;
+            this.tsPitPenaltiesGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsPitPenaltiesGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsPitPenaltiesGrid1.Location = new System.Drawing.Point(898, 1);
+            this.tsPitPenaltiesGrid1.Margin = new System.Windows.Forms.Padding(1);
+            this.tsPitPenaltiesGrid1.MaxRows = 8;
+            this.tsPitPenaltiesGrid1.Name = "tsPitPenaltiesGrid1";
+            this.tsPitPenaltiesGrid1.Padding = new System.Windows.Forms.Padding(1);
+            this.tsPitPenaltiesGrid1.Size = new System.Drawing.Size(298, 239);
+            this.tsPitPenaltiesGrid1.TabIndex = 6;
+            this.tsPitPenaltiesGrid1.ValueColumnWidth = 120;
+            // 
             // pnlLeaderboard
             // 
             this.pnlLeaderboard.BackColor = System.Drawing.Color.MidnightBlue;
@@ -150,6 +249,18 @@
             this.pnlLeaderboard.Name = "pnlLeaderboard";
             this.pnlLeaderboard.Size = new System.Drawing.Size(1197, 575);
             this.pnlLeaderboard.TabIndex = 7;
+            // 
+            // tsLeaderboard1
+            // 
+            this.tsLeaderboard1.BackColor = System.Drawing.Color.Black;
+            this.tsLeaderboard1.Configuration = null;
+            this.tsLeaderboard1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsLeaderboard1.Location = new System.Drawing.Point(0, 0);
+            this.tsLeaderboard1.MaxRowCount = 20;
+            this.tsLeaderboard1.Name = "tsLeaderboard1";
+            this.tsLeaderboard1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.tsLeaderboard1.Size = new System.Drawing.Size(1197, 302);
+            this.tsLeaderboard1.TabIndex = 7;
             // 
             // pnlRaceInfo
             // 
@@ -404,6 +515,34 @@
             this.pnlFastLapsAndPoints.Size = new System.Drawing.Size(327, 575);
             this.pnlFastLapsAndPoints.TabIndex = 8;
             // 
+            // tsPoints1
+            // 
+            this.tsPoints1.BackColor = System.Drawing.Color.Navy;
+            this.tsPoints1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsPoints1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsPoints1.Location = new System.Drawing.Point(1, 428);
+            this.tsPoints1.Margin = new System.Windows.Forms.Padding(4);
+            this.tsPoints1.MaxRows = 18;
+            this.tsPoints1.Name = "tsPoints1";
+            this.tsPoints1.Padding = new System.Windows.Forms.Padding(1, 2, 1, 1);
+            this.tsPoints1.Size = new System.Drawing.Size(325, 146);
+            this.tsPoints1.TabIndex = 0;
+            this.tsPoints1.ValueColumnWidth = 80;
+            // 
+            // tsFastestLaps1
+            // 
+            this.tsFastestLaps1.BackColor = System.Drawing.Color.Navy;
+            this.tsFastestLaps1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tsFastestLaps1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsFastestLaps1.Location = new System.Drawing.Point(1, 1);
+            this.tsFastestLaps1.Margin = new System.Windows.Forms.Padding(4);
+            this.tsFastestLaps1.MaxRows = 15;
+            this.tsFastestLaps1.Name = "tsFastestLaps1";
+            this.tsFastestLaps1.Padding = new System.Windows.Forms.Padding(1);
+            this.tsFastestLaps1.Size = new System.Drawing.Size(325, 427);
+            this.tsFastestLaps1.TabIndex = 1;
+            this.tsFastestLaps1.ValueColumnWidth = 80;
+            // 
             // ctxMain
             // 
             this.ctxMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -415,7 +554,7 @@
             this.toolStripMenuItem2,
             this.getLiveEventSettingsToolStripMenuItem});
             this.ctxMain.Name = "ctxMain";
-            this.ctxMain.Size = new System.Drawing.Size(194, 148);
+            this.ctxMain.Size = new System.Drawing.Size(194, 126);
             // 
             // autoRefreshToolStripMenuItem
             // 
@@ -465,145 +604,6 @@
             this.getLiveEventSettingsToolStripMenuItem.Text = "Get Live Event Settings";
             this.getLiveEventSettingsToolStripMenuItem.Click += new System.EventHandler(this.getLiveEventSettingsToolStripMenuItem_Click);
             // 
-            // tsLeaderboard1
-            // 
-            this.tsLeaderboard1.BackColor = System.Drawing.Color.Black;
-            this.tsLeaderboard1.Configuration = null;
-            this.tsLeaderboard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsLeaderboard1.Location = new System.Drawing.Point(0, 0);
-            this.tsLeaderboard1.MaxRowCount = 20;
-            this.tsLeaderboard1.Name = "tsLeaderboard1";
-            this.tsLeaderboard1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.tsLeaderboard1.Size = new System.Drawing.Size(1197, 302);
-            this.tsLeaderboard1.TabIndex = 7;
-            // 
-            // tsBiggestMoversGrid1
-            // 
-            this.tsBiggestMoversGrid1.BackColor = System.Drawing.Color.Black;
-            this.tsBiggestMoversGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsBiggestMoversGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsBiggestMoversGrid1.Location = new System.Drawing.Point(1, 1);
-            this.tsBiggestMoversGrid1.Margin = new System.Windows.Forms.Padding(1);
-            this.tsBiggestMoversGrid1.MaxRows = 8;
-            this.tsBiggestMoversGrid1.Name = "tsBiggestMoversGrid1";
-            this.tsBiggestMoversGrid1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsBiggestMoversGrid1.Size = new System.Drawing.Size(297, 239);
-            this.tsBiggestMoversGrid1.TabIndex = 3;
-            this.tsBiggestMoversGrid1.ValueColumnWidth = 50;
-            // 
-            // tsLapLeaderGrid1
-            // 
-            this.tsLapLeaderGrid1.BackColor = System.Drawing.Color.Black;
-            this.tsLapLeaderGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsLapLeaderGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsLapLeaderGrid1.Location = new System.Drawing.Point(599, 1);
-            this.tsLapLeaderGrid1.Margin = new System.Windows.Forms.Padding(1);
-            this.tsLapLeaderGrid1.MaxRows = 8;
-            this.tsLapLeaderGrid1.Name = "tsLapLeaderGrid1";
-            this.tsLapLeaderGrid1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsLapLeaderGrid1.Size = new System.Drawing.Size(297, 239);
-            this.tsLapLeaderGrid1.TabIndex = 4;
-            this.tsLapLeaderGrid1.ValueColumnWidth = 120;
-            // 
-            // tsOffThePaceGrid1
-            // 
-            this.tsOffThePaceGrid1.BackColor = System.Drawing.Color.Black;
-            this.tsOffThePaceGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsOffThePaceGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsOffThePaceGrid1.Location = new System.Drawing.Point(300, 1);
-            this.tsOffThePaceGrid1.Margin = new System.Windows.Forms.Padding(1);
-            this.tsOffThePaceGrid1.MaxRows = 8;
-            this.tsOffThePaceGrid1.Name = "tsOffThePaceGrid1";
-            this.tsOffThePaceGrid1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsOffThePaceGrid1.Size = new System.Drawing.Size(297, 239);
-            this.tsOffThePaceGrid1.TabIndex = 5;
-            this.tsOffThePaceGrid1.ValueColumnWidth = 50;
-            // 
-            // tsPitPenaltiesGrid1
-            // 
-            this.tsPitPenaltiesGrid1.BackColor = System.Drawing.Color.Black;
-            this.tsPitPenaltiesGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsPitPenaltiesGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsPitPenaltiesGrid1.Location = new System.Drawing.Point(898, 1);
-            this.tsPitPenaltiesGrid1.Margin = new System.Windows.Forms.Padding(1);
-            this.tsPitPenaltiesGrid1.MaxRows = 8;
-            this.tsPitPenaltiesGrid1.Name = "tsPitPenaltiesGrid1";
-            this.tsPitPenaltiesGrid1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsPitPenaltiesGrid1.Size = new System.Drawing.Size(298, 239);
-            this.tsPitPenaltiesGrid1.TabIndex = 6;
-            this.tsPitPenaltiesGrid1.ValueColumnWidth = 120;
-            // 
-            // tsPoints1
-            // 
-            this.tsPoints1.BackColor = System.Drawing.Color.Navy;
-            this.tsPoints1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsPoints1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsPoints1.Location = new System.Drawing.Point(1, 428);
-            this.tsPoints1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsPoints1.MaxRows = 18;
-            this.tsPoints1.Name = "tsPoints1";
-            this.tsPoints1.Padding = new System.Windows.Forms.Padding(1, 2, 1, 1);
-            this.tsPoints1.Size = new System.Drawing.Size(325, 146);
-            this.tsPoints1.TabIndex = 0;
-            this.tsPoints1.ValueColumnWidth = 80;
-            // 
-            // tsFastestLaps1
-            // 
-            this.tsFastestLaps1.BackColor = System.Drawing.Color.Navy;
-            this.tsFastestLaps1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tsFastestLaps1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsFastestLaps1.Location = new System.Drawing.Point(1, 1);
-            this.tsFastestLaps1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsFastestLaps1.MaxRows = 15;
-            this.tsFastestLaps1.Name = "tsFastestLaps1";
-            this.tsFastestLaps1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsFastestLaps1.Size = new System.Drawing.Size(325, 427);
-            this.tsFastestLaps1.TabIndex = 1;
-            this.tsFastestLaps1.ValueColumnWidth = 80;
-            // 
-            // tsLeaders1
-            // 
-            this.tsLeaders1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsLeaders1.BackColor = System.Drawing.Color.Black;
-            this.tsLeaders1.DetailBackColor = System.Drawing.Color.MediumBlue;
-            this.tsLeaders1.DetailCaption = "CHANGES";
-            this.tsLeaders1.DetailForeColor = System.Drawing.Color.White;
-            this.tsLeaders1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsLeaders1.Header = "LEADERS";
-            this.tsLeaders1.Location = new System.Drawing.Point(1070, 8);
-            this.tsLeaders1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsLeaders1.Name = "tsLeaders1";
-            this.tsLeaders1.Size = new System.Drawing.Size(233, 67);
-            this.tsLeaders1.TabIndex = 7;
-            // 
-            // tsCautions1
-            // 
-            this.tsCautions1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsCautions1.BackColor = System.Drawing.Color.Black;
-            this.tsCautions1.DetailBackColor = System.Drawing.Color.Yellow;
-            this.tsCautions1.DetailCaption = "LAPS";
-            this.tsCautions1.DetailForeColor = System.Drawing.Color.Black;
-            this.tsCautions1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCautions1.Header = "CAUTIONS";
-            this.tsCautions1.Location = new System.Drawing.Point(1311, 8);
-            this.tsCautions1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsCautions1.Name = "tsCautions1";
-            this.tsCautions1.Size = new System.Drawing.Size(200, 67);
-            this.tsCautions1.TabIndex = 6;
-            // 
-            // tsTrackState
-            // 
-            this.tsTrackState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsTrackState.BackColor = System.Drawing.Color.SteelBlue;
-            this.tsTrackState.LapInfo = "";
-            this.tsTrackState.Location = new System.Drawing.Point(508, 8);
-            this.tsTrackState.Name = "tsTrackState";
-            this.tsTrackState.Padding = new System.Windows.Forms.Padding(1);
-            this.tsTrackState.Size = new System.Drawing.Size(554, 67);
-            this.tsTrackState.TabIndex = 3;
-            this.tsTrackState.TrackState = rNascarTimingAndScoring.Models.TrackStates.NotActive;
-            // 
             // tsLeaderboardGrid1
             // 
             this.tsLeaderboardGrid1.BackColor = System.Drawing.Color.DarkBlue;
@@ -635,6 +635,7 @@
             this.Controls.Add(this.pnlFastLapsAndPoints);
             this.Controls.Add(this.pnlTop);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "TimingAndScoring";
             this.Text = "r/NASCAR Timing and Scoring";
