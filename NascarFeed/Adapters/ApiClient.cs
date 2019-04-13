@@ -14,8 +14,6 @@ namespace NascarFeed.Adapters
 {
     public class ApiClient : IApiClient
     {
-        // https://www.nascar.com/live/feeds/live-feed.json
-
         #region fields
 
         private readonly IUrlService _urlService;
@@ -45,6 +43,8 @@ namespace NascarFeed.Adapters
                 liveEvent.seriesId = feed.series_id;
                 liveEvent.activityId = feed.run_type;
                 liveEvent.sessionId = feed.run_id;
+                liveEvent.trackId = feed.track_id;
+                liveEvent.trackLength = feed.track_length;
             }
 
             return liveEvent;

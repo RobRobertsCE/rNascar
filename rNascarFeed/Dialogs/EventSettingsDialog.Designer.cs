@@ -169,7 +169,7 @@
             this.cboEvents.TabIndex = 13;
             this.cboEvents.SelectedIndexChanged += new System.EventHandler(this.cboEvents_SelectedIndexChanged);
             // 
-            // EventSettingsView
+            // EventSettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,8 +188,8 @@
             this.Controls.Add(this.cboActivities);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboSeries);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "EventSettingsView";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "EventSettingsDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Event Settings";
             this.Load += new System.EventHandler(this.EventSettingsView_Load);

@@ -130,6 +130,7 @@
     <Compile Include="Dialogs\EventSettingsDialog.Designer.cs">
       <DependentUpon>EventSettingsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PitWindowCalculator.cs" />
     <Compile Include="Models\LeaderboardColumns.cs" />
     <Compile Include="Models\LeaderboardRowWidths.cs" />
     <Compile Include="Models\RunType.cs" />

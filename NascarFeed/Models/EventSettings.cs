@@ -9,5 +9,7 @@ namespace NascarFeed.Models
         public int eventId { get; set; }
         public int activityId { get; set; }
         public int sessionId { get; set; }
+        public int trackId { get; set; }
+        public double trackLength { get; set; }
     }
 }

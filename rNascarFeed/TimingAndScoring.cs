@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NascarFeed.Models;
 using NascarFeed.Ports;
 using rNascarTimingAndScoring.Dialogs;
+using rNascarTimingAndScoring.Helpers;
 using rNascarTimingAndScoring.Models;
 
 namespace rNascarTimingAndScoring
@@ -485,7 +486,11 @@ namespace rNascarTimingAndScoring
                 return false;
             }
 
+            Configuration.PitWindow = PitWindowCalculator.CalculatePitWindow(liveEventSettings.trackLength);
+
             EventSettings = liveEventSettings;
+
+            ConfigurationUpdated(Configuration);
 
             return true;
         }
