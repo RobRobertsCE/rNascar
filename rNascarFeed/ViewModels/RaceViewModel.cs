@@ -130,7 +130,7 @@ namespace rNascarTimingAndScoring.ViewModels
                 var model = new TSDriverModel()
                 {
                     Position = vehicle.running_position,
-                    CarNumber = Int32.Parse(vehicle.vehicle_number),
+                    CarNumber = vehicle.vehicle_number,
                     Driver = vehicle.driver.full_name,
                     BehindLeader = vehicle.delta,
                     Manufacturer = vehicle.vehicle_manufacturer,

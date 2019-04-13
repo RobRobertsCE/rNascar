@@ -2,7 +2,7 @@
 {
     public enum RunType
     {
-        Practice,
+        Practice = 1,
         Qualifying,
         Race
     }

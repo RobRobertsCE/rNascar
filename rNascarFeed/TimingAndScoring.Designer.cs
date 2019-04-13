@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimingAndScoring));
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.tsLeaders1 = new rNascarTimingAndScoring.Views.TSLeadersDisplay();
+            this.tsCautionLapsDisplay1 = new rNascarTimingAndScoring.Views.TSCautionLapsDisplay();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.tsLeaders1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
-            this.tsCautions1 = new rNascarTimingAndScoring.Views.TSSingleFieldDisplay();
             this.tsTrackState = new rNascarTimingAndScoring.Views.TSTrackState();
             this.pollFeedTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,14 +54,14 @@
             this.lblPitWindowTitle = new System.Windows.Forms.Label();
             this.lblPitWindow = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.lblGreenLaps = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.lblGreenLaps = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.lblYellowLaps = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.lblYellowLaps = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.lblOnLeadLap = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.lblOnLeadLap = new System.Windows.Forms.Label();
             this.pnlFastLapsAndPoints = new System.Windows.Forms.Panel();
             this.tsPoints1 = new rNascarTimingAndScoring.Views.TSPoints();
             this.tsFastestLaps1 = new rNascarTimingAndScoring.Views.TSFastestLaps();
@@ -93,15 +93,38 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.Black;
-            this.pnlTop.Controls.Add(this.picLogo);
             this.pnlTop.Controls.Add(this.tsLeaders1);
-            this.pnlTop.Controls.Add(this.tsCautions1);
+            this.pnlTop.Controls.Add(this.tsCautionLapsDisplay1);
+            this.pnlTop.Controls.Add(this.picLogo);
             this.pnlTop.Controls.Add(this.tsTrackState);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1524, 79);
             this.pnlTop.TabIndex = 1;
+            // 
+            // tsLeaders1
+            // 
+            this.tsLeaders1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsLeaders1.BackColor = System.Drawing.Color.Black;
+            this.tsLeaders1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsLeaders1.ForeColor = System.Drawing.Color.White;
+            this.tsLeaders1.Location = new System.Drawing.Point(1063, 9);
+            this.tsLeaders1.Margin = new System.Windows.Forms.Padding(0);
+            this.tsLeaders1.Name = "tsLeaders1";
+            this.tsLeaders1.Size = new System.Drawing.Size(244, 64);
+            this.tsLeaders1.TabIndex = 10;
+            // 
+            // tsCautionLapsDisplay1
+            // 
+            this.tsCautionLapsDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tsCautionLapsDisplay1.BackColor = System.Drawing.Color.Black;
+            this.tsCautionLapsDisplay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsCautionLapsDisplay1.Location = new System.Drawing.Point(1307, 9);
+            this.tsCautionLapsDisplay1.Margin = new System.Windows.Forms.Padding(0);
+            this.tsCautionLapsDisplay1.Name = "tsCautionLapsDisplay1";
+            this.tsCautionLapsDisplay1.Size = new System.Drawing.Size(208, 64);
+            this.tsCautionLapsDisplay1.TabIndex = 9;
             // 
             // picLogo
             // 
@@ -113,44 +136,17 @@
             this.picLogo.TabIndex = 8;
             this.picLogo.TabStop = false;
             // 
-            // tsLeaders1
-            // 
-            this.tsLeaders1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsLeaders1.BackColor = System.Drawing.Color.Black;
-            this.tsLeaders1.DetailBackColor = System.Drawing.Color.MediumBlue;
-            this.tsLeaders1.DetailCaption = "CHANGES";
-            this.tsLeaders1.DetailForeColor = System.Drawing.Color.White;
-            this.tsLeaders1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsLeaders1.Header = "LEADERS";
-            this.tsLeaders1.Location = new System.Drawing.Point(1070, 8);
-            this.tsLeaders1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsLeaders1.Name = "tsLeaders1";
-            this.tsLeaders1.Size = new System.Drawing.Size(233, 67);
-            this.tsLeaders1.TabIndex = 7;
-            // 
-            // tsCautions1
-            // 
-            this.tsCautions1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsCautions1.BackColor = System.Drawing.Color.Black;
-            this.tsCautions1.DetailBackColor = System.Drawing.Color.Yellow;
-            this.tsCautions1.DetailCaption = "LAPS";
-            this.tsCautions1.DetailForeColor = System.Drawing.Color.Black;
-            this.tsCautions1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsCautions1.Header = "CAUTIONS";
-            this.tsCautions1.Location = new System.Drawing.Point(1311, 8);
-            this.tsCautions1.Margin = new System.Windows.Forms.Padding(4);
-            this.tsCautions1.Name = "tsCautions1";
-            this.tsCautions1.Size = new System.Drawing.Size(200, 67);
-            this.tsCautions1.TabIndex = 6;
-            // 
             // tsTrackState
             // 
             this.tsTrackState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tsTrackState.BackColor = System.Drawing.Color.SteelBlue;
+            this.tsTrackState.BackColor = System.Drawing.Color.Black;
             this.tsTrackState.LapInfo = "";
             this.tsTrackState.Location = new System.Drawing.Point(508, 8);
+            this.tsTrackState.Margin = new System.Windows.Forms.Padding(0);
             this.tsTrackState.Name = "tsTrackState";
+            this.tsTrackState.OutlineForeColor = System.Drawing.Color.Black;
+            this.tsTrackState.OutlineWidth = 2F;
             this.tsTrackState.Padding = new System.Windows.Forms.Padding(1);
             this.tsTrackState.Size = new System.Drawing.Size(554, 67);
             this.tsTrackState.TabIndex = 3;
@@ -393,14 +389,27 @@
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.lblGreenLaps);
             this.panel11.Controls.Add(this.label25);
+            this.panel11.Controls.Add(this.lblGreenLaps);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(335, 1);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(1);
             this.panel11.Size = new System.Drawing.Size(173, 29);
             this.panel11.TabIndex = 3;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.LimeGreen;
+            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(1, 1);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(120, 27);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "GREEN LAPS";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblGreenLaps
             // 
@@ -415,29 +424,29 @@
             this.lblGreenLaps.Text = "-";
             this.lblGreenLaps.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.LimeGreen;
-            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(1, 1);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(171, 27);
-            this.label25.TabIndex = 0;
-            this.label25.Text = "GREEN LAPS";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.lblYellowLaps);
             this.panel10.Controls.Add(this.label24);
+            this.panel10.Controls.Add(this.lblYellowLaps);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel10.Location = new System.Drawing.Point(162, 1);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(1);
             this.panel10.Size = new System.Drawing.Size(173, 29);
             this.panel10.TabIndex = 2;
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Gold;
+            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(1, 1);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(120, 27);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "YELLOW LAPS";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblYellowLaps
             // 
@@ -452,29 +461,29 @@
             this.lblYellowLaps.Text = "-";
             this.lblYellowLaps.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.Gold;
-            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(1, 1);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(171, 27);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "YELLOW LAPS";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.lblOnLeadLap);
             this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.lblOnLeadLap);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(1, 1);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(1);
             this.panel9.Size = new System.Drawing.Size(161, 29);
             this.panel9.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.MidnightBlue;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(1, 1);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(126, 27);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "ON LEAD LAP";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblOnLeadLap
             // 
@@ -488,19 +497,6 @@
             this.lblOnLeadLap.TabIndex = 1;
             this.lblOnLeadLap.Text = "-";
             this.lblOnLeadLap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.MidnightBlue;
-            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(1, 1);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(159, 27);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "ON LEAD LAP";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlFastLapsAndPoints
             // 
@@ -691,8 +687,6 @@
         private System.Windows.Forms.Label lblOnLeadLap;
         private Views.TSFastestLaps tsFastestLaps1;
         private Views.TSPoints tsPoints1;
-        private Views.TSSingleFieldDisplay tsLeaders1;
-        private Views.TSSingleFieldDisplay tsCautions1;
         private System.Windows.Forms.PictureBox picLogo;
         private Views.TSLeaderboardGrid tsLeaderboardGrid1;
         private Views.TSLeaderboardGrid tsLeaderboardGrid2;
@@ -705,5 +699,7 @@
         private System.Windows.Forms.ToolStripMenuItem getFeedDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem getLiveEventSettingsToolStripMenuItem;
+        private Views.TSCautionLapsDisplay tsCautionLapsDisplay1;
+        private Views.TSLeadersDisplay tsLeaders1;
     }
 }

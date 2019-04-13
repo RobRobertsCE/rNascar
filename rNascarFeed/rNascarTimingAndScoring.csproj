@@ -123,18 +123,12 @@
     <Compile Include="Dialogs\ConfigurationDialog.Designer.cs">
       <DependentUpon>ConfigurationDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventFactory.cs" />
+    <Compile Include="Factories\EventFactory.cs" />
     <Compile Include="Dialogs\EventSettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\EventSettingsDialog.Designer.cs">
       <DependentUpon>EventSettingsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\LeaderboardColumns.cs" />
     <Compile Include="Models\LeaderboardRowWidths.cs" />
@@ -147,21 +141,16 @@
     <Compile Include="Models\TSGridRowModel.cs" />
     <Compile Include="Models\TSLapLeaderGridRowModel.cs" />
     <Compile Include="Models\TSTenLapAverageGridRowModel.cs" />
+    <Compile Include="Models\VehicleStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScheduledEvent.cs" />
+    <Compile Include="Models\ScheduledEvent.cs" />
     <Compile Include="ServiceProviderInstance.cs" />
     <Compile Include="TimingAndScoring.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TimingAndScoring.Designer.cs">
       <DependentUpon>TimingAndScoring.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TSMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TSMainForm.Designer.cs">
-      <DependentUpon>TSMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IRaceViewModel.cs" />
     <Compile Include="ViewModels\PracticeViewModel.cs" />
@@ -186,6 +175,12 @@
     </Compile>
     <Compile Include="Views\TSBindableView.Designer.cs">
       <DependentUpon>TSBindableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TSLeadersDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TSLeadersDisplay.Designer.cs">
+      <DependentUpon>TSLeadersDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TSDriverFastestLap.cs">
       <SubType>UserControl</SubType>
@@ -247,9 +242,6 @@
     <Compile Include="Views\TSLeaderboardRow.Designer.cs">
       <DependentUpon>TSLeaderboardRow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TSOutlinedLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Views\TSLapAveragesGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,6 +259,12 @@
     </Compile>
     <Compile Include="Views\TSSessionBase.Designer.cs">
       <DependentUpon>TSSessionBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TSCautionLapsDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TSCautionLapsDisplay.Designer.cs">
+      <DependentUpon>TSCautionLapsDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TSSingleFieldDisplay.cs">
       <SubType>UserControl</SubType>
@@ -304,9 +302,6 @@
     <EmbeddedResource Include="Dialogs\EventSettingsDialog.resx">
       <DependentUpon>EventSettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -321,9 +316,6 @@
       <DependentUpon>TimingAndScoring.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="TSMainForm.resx">
-      <DependentUpon>TSMainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\TSBiggestMoversGrid.resx">
       <DependentUpon>TSBiggestMoversGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TSBindableView.resx">
       <DependentUpon>TSBindableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TSLeadersDisplay.resx">
+      <DependentUpon>TSLeadersDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TSDriverFastestLap.resx">
       <DependentUpon>TSDriverFastestLap.cs</DependentUpon>
@@ -371,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TSSessionBase.resx">
       <DependentUpon>TSSessionBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TSCautionLapsDisplay.resx">
+      <DependentUpon>TSCautionLapsDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TSSingleFieldDisplay.resx">
       <DependentUpon>TSSingleFieldDisplay.cs</DependentUpon>
@@ -412,8 +410,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="links.txt" />
-    <Content Include="raw-feed.js" />
+    <None Include="Resources\track-state-checkers.png" />
+    <None Include="Resources\track-state-warm.png" />
+    <None Include="Resources\track-state-yellow.png" />
+    <None Include="Resources\track-state-white.png" />
+    <None Include="Resources\track-state-red.png" />
+    <None Include="Resources\track-state-green.png" />
+    <None Include="Resources\track-state-cold.png" />
+    <None Include="Resources\shaded-yellow-box.png" />
+    <None Include="Resources\shaded-blue-box.png" />
+    <None Include="Resources\BlueBox.png" />
+    <None Include="Resources\YellowBox.png" />
+    <None Include="Resources\toyota-logo-2.png" />
     <None Include="Resources\rNascarT&amp;S.ico" />
     <None Include="Resources\rNascarT_S.ico" />
     <None Include="Resources\toyota-logo.png" />

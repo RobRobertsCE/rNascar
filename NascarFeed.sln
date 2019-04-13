@@ -39,7 +39,6 @@ Global
 		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.All|Any CPU.ActiveCfg = DefaultBuild
 		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.All|Any CPU.Build.0 = DefaultBuild
 		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.Debug|Any CPU.ActiveCfg = DefaultBuild
-		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.Debug|Any CPU.Build.0 = DefaultBuild
 		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.Release|Any CPU.ActiveCfg = DefaultBuild
 		{00BA2DEA-BF8C-48F1-A635-42A7A90F9EE5}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection

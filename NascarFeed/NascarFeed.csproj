@@ -123,6 +123,7 @@
     <None Include="Models\LiveFeed\sample.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="links.txt" />
     <Content Include="Models\WP\link.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

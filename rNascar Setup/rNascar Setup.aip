@@ -18,8 +18,8 @@
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Logging.dll" Value="..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Options.dll" Value="..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Microsoft.Extensions.Primitives.dll" Value="..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.Data.dll" Value="..\NascarFeed.Data\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.dll" Value="..\NascarFeed\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.Data.dll" Value="..\NascarFeed.Data\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_NascarFeed.dll" Value="..\NascarFeed\bin\Debug"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Remotion.Linq.dll" Value="..\packages\Remotion.Linq.2.2.0\lib\net45"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_RestSharp.dll" Value="..\packages\RestSharp.106.6.9\lib\net452"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Buffers.dll" Value="..\packages\System.Buffers.4.4.0\lib\netstandard2.0"/>
@@ -30,8 +30,8 @@
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Memory.dll" Value="..\packages\System.Memory.4.5.1\lib\netstandard2.0"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Numerics.Vectors.dll" Value="..\packages\System.Numerics.Vectors.4.4.0\lib\net46"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Runtime.CompilerServices.Unsafe.dll" Value="..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe" Value="..\rNascarFeed\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe.config" Value="..\rNascarFeed\bin\Release"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe" Value="..\rNascarFeed\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_rNascarTimingAndScoring.exe.config" Value="..\rNascarFeed\bin\Debug"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.Abstractions.dll" Value="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.EntityFrameworkCore.dll" Value="Microsoft.EntityFrameworkCore.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Microsoft.Extensions.Caching.Abstractions.dll" Value="Microsoft.Extensions.Caching.Abstractions.dll"/>

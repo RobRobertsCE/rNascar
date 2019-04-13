@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using rNascarTimingAndScoring.Models;
 
-namespace rNascarTimingAndScoring
+namespace rNascarTimingAndScoring.Factories
 {
-   
-
     public class EventFactory
     {
         public List<ScheduledEvent> BuildCupSchedule()

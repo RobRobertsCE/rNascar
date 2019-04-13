@@ -29,51 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.picTrackState = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tsOutlinedLabel1 = new rNascarTimingAndScoring.Views.TSOutlinedLabel();
+            this.picTrackState = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picTrackState)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picTrackState
-            // 
-            this.picTrackState.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.picTrackState.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picTrackState.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picTrackState.Location = new System.Drawing.Point(2, 2);
-            this.picTrackState.Name = "picTrackState";
-            this.picTrackState.Size = new System.Drawing.Size(292, 53);
-            this.picTrackState.TabIndex = 1;
-            this.picTrackState.TabStop = false;
             // 
             // toolTip1
             // 
             this.toolTip1.ShowAlways = true;
             // 
-            // tsOutlinedLabel1
+            // picTrackState
             // 
-            this.tsOutlinedLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.tsOutlinedLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsOutlinedLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsOutlinedLabel1.ForeColor = System.Drawing.Color.White;
-            this.tsOutlinedLabel1.Location = new System.Drawing.Point(2, 2);
-            this.tsOutlinedLabel1.Name = "tsOutlinedLabel1";
-            this.tsOutlinedLabel1.OutlineForeColor = System.Drawing.Color.Black;
-            this.tsOutlinedLabel1.OutlineWidth = 2F;
-            this.tsOutlinedLabel1.Size = new System.Drawing.Size(292, 53);
-            this.tsOutlinedLabel1.TabIndex = 2;
-            this.tsOutlinedLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.picTrackState.BackColor = System.Drawing.Color.Black;
+            this.picTrackState.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picTrackState.Image = global::rNascarTimingAndScoring.Properties.Resources.track_state_checkers;
+            this.picTrackState.Location = new System.Drawing.Point(0, 0);
+            this.picTrackState.Margin = new System.Windows.Forms.Padding(0);
+            this.picTrackState.Name = "picTrackState";
+            this.picTrackState.Size = new System.Drawing.Size(987, 162);
+            this.picTrackState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTrackState.TabIndex = 1;
+            this.picTrackState.TabStop = false;
+            this.picTrackState.Paint += new System.Windows.Forms.PaintEventHandler(this.picTrackState_Paint);
             // 
             // TSTrackState
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.tsOutlinedLabel1);
             this.Controls.Add(this.picTrackState);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.White;
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TSTrackState";
-            this.Padding = new System.Windows.Forms.Padding(2);
-            this.Size = new System.Drawing.Size(296, 57);
+            this.Size = new System.Drawing.Size(987, 162);
             ((System.ComponentModel.ISupportInitialize)(this.picTrackState)).EndInit();
             this.ResumeLayout(false);
 
@@ -82,6 +71,5 @@
         #endregion
         private System.Windows.Forms.PictureBox picTrackState;
         private System.Windows.Forms.ToolTip toolTip1;
-        private TSOutlinedLabel tsOutlinedLabel1;
     }
 }

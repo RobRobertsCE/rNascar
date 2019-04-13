@@ -1,4 +1,4 @@
-﻿namespace rNascarTimingAndScoring
+﻿namespace rNascarTimingAndScoring.Models
 {
     public class ScheduledEvent
     {

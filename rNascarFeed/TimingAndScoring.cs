@@ -134,6 +134,67 @@ namespace rNascarTimingAndScoring
             }
         }
 
+        protected virtual IList<TSDriverModel> FormatLeaderboardData(NascarFeed.Models.LiveFeed.RootObject feedData)
+        {
+            double previousDelta = 0.0;
+
+            var models = new List<TSDriverModel>();
+
+            var fastestThisLap = new List<TSDriverModel>();
+
+            double fastestLapTimeThisLap = 999999;
+
+            foreach (var vehicle in feedData.vehicles)
+            {
+                var model = new TSDriverModel()
+                {
+                    Position = vehicle.running_position,
+                    CarNumber = vehicle.vehicle_number,
+                    Driver = vehicle.driver.full_name,
+                    BehindLeader = vehicle.delta,
+                    Manufacturer = vehicle.vehicle_manufacturer,
+                    StartPosition = vehicle.starting_position,
+                    LastLapTime = vehicle.last_lap_time,
+                    FastestLapTime = vehicle.best_lap_time,
+                    FastestLapNumber = vehicle.best_lap,
+                    LastPitLap = vehicle.pit_stops.Count > 0 ? vehicle.pit_stops.LastOrDefault().pit_in_leader_lap : 0,
+                    LapsComplete = vehicle.laps_completed,
+                    BehindNext = vehicle.delta < 0 ?
+                        previousDelta < 0 ?
+                            vehicle.delta - previousDelta :
+                            vehicle.delta :
+                        vehicle.delta - previousDelta,
+                    IsOnTrack = vehicle.is_on_track,
+                    VehicleStatus = (VehicleStatus)vehicle.status
+                };
+
+                models.Add(model);
+
+                previousDelta = vehicle.delta;
+
+                if (model.VehicleStatus == VehicleStatus.OnTrack)
+                {
+                    if (model.LastLapTime == fastestLapTimeThisLap)
+                    {
+                        fastestThisLap.Add(model);
+                    }
+                    else if (model.LastLapTime < fastestLapTimeThisLap)
+                    {
+                        fastestThisLap.Clear();
+                        fastestThisLap.Add(model);
+                        fastestLapTimeThisLap = model.LastLapTime;
+                    }
+                }
+            }
+
+            foreach (var model in fastestThisLap)
+            {
+                model.FastestThisLap = true;
+            }
+
+            return models;
+        }
+
         protected virtual IList<TSGridRowModel> FormatLapLeaders(NascarFeed.Models.LiveFeed.RootObject feedData)
         {
             var models = new List<TSGridRowModel>();
@@ -190,51 +251,6 @@ namespace rNascarTimingAndScoring
             }
 
             return sortedModels;
-        }
-
-        protected virtual IList<TSDriverModel> FormatLeaderboardData(NascarFeed.Models.LiveFeed.RootObject feedData)
-        {
-            double previousDelta = 0.0;
-
-            var models = new List<TSDriverModel>();
-
-            foreach (var vehicle in feedData.vehicles)
-            {
-                try
-                {
-
-                    var model = new TSDriverModel()
-                    {
-                        Position = vehicle.running_position,
-                        CarNumber = Int32.Parse(vehicle.vehicle_number),
-                        Driver = vehicle.driver.full_name,
-                        BehindLeader = vehicle.delta,
-                        Manufacturer = vehicle.vehicle_manufacturer,
-                        StartPosition = vehicle.starting_position,
-                        LastLapTime = vehicle.last_lap_time,
-                        FastestLapTime = vehicle.best_lap_time,
-                        FastestLapNumber = vehicle.best_lap,
-                        LastPitLap = vehicle.pit_stops.Count > 0 ? vehicle.pit_stops.LastOrDefault().pit_in_leader_lap : 0,
-                        LapsComplete = vehicle.laps_completed,
-                        BehindNext = vehicle.delta < 0 ?
-                            previousDelta < 0 ?
-                                vehicle.delta - previousDelta :
-                                vehicle.delta :
-                            vehicle.delta - previousDelta
-                    };
-
-                    models.Add(model);
-
-                    previousDelta = vehicle.delta;
-
-                }
-                catch (Exception ex)
-                {
-                    ExceptionHandler(ex);
-                }
-            }
-
-            return models;
         }
 
         protected virtual IList<TSGridRowModel> FormatBiggestMoversData(NascarFeed.Models.LiveFeed.RootObject feedData)
@@ -364,9 +380,8 @@ namespace rNascarTimingAndScoring
 
         protected virtual void DisplayRaceState(NascarFeed.Models.LiveFeed.RootObject feed)
         {
-            Text = $"r/NASCAR Timing and Scoring      {feed.track_name} - {feed.run_name}";
-
-            tsTrackState.LapInfo = $"LAP {feed.lap_number} OF {feed.laps_in_race}";
+            Text = FormatTitle(feed);
+            tsTrackState.LapInfo = FormatLapInfo(feed);
             lblOnLeadLap.Text = feed.vehicles.Count(v => v.delta >= 0).ToString();
             lblYellowLaps.Text = feed.number_of_caution_laps.ToString();
             lblGreenLaps.Text = (feed.lap_number - feed.number_of_caution_laps).ToString();
@@ -375,12 +390,60 @@ namespace rNascarTimingAndScoring
             lblSession.Text = sessionTimeSpan.ToString();
         }
 
+        protected virtual string FormatTitle(NascarFeed.Models.LiveFeed.RootObject feed)
+        {
+            string titleTemplate = "r/NASCAR Timing and Scoring {0}";
+            string titleDetail = string.Empty;
+
+            switch ((RunType)feed.run_type)
+            {
+                case RunType.Practice:
+                    {
+                        titleDetail = feed.run_name;
+                        break;
+                    }
+                case RunType.Qualifying:
+                    {
+                        titleDetail = feed.run_name;
+                        break;
+                    }
+                case RunType.Race:
+                    {
+                        titleDetail = $"{feed.run_name} - Stage {feed.stage.stage_num }";
+                        break;
+                    }
+            }
+
+            return string.Format(titleTemplate, titleDetail);
+        }
+
+        protected virtual string FormatLapInfo(NascarFeed.Models.LiveFeed.RootObject feed)
+        {
+            switch ((RunType)feed.run_type)
+            {
+                case RunType.Practice:
+                    {
+                        return feed.run_name;
+                    }
+                case RunType.Qualifying:
+                    {
+                        return feed.run_name;
+                    }
+                case RunType.Race:
+                    {
+                        return $"{feed.lap_number} OF {feed.laps_in_race}";
+                    }
+            }
+
+            return feed.run_name;
+        }
+
         protected virtual void ConfigurationUpdated(TSConfiguration configuration)
         {
             lblBattleGap.Text = Configuration.BattleGap.ToString();
             lblPitWindow.Text = Configuration.PitWindow.ToString();
 
-            pollFeedTimer.Interval = _configuration.PollInterval;
+            pollFeedTimer.Interval = _configuration.PollInterval * 1000;
         }
 
         protected virtual void EventSettingsUpdated(EventSettings eventSettings)
@@ -392,7 +455,7 @@ namespace rNascarTimingAndScoring
         protected virtual void DisplaySingleFields(NascarFeed.Models.LiveFeed.RootObject feed)
         {
             tsLeaders1.Model = new SingleFieldModel() { Count = feed.number_of_leaders, SubCount = feed.number_of_lead_changes };
-            tsCautions1.Model = new SingleFieldModel() { Count = feed.number_of_caution_segments, SubCount = feed.number_of_caution_laps };
+            tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = feed.number_of_caution_segments, SubCount = feed.number_of_caution_laps };
         }
 
         protected virtual void SetFullscreenState(bool fullscreen)

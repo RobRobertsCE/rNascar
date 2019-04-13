@@ -198,13 +198,14 @@
             this.tsDriverFastestLap1.FastestLapNumber = "000";
             this.tsDriverFastestLap1.FastestLapTime = "00.00";
             this.tsDriverFastestLap1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsDriverFastestLap1.IsFastestLap = false;
             this.tsDriverFastestLap1.Location = new System.Drawing.Point(789, 0);
             this.tsDriverFastestLap1.Margin = new System.Windows.Forms.Padding(0);
             this.tsDriverFastestLap1.Name = "tsDriverFastestLap1";
             this.tsDriverFastestLap1.Size = new System.Drawing.Size(133, 30);
             this.tsDriverFastestLap1.TabIndex = 9;
             // 
-            // TSLeaderboardDriver2
+            // TSLeaderboardDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,7 +213,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "TSLeaderboardDriver2";
+            this.Name = "TSLeaderboardDriver";
             this.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.Size = new System.Drawing.Size(1136, 31);
             this.Load += new System.EventHandler(this.TSLeaderboardRow_Load);

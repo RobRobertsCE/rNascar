@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using NascarFeed.Data.Models;
 using NascarFeed.Models;
+using rNascarTimingAndScoring.Models;
+using rNascarTimingAndScoring.Factories;
 
 namespace rNascarTimingAndScoring.Dialogs
 {

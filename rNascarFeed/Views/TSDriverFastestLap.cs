@@ -39,22 +39,47 @@ namespace rNascarTimingAndScoring.Views
             set
             {
                 _isFastestLap = value;
-                if (_isFastestLap)
-                {
-                    lblFastestLapNumber.ForeColor = TSColorMap.NewFastestLapForeColor;
-                    lblFastestLapTime.ForeColor = TSColorMap.NewFastestLapForeColor;
-                }
-                else
-                {
-                    lblFastestLapNumber.ForeColor = TSColorMap.FastestLapNumberForeColor;
-                    lblFastestLapTime.ForeColor = TSColorMap.FastestLapTimeForeColor;
-                }
+                UpdateForeColor();              
+            }
+        }
+
+        private bool _isOffTrack = false;
+        public bool IsOffTrack
+        {
+
+            get
+            {
+                return _isOffTrack;
+            }
+            set
+            {
+                _isOffTrack = value;
+                UpdateForeColor();
             }
         }
 
         public TSDriverFastestLap()
         {
             InitializeComponent();
+        }
+
+        protected virtual void UpdateForeColor()
+        {
+            if (_isOffTrack)
+            {
+                lblFastestLapNumber.ForeColor = TSColorMap.OutOfEventColor;
+                lblFastestLapTime.ForeColor = TSColorMap.OutOfEventColor;
+            }
+            else if (_isFastestLap)
+            {
+                lblFastestLapNumber.ForeColor = TSColorMap.NewFastestLapForeColor;
+                lblFastestLapTime.ForeColor = TSColorMap.NewFastestLapForeColor;
+            }
+            else
+            {
+                lblFastestLapNumber.ForeColor = TSColorMap.FastestLapNumberForeColor;
+                lblFastestLapTime.ForeColor = TSColorMap.FastestLapTimeForeColor;
+            }
         }
     }
 }

@@ -75,11 +75,18 @@ namespace rNascarTimingAndScoring.Views
             lblPosition.Text = $"{model.Position}.";
             lblCar.Text = model.CarNumber.ToString();
             lblDriver.Text = model.Driver;
-            lblBehind.Text = model.BehindLeader == 0 ? "- -" : model.BehindLeader < 0 ? $"{(model.BehindLeader * -1)} laps" : model.BehindLeader.ToString("0.00");
+            lblBehind.Text = model.BehindLeader == 0 ? "- -" :
+                model.BehindLeader < 0 ?
+                    model.BehindLeader == -1 ?
+                        $"{(model.BehindLeader * -1)} lap" :
+                    $"{(model.BehindLeader * -1)} laps" :
+                model.BehindLeader.ToString("0.00");
             lblLastLap.Text = model.LastLapTime.ToString("##.00");
             tsDriverFastestLap1.FastestLapTime = model.FastestLapTime.ToString("0.00");
             tsDriverFastestLap1.FastestLapNumber = model.FastestLapNumber.ToString();
-            tsDriverFastestLap1.IsFastestLap = model.LastLapTime <= model.FastestLapTime;
+            tsDriverFastestLap1.IsFastestLap = ((model.LastLapTime <= model.FastestLapTime) && model.FastestLapTime > 0);
+            tsDriverFastestLap1.IsOffTrack = (model.VehicleStatus == VehicleStatus.OutOfRace);
+
             if (Configuration.RunType == RunType.Race)
             {
                 lblLastPit.Text = model.LastPitLap.ToString();
@@ -91,63 +98,99 @@ namespace rNascarTimingAndScoring.Views
                 lblStart.Text = String.Empty;
             }
 
-            if (tsDriverFastestLap1.IsFastestLap)
+            if (model.VehicleStatus == VehicleStatus.OutOfRace)
             {
-                lblLastLap.ForeColor = TSColorMap.NewFastestLapForeColor;
+                lblPosition.ForeColor = TSColorMap.OutOfEventColor;
+                lblCar.ForeColor = TSColorMap.OutOfEventColor;
+                lblDriver.ForeColor = TSColorMap.OutOfEventColor;
+                lblBehind.ForeColor = TSColorMap.OutOfEventColor;
+                lblLastLap.ForeColor = TSColorMap.OutOfEventColor;
+                lblCar.ForeColor = TSColorMap.OutOfEventColor;
+                lblLastPit.ForeColor = TSColorMap.OutOfEventColor;
+                lblStart.ForeColor = TSColorMap.OutOfEventColor;
+            }
+            else if (model.VehicleStatus == VehicleStatus.BehindTheWall)
+            {
+                lblPosition.ForeColor = TSColorMap.BehindTheWallColor;
+                lblCar.ForeColor = TSColorMap.BehindTheWallColor;
+                lblDriver.ForeColor = TSColorMap.BehindTheWallColor;
+                lblBehind.ForeColor = TSColorMap.BehindTheWallColor;
+                lblLastLap.ForeColor = TSColorMap.BehindTheWallColor;
+                lblCar.ForeColor = TSColorMap.BehindTheWallColor;
+                lblLastPit.ForeColor = TSColorMap.BehindTheWallColor;
+                lblStart.ForeColor = TSColorMap.BehindTheWallColor;
             }
             else
             {
-                lblLastLap.ForeColor = TSColorMap.LastLapForeColor;
-            }
-
-            if (Configuration.RunType == RunType.Race)
-            {
-                if (model.StartPosition < model.Position)
+                if (model.FastestThisLap)
                 {
-                    lblStart.ForeColor = TSColorMap.StartPositionLossForeColor;
+                    lblLastLap.ForeColor = TSColorMap.FastestThisLapForeColor;
+                    lblLastLap.Text = $"*{lblLastLap.Text}*";
                 }
-                else if (model.StartPosition > model.Position)
+                else
                 {
-                    lblStart.ForeColor = TSColorMap.StartPositionGainForeColor;
+                    lblLastLap.ForeColor = TSColorMap.LastLapForeColor;
+                }
+
+                if (Configuration.RunType == RunType.Race)
+                {
+                    if (model.StartPosition < model.Position)
+                    {
+                        lblStart.ForeColor = TSColorMap.StartPositionLossForeColor;
+                    }
+                    else if (model.StartPosition > model.Position)
+                    {
+                        lblStart.ForeColor = TSColorMap.StartPositionGainForeColor;
+                    }
+                    else
+                    {
+                        lblStart.ForeColor = TSColorMap.StartPositionForeColor;
+                    }
+
+                    if (!model.IsOnTrack)
+                    {
+                        lblLastPit.BackColor = TSColorMap.IsInPitsBackColor;
+                        lblLastPit.ForeColor = TSColorMap.IsInPitsForeColor;
+                    }
+                    else
+                    {
+                        lblLastPit.BackColor = this.BackColor;
+
+                        var lapsSinceLastPit = model.LapsComplete - model.LastPitLap;
+
+                        if (model.LastPitLap > 0 && lapsSinceLastPit >= Configuration.PitWindow)
+                        {
+                            lblLastPit.ForeColor = TSColorMap.LastPitOverLimitForeColor;
+                        }
+                        else if (lapsSinceLastPit + Configuration.PitWindowWarning > Configuration.PitWindow)
+                        {
+                            lblLastPit.ForeColor = TSColorMap.LastPitWarningForeColor;
+                        }
+                        else
+                        {
+                            lblLastPit.ForeColor = TSColorMap.LastPitForeColor;
+                        }
+                    }
                 }
                 else
                 {
                     lblStart.ForeColor = TSColorMap.StartPositionForeColor;
+                    lblLastPit.ForeColor = TSColorMap.LastPitForeColor;
                 }
 
-                var lapsSinceLastPit = model.LapsComplete - model.LastPitLap;
-
-                if (lapsSinceLastPit > Configuration.PitWindow)
+                if ((Configuration.BattleGap > 0) && model.BehindNext > 0 && model.BehindNext < Configuration.BattleGap)
                 {
-                    lblLastPit.ForeColor = TSColorMap.LastPitOverLimitForeColor;
-                }
-                else if (lapsSinceLastPit + Configuration.PitWindowWarning > Configuration.PitWindow)
-                {
-                    lblLastPit.ForeColor = TSColorMap.LastPitWarningForeColor;
+                    lblBehind.ForeColor = TSColorMap.BehindWithinBattleGapForeColor;
+                    lblDriver.ForeColor = TSColorMap.DriverWithinBattleGapForeColor;
                 }
                 else
                 {
-                    lblLastPit.ForeColor = TSColorMap.LastPitForeColor;
+                    lblBehind.ForeColor = TSColorMap.BehindForeColor;
+                    lblDriver.ForeColor = TSColorMap.DriverForeColor;
                 }
             }
-            else
-            {
-                lblStart.ForeColor = TSColorMap.StartPositionForeColor;
-                lblLastPit.ForeColor = TSColorMap.LastPitForeColor;
-            }
 
-            if ((Configuration.BattleGap > 0) && model.BehindNext > 0 && model.BehindNext < Configuration.BattleGap)
-            {
-                lblBehind.ForeColor = TSColorMap.BehindWithinBattleGapForeColor;
-                lblDriver.ForeColor = TSColorMap.DriverWithinBattleGapForeColor;
-            }
-            else
-            {
-                lblBehind.ForeColor = TSColorMap.BehindForeColor;
-                lblDriver.ForeColor = TSColorMap.DriverForeColor;
-            }
 
-           
 
             switch (model.Manufacturer)
             {
