@@ -136,6 +136,7 @@
     <Compile Include="Helpers\FeedWriter.cs" />
     <Compile Include="Helpers\PitWindowCalculator.cs" />
     <Compile Include="Models\EventLapAverages.cs" />
+    <Compile Include="Models\FavoriteDriver.cs" />
     <Compile Include="Models\LeaderboardColumns.cs" />
     <Compile Include="Models\LeaderboardRowWidths.cs" />
     <Compile Include="Models\NLapAverage.cs" />

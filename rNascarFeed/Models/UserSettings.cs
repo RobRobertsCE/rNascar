@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -12,6 +13,7 @@ namespace rNascarTimingAndScoring.Models
         public int? PitWindow { get; set; }
         public int PitWindowWarning { get; set; }
         public int PollInterval { get; set; }
+        public List<FavoriteDriver> FavoriteDrivers { get; set; } = new List<FavoriteDriver>();
 
         public static UserSettings Load()
         {

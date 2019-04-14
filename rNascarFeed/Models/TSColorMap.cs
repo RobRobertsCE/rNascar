@@ -22,9 +22,12 @@ namespace rNascarTimingAndScoring.Models
         public static Color CarNumberForeColor = Color.Gainsboro;
 
         public static Color DriverForeColor = Color.White;
+        public static Color FavoriteDriverForeColor = Color.Gold;
+        public static Color DriverWithinBattleGapForeColor = Color.Red;
+
         public static Color BehindForeColor = Color.White;
         public static Color BehindWithinBattleGapForeColor = Color.Red;
-        public static Color DriverWithinBattleGapForeColor = Color.Red;
+
         public static Color OutOfEventColor = Color.Gray;
         public static Color BehindTheWallColor = Color.Silver;
 

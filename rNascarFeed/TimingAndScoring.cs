@@ -193,7 +193,8 @@ namespace rNascarTimingAndScoring
                             vehicle.delta :
                         vehicle.delta - previousDelta,
                     IsOnTrack = vehicle.is_on_track,
-                    VehicleStatus = (VehicleStatus)vehicle.status
+                    VehicleStatus = (VehicleStatus)vehicle.status,
+                    IsUserFavorite = _userSettings.FavoriteDrivers.Any(f => f.Driver == vehicle.driver.full_name)
                 };
 
                 models.Add(model);
@@ -510,9 +511,16 @@ namespace rNascarTimingAndScoring
             IList<NascarFeed.Models.LiveFlagData.RootObject> liveFlagData,
             NascarFeed.Models.LiveFeed.RootObject feed)
         {
-            var cautions = liveFlagData.Where(f => f.elapsed_time >= 0 && f.flag_state == 2);
-            var cautionCount = cautions.Select(c => c.lap_number).Distinct().Count();
-            tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = cautionCount, SubCount = feed.number_of_caution_laps };
+            if (liveFlagData.Count > 0)
+            {
+                var cautions = liveFlagData.Where(f => f.elapsed_time >= 0 && f.flag_state == 2);
+                var cautionCount = cautions.Select(c => c.lap_number).Distinct().Count();
+                tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = cautionCount, SubCount = feed.number_of_caution_laps };
+            }
+            else
+            {
+                tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = feed.number_of_caution_segments, SubCount = feed.number_of_caution_laps };
+            }
         }
 
         protected virtual void ReadLapTimes(NascarFeed.Models.LiveFeed.RootObject feed)
@@ -596,7 +604,7 @@ namespace rNascarTimingAndScoring
 
                 TSColorMap.PrimaryBackColor = Color.FromArgb(_userSettings.PrimaryBackgroundColorArgb);
                 TSColorMap.AlternateBackColor = Color.FromArgb(_userSettings.SecondaryBackgroundColorArgb);
-                TSColorMap.AlternatingRowBackColor0 = TSColorMap.AlternateBackColor;
+                TSColorMap.AlternatingRowBackColor0 = TSColorMap.PrimaryBackColor;
                 TSColorMap.AlternatingRowBackColor1 = TSColorMap.AlternateBackColor;
 
                 Configuration.BattleGap = _userSettings.BattleGap;
@@ -681,7 +689,7 @@ namespace rNascarTimingAndScoring
             pollFeedTimer.Enabled = autoRefreshToolStripMenuItem.Checked;
         }
 
-        private void eventToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void eventToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -693,6 +701,8 @@ namespace rNascarTimingAndScoring
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     EventSettings = dialog.EventSettings;
+
+                    await ReadFeedDataAsync();
                 }
             }
             catch (Exception ex)
@@ -707,12 +717,17 @@ namespace rNascarTimingAndScoring
             {
                 var dialog = new ConfigurationDialog()
                 {
-                    Configuration = _configuration
+                    Configuration = _configuration,
+                    AllDrivers = _feedData != null ?
+                        _feedData.vehicles.Select(v => new FavoriteDriver() { SeriesId = _feedData.series_id, Driver = v.driver.full_name }).ToList() :
+                        new List<FavoriteDriver>(),
+                    Favorites = _userSettings.FavoriteDrivers.ToList()
                 };
 
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     Configuration = dialog.Configuration;
+                    _userSettings.FavoriteDrivers = dialog.Favorites.ToList();
                     SaveUserSettings();
                 }
 

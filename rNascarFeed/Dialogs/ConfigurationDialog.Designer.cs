@@ -45,6 +45,8 @@
             this.btnBackground1 = new System.Windows.Forms.Button();
             this.btnBackground2 = new System.Windows.Forms.Button();
             this.btnDefaults = new System.Windows.Forms.Button();
+            this.chkFavorites = new System.Windows.Forms.CheckedListBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindowWarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBattleGap)).BeginInit();
@@ -67,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(139, 9);
+            this.label2.Location = new System.Drawing.Point(12, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 1;
@@ -77,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(139, 61);
+            this.label3.Location = new System.Drawing.Point(12, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 16);
             this.label3.TabIndex = 2;
@@ -85,7 +87,7 @@
             // 
             // numPitWindowWarning
             // 
-            this.numPitWindowWarning.Location = new System.Drawing.Point(142, 80);
+            this.numPitWindowWarning.Location = new System.Drawing.Point(12, 160);
             this.numPitWindowWarning.Maximum = new decimal(new int[] {
             25,
             0,
@@ -107,7 +109,7 @@
             // 
             // numPitWindow
             // 
-            this.numPitWindow.Location = new System.Drawing.Point(142, 28);
+            this.numPitWindow.Location = new System.Drawing.Point(12, 116);
             this.numPitWindow.Maximum = new decimal(new int[] {
             200,
             0,
@@ -130,7 +132,7 @@
             0,
             0,
             65536});
-            this.numBattleGap.Location = new System.Drawing.Point(15, 28);
+            this.numBattleGap.Location = new System.Drawing.Point(12, 28);
             this.numBattleGap.Maximum = new decimal(new int[] {
             100,
             0,
@@ -152,7 +154,7 @@
             0,
             0,
             0});
-            this.numPollInterval.Location = new System.Drawing.Point(15, 80);
+            this.numPollInterval.Location = new System.Drawing.Point(12, 72);
             this.numPollInterval.Maximum = new decimal(new int[] {
             60,
             0,
@@ -176,7 +178,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 61);
+            this.label4.Location = new System.Drawing.Point(12, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 16);
             this.label4.TabIndex = 6;
@@ -187,7 +189,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(15, 117);
+            this.btnSave.Location = new System.Drawing.Point(12, 284);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 31);
             this.btnSave.TabIndex = 8;
@@ -201,7 +203,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(315, 117);
+            this.btnCancel.Location = new System.Drawing.Point(331, 284);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(105, 31);
             this.btnCancel.TabIndex = 9;
@@ -212,7 +214,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(292, 61);
+            this.label5.Location = new System.Drawing.Point(12, 229);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 16);
             this.label5.TabIndex = 11;
@@ -222,7 +224,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(292, 9);
+            this.label6.Location = new System.Drawing.Point(12, 185);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 16);
             this.label6.TabIndex = 10;
@@ -231,7 +233,7 @@
             // picBackground1
             // 
             this.picBackground1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBackground1.Location = new System.Drawing.Point(295, 28);
+            this.picBackground1.Location = new System.Drawing.Point(12, 204);
             this.picBackground1.Name = "picBackground1";
             this.picBackground1.Size = new System.Drawing.Size(83, 20);
             this.picBackground1.TabIndex = 12;
@@ -240,7 +242,7 @@
             // picBackground2
             // 
             this.picBackground2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBackground2.Location = new System.Drawing.Point(295, 80);
+            this.picBackground2.Location = new System.Drawing.Point(12, 248);
             this.picBackground2.Name = "picBackground2";
             this.picBackground2.Size = new System.Drawing.Size(83, 20);
             this.picBackground2.TabIndex = 13;
@@ -248,7 +250,7 @@
             // 
             // btnBackground1
             // 
-            this.btnBackground1.Location = new System.Drawing.Point(384, 27);
+            this.btnBackground1.Location = new System.Drawing.Point(101, 203);
             this.btnBackground1.Name = "btnBackground1";
             this.btnBackground1.Size = new System.Drawing.Size(37, 23);
             this.btnBackground1.TabIndex = 14;
@@ -258,7 +260,7 @@
             // 
             // btnBackground2
             // 
-            this.btnBackground2.Location = new System.Drawing.Point(384, 77);
+            this.btnBackground2.Location = new System.Drawing.Point(101, 245);
             this.btnBackground2.Name = "btnBackground2";
             this.btnBackground2.Size = new System.Drawing.Size(37, 23);
             this.btnBackground2.TabIndex = 15;
@@ -271,7 +273,7 @@
             this.btnDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDefaults.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDefaults.ForeColor = System.Drawing.Color.Black;
-            this.btnDefaults.Location = new System.Drawing.Point(126, 117);
+            this.btnDefaults.Location = new System.Drawing.Point(126, 284);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(105, 31);
             this.btnDefaults.TabIndex = 16;
@@ -279,12 +281,33 @@
             this.btnDefaults.UseVisualStyleBackColor = true;
             this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
             // 
+            // chkFavorites
+            // 
+            this.chkFavorites.FormattingEnabled = true;
+            this.chkFavorites.Location = new System.Drawing.Point(183, 28);
+            this.chkFavorites.Name = "chkFavorites";
+            this.chkFavorites.Size = new System.Drawing.Size(253, 242);
+            this.chkFavorites.TabIndex = 17;
+            this.chkFavorites.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkFavorites_ItemCheck);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(180, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 16);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Favorites";
+            // 
             // ConfigurationDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(432, 160);
+            this.ClientSize = new System.Drawing.Size(448, 327);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.chkFavorites);
             this.Controls.Add(this.btnDefaults);
             this.Controls.Add(this.btnBackground2);
             this.Controls.Add(this.btnBackground1);
@@ -309,6 +332,7 @@
             this.Name = "ConfigurationDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.ConfigurationDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindowWarning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBattleGap)).EndInit();
@@ -339,5 +363,7 @@
         private System.Windows.Forms.Button btnBackground1;
         private System.Windows.Forms.Button btnBackground2;
         private System.Windows.Forms.Button btnDefaults;
+        private System.Windows.Forms.CheckedListBox chkFavorites;
+        private System.Windows.Forms.Label label7;
     }
 }

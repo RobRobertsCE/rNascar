@@ -199,6 +199,7 @@
             this.tsDriverFastestLap1.FastestLapTime = "00.00";
             this.tsDriverFastestLap1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsDriverFastestLap1.IsFastestLap = false;
+            this.tsDriverFastestLap1.IsOffTrack = false;
             this.tsDriverFastestLap1.Location = new System.Drawing.Point(789, 0);
             this.tsDriverFastestLap1.Margin = new System.Windows.Forms.Padding(0);
             this.tsDriverFastestLap1.Name = "tsDriverFastestLap1";

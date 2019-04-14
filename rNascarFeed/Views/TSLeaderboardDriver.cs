@@ -98,6 +98,15 @@ namespace rNascarTimingAndScoring.Views
                 lblStart.Text = String.Empty;
             }
 
+            if (model.IsUserFavorite)
+            {
+                this.BorderStyle = BorderStyle.Fixed3D;
+            }
+            else
+            {
+                this.BorderStyle = BorderStyle.None;
+            }
+
             if (model.VehicleStatus == VehicleStatus.OutOfRace)
             {
                 lblPosition.ForeColor = TSColorMap.OutOfEventColor;

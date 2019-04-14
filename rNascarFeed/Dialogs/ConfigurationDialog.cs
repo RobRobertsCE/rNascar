@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using rNascarTimingAndScoring.Models;
 
@@ -6,6 +8,9 @@ namespace rNascarTimingAndScoring.Dialogs
 {
     public partial class ConfigurationDialog : Form
     {
+        private IList<FavoriteDriver> _added = new List<FavoriteDriver>();
+        private IList<FavoriteDriver> _removed = new List<FavoriteDriver>();
+
         private TSConfiguration _configuration;
         public TSConfiguration Configuration
         {
@@ -23,9 +28,21 @@ namespace rNascarTimingAndScoring.Dialogs
             }
         }
 
+        public IList<FavoriteDriver> Favorites { get; set; }
+
+        public IList<FavoriteDriver> AllDrivers { get; set; }
+
         public ConfigurationDialog()
         {
             InitializeComponent();
+        }
+
+        private void ConfigurationDialog_Load(object sender, EventArgs e)
+        {
+            foreach (var driver in AllDrivers)
+            {
+                chkFavorites.Items.Add(driver, Favorites.Any(f => f.Driver == driver.Driver));
+            }
         }
 
         protected virtual void ExceptionHandler(Exception ex)
@@ -67,6 +84,24 @@ namespace rNascarTimingAndScoring.Dialogs
                 TSColorMap.AlternateBackColor = picBackground2.BackColor;
                 TSColorMap.AlternatingRowBackColor1 = picBackground1.BackColor;
                 TSColorMap.AlternatingRowBackColor0 = picBackground2.BackColor;
+
+                foreach (var addedFavorite in _added)
+                {
+                    if (!Favorites.Any(f => f.Driver == addedFavorite.Driver))
+                    {
+                        Favorites.Add(addedFavorite);
+                    }
+                }
+
+                foreach (var removedFavorite in _removed)
+                {
+                    var favoriteToRemove = Favorites.FirstOrDefault(f => f.Driver == removedFavorite.Driver);
+
+                    if (favoriteToRemove != null)
+                    {
+                        Favorites.Remove(favoriteToRemove);
+                    }
+                }
 
                 DialogResult = DialogResult.OK;
             }
@@ -135,6 +170,28 @@ namespace rNascarTimingAndScoring.Dialogs
             catch (Exception ex)
             {
                 ExceptionHandler(ex);
+            }
+        }
+
+        private void chkFavorites_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            var item = (FavoriteDriver)chkFavorites.Items[e.Index];
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                if (!_added.Contains(item))
+                    _added.Add(item);
+
+                if (_removed.Contains(item))
+                    _removed.Remove(item);
+            }
+            else if (e.NewValue == CheckState.Unchecked)
+            {
+                if (!_removed.Contains(item))
+                    _removed.Add(item);
+
+                if (_added.Contains(item))
+                    _added.Remove(item);
             }
         }
     }

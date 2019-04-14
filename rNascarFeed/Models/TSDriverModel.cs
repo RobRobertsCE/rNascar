@@ -17,5 +17,6 @@
         public VehicleStatus VehicleStatus { get; set; }
         public bool IsOnTrack { get; set; }
         public bool FastestThisLap { get; set; }
+        public bool IsUserFavorite { get; set; }
     }
 }
