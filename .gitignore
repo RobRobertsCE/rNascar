@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/rNascar Setup/rNascar Setup-cache/part2/disk1.cab
+/rNascar Setup/rNascar Setup-cache/part2/output-info.ini

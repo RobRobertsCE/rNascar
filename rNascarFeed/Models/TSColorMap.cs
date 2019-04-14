@@ -15,6 +15,7 @@ namespace rNascarTimingAndScoring.Models
         public static Color StartPositionGainForeColor = Color.GreenYellow;
         public static Color StartPositionLossForeColor = Color.Red;
         public static Color StartPositionForeColor = Color.Gainsboro;
+        public static Color CarNumberForeColor = Color.Gainsboro;
 
         public static Color DriverForeColor = Color.White;
         public static Color BehindForeColor = Color.White;
@@ -23,14 +24,13 @@ namespace rNascarTimingAndScoring.Models
         public static Color OutOfEventColor = Color.Gray;
         public static Color BehindTheWallColor = Color.Silver;
 
-
         public static Color IsInPitsBackColor = Color.Gold;
         public static Color IsInPitsForeColor = Color.Black;
         public static Color LastPitForeColor = Color.Gainsboro;
         public static Color LastPitWarningForeColor = Color.GreenYellow;
         public static Color LastPitOverLimitForeColor = Color.Red;
 
-        public static Color AlternatingRowBackColor0 = Color.MidnightBlue;
+        public static Color AlternatingRowBackColor0 = Color.DarkBlue;
         public static Color AlternatingRowBackColor1 = PrimaryBackColor;
     }
 }

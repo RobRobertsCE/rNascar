@@ -94,7 +94,7 @@ namespace rNascarTimingAndScoring
                 var feedData = _apiClient.GetLiveFeed(EventSettings);
 
 #if DEBUG
-                FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
+                //FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
 #endif
                 if (feedData.vehicles.Count == 0)
                 {
@@ -513,7 +513,7 @@ namespace rNascarTimingAndScoring
         {
             var liveEventSettings = _apiClient.GetLiveEventSettings();
 
-            if (liveEventSettings == null || liveEventSettings.eventId == 0)
+            if (liveEventSettings == null || liveEventSettings.eventId == -1)
             {
                 MessageBox.Show(this, "No Live Event Right Now");
                 return false;

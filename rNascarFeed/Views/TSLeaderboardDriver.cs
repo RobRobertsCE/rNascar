@@ -122,6 +122,9 @@ namespace rNascarTimingAndScoring.Views
             }
             else
             {
+                lblPosition.ForeColor = TSColorMap.StartPositionForeColor;
+                lblCar.ForeColor = TSColorMap.CarNumberForeColor;
+
                 if (model.FastestThisLap)
                 {
                     lblLastLap.ForeColor = TSColorMap.FastestThisLapForeColor;
