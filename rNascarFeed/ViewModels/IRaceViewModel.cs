@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using NascarFeed.Models;
 using rNascarTimingAndScoring.Models;
 
@@ -16,6 +17,6 @@ namespace rNascarTimingAndScoring.ViewModels
         BindingList<TSGridRowModel> PointStandingsModels { get; set; }
         BindingList<TSGridRowModel> TenLapAverageModels { get; set; }
 
-        void UpdateFeedData();
+        Task UpdateFeedDataAsync();
     }
 }

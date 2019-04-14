@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using NascarFeed.Models;
@@ -84,14 +85,14 @@ namespace rNascarTimingAndScoring
             MessageBox.Show(ex.Message);
         }
 
-        protected virtual void ReadFeedData()
+        protected virtual async Task ReadFeedDataAsync()
         {
             try
             {
                 if (_apiClient == null)
                     return;
 
-                var feedData = _apiClient.GetLiveFeed(EventSettings);
+                var feedData = await _apiClient.GetLiveFeedAsync(EventSettings);
 
 #if DEBUG
                 //FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
@@ -123,12 +124,12 @@ namespace rNascarTimingAndScoring
 
                 DisplayLeadersStatus(feedData);
 
-                var liveFlagData = _apiClient.GetLiveFlagData();
+                var liveFlagData = await _apiClient.GetLiveFlagDataAsync();
                 DisplayCautionsStatus(liveFlagData, feedData);
 
                 tsFastestLaps1.Models = FormatFastestLapData(feedData);
 
-                var pointsFeedData = _apiClient.GetLivePoints(EventSettings);
+                var pointsFeedData = await _apiClient.GetLivePointsAsync(EventSettings);
                 tsPoints1.Models = FormatPointsData(pointsFeedData);
             }
             catch (Exception ex)
@@ -509,9 +510,9 @@ namespace rNascarTimingAndScoring
             _isFullscreen = fullscreen;
         }
 
-        protected virtual bool GetLiveEventSettings()
+        protected virtual async Task<bool> GetLiveEventSettingsAsync()
         {
-            var liveEventSettings = _apiClient.GetLiveEventSettings();
+            var liveEventSettings = await _apiClient.GetLiveEventSettingsAsync();
 
             if (liveEventSettings == null || liveEventSettings.eventId == -1)
             {
@@ -532,11 +533,11 @@ namespace rNascarTimingAndScoring
 
         #region private
 
-        private void TimingAndScoring_Load(object sender, EventArgs e)
+        private async void TimingAndScoring_Load(object sender, EventArgs e)
         {
             _apiClient = ServiceProvider.Instance.GetRequiredService<IApiClient>();
 
-            if (!GetLiveEventSettings())
+            if (! await GetLiveEventSettingsAsync())
             {
                 EventSettings = new EventSettings()
                 {
@@ -557,7 +558,7 @@ namespace rNascarTimingAndScoring
         {
             try
             {
-                ReadFeedData();
+                ReadFeedDataAsync();
             }
             catch (Exception ex)
             {
@@ -620,7 +621,7 @@ namespace rNascarTimingAndScoring
         {
             try
             {
-                ReadFeedData();
+                ReadFeedDataAsync();
             }
             catch (Exception ex)
             {
@@ -632,7 +633,7 @@ namespace rNascarTimingAndScoring
         {
             try
             {
-                GetLiveEventSettings();
+                GetLiveEventSettingsAsync();
             }
             catch (Exception ex)
             {

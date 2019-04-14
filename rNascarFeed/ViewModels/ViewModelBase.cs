@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using rNascarTimingAndScoring.Models;
+using System.Threading.Tasks;
 using NascarFeed.Models;
 using NascarFeed.Ports;
+using rNascarTimingAndScoring.Models;
 
 namespace rNascarTimingAndScoring.ViewModels
 {
@@ -72,6 +69,6 @@ namespace rNascarTimingAndScoring.ViewModels
 
         #endregion
 
-        public abstract void UpdateFeedData();
+        public abstract Task UpdateFeedDataAsync();
     }
 }

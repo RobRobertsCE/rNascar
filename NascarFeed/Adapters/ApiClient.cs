@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NascarFeed.Models;
 using NascarFeed.Models.LiveFlagData;
 using NascarFeed.Models.LivePitData;
@@ -31,11 +32,11 @@ namespace NascarFeed.Adapters
 
         #region public
 
-        public EventSettings GetLiveEventSettings()
+        public async Task<EventSettings> GetLiveEventSettingsAsync()
         {
             EventSettings liveEvent = new EventSettings();
 
-            var feed = GetLiveFeed();
+            var feed = await GetLiveFeedAsync();
 
             if (feed != null)
             {
@@ -50,123 +51,115 @@ namespace NascarFeed.Adapters
             return liveEvent;
         }
 
-        // raw json
-        public string GetRawJson(string url)
+        public async Task<string> GetRawJsonAsync(string url)
         {
             var client = new RestClient(url);
 
-            IRestResponse response = client.Execute(new RestRequest());
+            IRestResponse response = await client.ExecuteTaskAsync(new RestRequest());
 
             return response.Content;
         }
 
-        public Models.LiveFeed.RootObject GetLiveFeed()
+        public async Task<Models.LiveFeed.RootObject> GetLiveFeedAsync()
         {
             var url = _urlService.GetLiveFeedUrl();
 
-            return GetData<Models.LiveFeed.RootObject>(url);
+            return await GetDataAsync<Models.LiveFeed.RootObject>(url);
         }
 
-        public Models.LiveFeed.RootObject GetLiveFeed(EventSettings settings)
+        public async Task<Models.LiveFeed.RootObject> GetLiveFeedAsync(EventSettings settings)
         {
             var url = _urlService.GetLiveFeedUrl(settings);
 
-            return GetData<Models.LiveFeed.RootObject>(url);
+            return await GetDataAsync<Models.LiveFeed.RootObject>(url);
         }
 
-        public Models.LapAverage.RootObject GetLapAverages(EventSettings settings)
+        public async Task<Models.LapAverage.RootObject> GetLapAveragesAsync(EventSettings settings)
         {
             var url = _urlService.GetLapAverageUrl(settings);
 
-            return GetData<Models.LapAverage.RootObject>(url);
+            return await GetDataAsync<Models.LapAverage.RootObject>(url);
         }
 
-        public List<Models.EntryList.RootObject> GetEntryList(EventSettings settings)
+        public async Task<List<Models.EntryList.RootObject>> GetEntryListAsync(EventSettings settings)
         {
             var url = _urlService.GetEntryListUrl(settings);
 
-            return GetData<List<Models.EntryList.RootObject>>(url);
+            return await GetDataAsync<List<Models.EntryList.RootObject>>(url);
         }
 
-        public List<Models.LiveFlagData.RootObject> GetLiveFlagData()
+        public async Task<List<Models.LiveFlagData.RootObject>> GetLiveFlagDataAsync()
         {
             var url = _urlService.GetLiveFlagDataUrl();
 
-            return GetData<List<Models.LiveFlagData.RootObject>>(url);
+            return await GetDataAsync<List<Models.LiveFlagData.RootObject>>(url);
         }
 
-        public List<Models.LivePitData.RootObject> GetLivePitData(EventSettings settings)
+        public async Task<List<Models.LivePitData.RootObject>> GetLivePitDataAsync(EventSettings settings)
         {
             var url = _urlService.GetLivePitDataUrl(settings);
 
-            return GetData<List<Models.LivePitData.RootObject>>(url);
+            return await GetDataAsync<List<Models.LivePitData.RootObject>>(url);
         }
 
-        public List<Models.LivePoints.RootObject> GetLivePoints(EventSettings settings)
+        public async Task<List<Models.LivePoints.RootObject>> GetLivePointsAsync(EventSettings settings)
         {
             var url = _urlService.GetLivePointsUrl(settings);
 
-            return GetData<List<Models.LivePoints.RootObject>>(url);
+            return await GetDataAsync<List<Models.LivePoints.RootObject>>(url);
         }
 
-        public List<Models.LiveQualifyingData.RootObject> GetLiveQualifyingData(EventSettings settings)
+        public async Task<List<Models.LiveQualifyingData.RootObject>> GetLiveQualifyingDataAsync(EventSettings settings)
         {
             var url = _urlService.GetLiveQualifyingDataUrl(settings);
 
-            return GetData<List<Models.LiveQualifyingData.RootObject>>(url);
+            return await GetDataAsync<List<Models.LiveQualifyingData.RootObject>>(url);
         }
 
-        public List<Models.PointStandings.RootObject> GetPointsStandings(EventSettings settings)
+        public async Task<List<Models.PointStandings.RootObject>> GetPointsStandingsAsync(EventSettings settings)
         {
             var url = _urlService.GetPointStandingsUrl(settings);
 
-            return GetData<List<Models.PointStandings.RootObject>>(url);
+            return await GetDataAsync<List<Models.PointStandings.RootObject>>(url);
         }
 
-        public List<Models.RaceResults.RootObject> GetRaceResults(EventSettings settings)
+        public async Task<List<Models.RaceResults.RootObject>> GetRaceResultsAsync(EventSettings settings)
         {
             var url = _urlService.GetRaceResultsUrl(settings);
 
-            return GetData<List<Models.RaceResults.RootObject>>(url);
+            return await GetDataAsync<List<Models.RaceResults.RootObject>>(url);
         }
 
-        public List<Models.QualifyingResults.RootObject> GetQualifyingResults(EventSettings settings)
+        public async Task<List<Models.QualifyingResults.RootObject>> GetQualifyingResultsAsync(EventSettings settings)
         {
             var url = _urlService.GetQualifyingResultsUrl(settings);
 
-            return GetData<List<Models.QualifyingResults.RootObject>>(url);
+            return await GetDataAsync<List<Models.QualifyingResults.RootObject>>(url);
         }
 
-        public Models.AudioFeed.RootObject GetAudioFeed()
+        public async Task<Models.AudioFeed.RootObject> GetAudioFeedAsync()
         {
             var url = _urlService.GetAudioFeedUrl();
 
-            return GetData<Models.AudioFeed.RootObject>(url);
+            return await GetDataAsync<Models.AudioFeed.RootObject>(url);
         }
 
-        public Models.StageFeed.RootObject GetStageFeed(EventSettings settings)
+        public async Task<Models.StageFeed.RootObject> GetStageFeedAsync(EventSettings settings)
         {
             var url = _urlService.GetStageFeedUrl(settings);
 
-            return GetData<Models.StageFeed.RootObject>(url);
-        }
-
-        public Models.Drive.RootObject GetDriveConfiguration()
-        {
-            var url = _urlService.GetDriveConfigUrl();
-
-            return GetData<Models.Drive.RootObject>(url);
+            return await GetDataAsync<Models.StageFeed.RootObject>(url);
         }
 
         #endregion
 
         #region protected
 
-        protected virtual T GetData<T>(string url) where T : class, new()
+        protected virtual async Task<T> GetDataAsync<T>(string url) where T : class, new()
         {
             var client = new RestClient(url);
 
-            var response = client.Execute<T>(new RestRequest());
+            var response = await client.ExecuteTaskAsync<T>(new RestRequest());
 
             return response.Data;
         }

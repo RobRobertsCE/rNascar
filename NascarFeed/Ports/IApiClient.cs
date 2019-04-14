@@ -1,26 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using NascarFeed.Models;
 
 namespace NascarFeed.Ports
 {
     public interface IApiClient
     {
-        string GetRawJson(string url);
+        Task<string>  GetRawJsonAsync(string url);
 
-        List<Models.EntryList.RootObject> GetEntryList(EventSettings settings);
-        Models.LapAverage.RootObject GetLapAverages(EventSettings settings);
-        Models.LiveFeed.RootObject GetLiveFeed(EventSettings settings);
-        Models.LiveFeed.RootObject GetLiveFeed();
-        List<Models.LiveFlagData.RootObject> GetLiveFlagData();
-        List<Models.LivePitData.RootObject> GetLivePitData(EventSettings settings);
-        List<Models.LivePoints.RootObject> GetLivePoints(EventSettings settings);
-        List<Models.LiveQualifyingData.RootObject> GetLiveQualifyingData(EventSettings settings);
-        List<Models.PointStandings.RootObject> GetPointsStandings(EventSettings settings);
-        List<Models.RaceResults.RootObject> GetRaceResults(EventSettings settings);
-        List<Models.QualifyingResults.RootObject> GetQualifyingResults(EventSettings settings);
-        Models.AudioFeed.RootObject GetAudioFeed();
-        Models.StageFeed.RootObject GetStageFeed(EventSettings settings);
-        Models.Drive.RootObject GetDriveConfiguration();
-        EventSettings GetLiveEventSettings();
+        Task<List<Models.EntryList.RootObject>> GetEntryListAsync(EventSettings settings);
+        Task<Models.LapAverage.RootObject> GetLapAveragesAsync(EventSettings settings);
+        Task<Models.LiveFeed.RootObject> GetLiveFeedAsync(EventSettings settings);
+        Task<Models.LiveFeed.RootObject> GetLiveFeedAsync();
+        Task<List<Models.LiveFlagData.RootObject>> GetLiveFlagDataAsync();
+        Task<List<Models.LivePitData.RootObject>> GetLivePitDataAsync(EventSettings settings);
+        Task<List<Models.LivePoints.RootObject>> GetLivePointsAsync(EventSettings settings);
+        Task<List<Models.LiveQualifyingData.RootObject>> GetLiveQualifyingDataAsync(EventSettings settings);
+        Task<List<Models.PointStandings.RootObject>> GetPointsStandingsAsync(EventSettings settings);
+        Task<List<Models.RaceResults.RootObject>> GetRaceResultsAsync(EventSettings settings);
+        Task<List<Models.QualifyingResults.RootObject>> GetQualifyingResultsAsync(EventSettings settings);
+        Task<Models.AudioFeed.RootObject> GetAudioFeedAsync();
+        Task<Models.StageFeed.RootObject> GetStageFeedAsync(EventSettings settings);
+        Task<EventSettings> GetLiveEventSettingsAsync();
     }
 }

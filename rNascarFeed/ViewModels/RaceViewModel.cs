@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using NascarFeed.Ports;
 using rNascarTimingAndScoring.Models;
 
@@ -33,9 +34,9 @@ namespace rNascarTimingAndScoring.ViewModels
 
         #region public
 
-        public override void UpdateFeedData()
+        public override async Task UpdateFeedDataAsync()
         {
-            var liveFeedData = GetLiveFeed();
+            var liveFeedData = await GetLiveFeedAsync();
 
             LeaderboardModels = new BindingList<TSDriverModel>(FormatLeaderboardData(liveFeedData));
             LapLeaderModels = new BindingList<TSGridRowModel>(FormatLapLeaders(liveFeedData));
@@ -43,11 +44,11 @@ namespace rNascarTimingAndScoring.ViewModels
             BiggestMoverModels = new BindingList<TSGridRowModel>(FormatBiggestMoversData(liveFeedData));
             OffThePaceModels = new BindingList<TSGridRowModel>(FormatOffThePaceData(liveFeedData));
 
-            var pointsFeed = GetPointsFeed();
+            var pointsFeed = await GetPointsFeedAsync();
 
             PointStandingsModels = new BindingList<TSGridRowModel>(FormatPointsData(pointsFeed));
 
-            var lapAverageFeed = GetLapAverageFeed();
+            var lapAverageFeed = await GetLapAverageFeedAsync();
 
             TenLapAverageModels = new BindingList<TSGridRowModel>(FormatTenLapAverages(lapAverageFeed));
 
@@ -275,19 +276,19 @@ namespace rNascarTimingAndScoring.ViewModels
             return models;
         }
 
-        protected virtual NascarFeed.Models.LiveFeed.RootObject GetLiveFeed()
+        protected virtual async Task<NascarFeed.Models.LiveFeed.RootObject> GetLiveFeedAsync()
         {
-            return ApiClient.GetLiveFeed();
+            return await ApiClient.GetLiveFeedAsync();
         }
 
-        protected virtual IList<NascarFeed.Models.LivePoints.RootObject> GetPointsFeed()
+        protected virtual async Task<IList<NascarFeed.Models.LivePoints.RootObject>> GetPointsFeedAsync()
         {
-            return ApiClient.GetLivePoints(EventSettings);
+            return await ApiClient.GetLivePointsAsync(EventSettings);
         }
 
-        protected virtual NascarFeed.Models.LapAverage.RootObject GetLapAverageFeed()
+        protected virtual async Task<NascarFeed.Models.LapAverage.RootObject> GetLapAverageFeedAsync()
         {
-            return ApiClient.GetLapAverages(EventSettings);
+            return await ApiClient.GetLapAveragesAsync(EventSettings);
         }
 
         #endregion
