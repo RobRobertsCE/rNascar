@@ -91,8 +91,11 @@ namespace rNascarTimingAndScoring
                 if (_apiClient == null)
                     return;
 
-                var feedData = _apiClient.GetLiveFeed(); //_apiClient.GetLiveFeed(EventSettings);
+                var feedData = _apiClient.GetLiveFeed(EventSettings);
 
+#if DEBUG
+                FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
+#endif
                 if (feedData.vehicles.Count == 0)
                 {
                     MessageBox.Show("No data available for the selected event");
@@ -107,8 +110,6 @@ namespace rNascarTimingAndScoring
 
                 DisplayRaceState(feedData);
 
-                DisplaySingleFields(feedData);
-
                 tsLeaderboard1.Models = FormatLeaderboardData(feedData);
 
                 tsLapLeaderGrid1.Models = FormatLapLeaders(feedData);
@@ -119,6 +120,11 @@ namespace rNascarTimingAndScoring
 
                     tsOffThePaceGrid1.Models = FormatOffThePaceData(feedData);
                 }
+
+                DisplayLeadersStatus(feedData);
+
+                var liveFlagData = _apiClient.GetLiveFlagData();
+                DisplayCautionsStatus(liveFlagData, feedData);
 
                 tsFastestLaps1.Models = FormatFastestLapData(feedData);
 
@@ -432,7 +438,26 @@ namespace rNascarTimingAndScoring
                     }
                 case RunType.Race:
                     {
-                        return $"{feed.lap_number} OF {feed.laps_in_race}";
+                        switch (feed.stage.stage_num)
+                        {
+                            case 1:
+                                {
+                                    return $"STAGE {feed.stage.stage_num} - {feed.lap_number} OF {feed.stage.laps_in_stage} ({feed.lap_number} OF {feed.laps_in_race})";
+                                }
+                            case 2:
+                                {
+                                    int stageStartLap = feed.stage.finish_at_lap - feed.stage.laps_in_stage;
+                                    return $"STAGE {feed.stage.stage_num} - {feed.lap_number - stageStartLap} OF {feed.stage.laps_in_stage} ({feed.lap_number} OF {feed.laps_in_race})";
+                                }
+                            case 3:
+                                {
+                                    return $"{feed.lap_number} OF {feed.laps_in_race}";
+                                }
+                            default:
+                                {
+                                    return $"{feed.lap_number} OF {feed.laps_in_race}";
+                                }
+                        }
                     }
             }
 
@@ -453,10 +478,18 @@ namespace rNascarTimingAndScoring
                 Configuration.BattleGap = 0.0;
         }
 
-        protected virtual void DisplaySingleFields(NascarFeed.Models.LiveFeed.RootObject feed)
+        protected virtual void DisplayLeadersStatus(NascarFeed.Models.LiveFeed.RootObject feed)
         {
-            tsLeaders1.Model = new SingleFieldModel() { Count = feed.number_of_leaders, SubCount = feed.number_of_lead_changes };
-            tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = feed.number_of_caution_segments, SubCount = feed.number_of_caution_laps };
+            tsLeaders1.Model = new SingleFieldModel() { Count = feed.number_of_leaders + 1, SubCount = feed.number_of_lead_changes };
+        }
+
+        protected virtual void DisplayCautionsStatus(
+            IList<NascarFeed.Models.LiveFlagData.RootObject> liveFlagData,
+            NascarFeed.Models.LiveFeed.RootObject feed)
+        {
+            var cautions = liveFlagData.Where(f => f.elapsed_time >= 0 && f.flag_state == 2);
+            var cautionCount = cautions.Select(c => c.lap_number).Distinct().Count();
+            tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = cautionCount, SubCount = feed.number_of_caution_laps };
         }
 
         protected virtual void SetFullscreenState(bool fullscreen)

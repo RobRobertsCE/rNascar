@@ -35,7 +35,8 @@ namespace rNascarTimingAndScoring.Views
 
         protected virtual void UpdateDisplay(SingleFieldModel model)
         {
-            _details = $"{model.Count} ({model.SubCount} Changes)";
+            var detailLabel = model.SubCount == 1 ? "CHANGE" : "CHANGES";
+            _details = $"{model.Count}  ({model.SubCount} {detailLabel})";
             this.Invalidate();
         }
 

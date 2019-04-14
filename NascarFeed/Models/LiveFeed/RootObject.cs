@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace NascarFeed.Models.LiveFeed
 {
@@ -25,5 +26,10 @@ namespace NascarFeed.Models.LiveFeed
         public int number_of_leaders { get; set; }
         public int avg_diff_1to3 { get; set; }
         public Stage stage { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

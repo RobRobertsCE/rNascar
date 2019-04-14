@@ -131,8 +131,6 @@ namespace rNascarTimingAndScoring.Views
                         break;
                     }
             }
-
-            picTrackState.Image = Properties.Resources.track_state_checkers;
         }
 
         private void picTrackState_Paint(object sender, PaintEventArgs e)

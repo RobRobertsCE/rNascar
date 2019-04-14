@@ -15,7 +15,7 @@ namespace rNascarTimingAndScoring.Helpers
         private const double OzPerLap_Martinsville = 14.6;
         private const double OzPerLap_Phoenix = 27.8;
 
-        private const double MarginOfError = 0.9;
+        private const double MarginOfError = 0.735;
 
         public static int CalculatePitWindow(int trackId)
         {
