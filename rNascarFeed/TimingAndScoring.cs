@@ -488,7 +488,7 @@ namespace rNascarTimingAndScoring
         protected virtual void ConfigurationUpdated(TSConfiguration configuration)
         {
             lblBattleGap.Text = Configuration.BattleGap.ToString();
-            lblPitWindow.Text = Configuration.PitWindow.ToString();
+            lblPitWindow.Text = Configuration.PitWindow.HasValue ? Configuration.PitWindow.Value.ToString() : "-";
 
             pollFeedTimer.Interval = _configuration.PollInterval * 1000;
         }
@@ -602,6 +602,7 @@ namespace rNascarTimingAndScoring
                 Configuration.BattleGap = _userSettings.BattleGap;
                 Configuration.PollInterval = _userSettings.PollInterval;
                 Configuration.PitWindowWarning = _userSettings.PitWindowWarning;
+                Configuration.PitWindow = _userSettings.PitWindow;
             }
             catch (Exception ex)
             {
@@ -618,6 +619,7 @@ namespace rNascarTimingAndScoring
                 _userSettings.BattleGap = Configuration.BattleGap;
                 _userSettings.PollInterval = Configuration.PollInterval;
                 _userSettings.PitWindowWarning = Configuration.PitWindowWarning;
+                _userSettings.PitWindow = Configuration.PitWindow;
 
                 _userSettings.Save();
             }

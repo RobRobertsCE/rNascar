@@ -9,6 +9,7 @@ namespace rNascarTimingAndScoring.Models
         public int PrimaryBackgroundColorArgb { get; set; }
         public int SecondaryBackgroundColorArgb { get; set; }
         public double BattleGap { get; set; }
+        public int? PitWindow { get; set; }
         public int PitWindowWarning { get; set; }
         public int PollInterval { get; set; }
 
@@ -41,7 +42,10 @@ namespace rNascarTimingAndScoring.Models
         {
             var filePath = GetSettingsFilePath();
 
-            var settingsContent = JsonConvert.SerializeObject(this);
+            var settingsContent = JsonConvert.SerializeObject(
+                this,
+                Formatting.Indented,
+                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Include });
 
             File.WriteAllText(filePath, settingsContent);
 

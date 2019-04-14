@@ -161,11 +161,11 @@ namespace rNascarTimingAndScoring.Views
 
                         var lapsSinceLastPit = model.LapsComplete - model.LastPitLap;
 
-                        if (model.LastPitLap > 0 && lapsSinceLastPit >= Configuration.PitWindow)
+                        if (Configuration.PitWindow.HasValue && (model.LastPitLap > 0 && lapsSinceLastPit >= Configuration.PitWindow.Value))
                         {
                             lblLastPit.ForeColor = TSColorMap.LastPitOverLimitForeColor;
                         }
-                        else if (lapsSinceLastPit + Configuration.PitWindowWarning > Configuration.PitWindow)
+                        else if (Configuration.PitWindow.HasValue && (lapsSinceLastPit + Configuration.PitWindowWarning > Configuration.PitWindow.Value))
                         {
                             lblLastPit.ForeColor = TSColorMap.LastPitWarningForeColor;
                         }

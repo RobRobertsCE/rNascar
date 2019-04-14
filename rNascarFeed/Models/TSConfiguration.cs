@@ -8,7 +8,7 @@
 
         public double BattleGap { get; set; } = DefaultBattleGap;
         public int PitWindowWarning { get; set; } = DefaultPitWindowWarning;
-        public int PitWindow { get; set; } = 111;
+        public int? PitWindow { get; set; }
         public int PollInterval { get; set; } = DefaultPollInterval;
         public RunType RunType { get; set; }
     }

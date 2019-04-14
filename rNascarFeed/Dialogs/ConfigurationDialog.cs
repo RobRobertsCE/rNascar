@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using rNascarTimingAndScoring.Models;
 
@@ -7,9 +6,6 @@ namespace rNascarTimingAndScoring.Dialogs
 {
     public partial class ConfigurationDialog : Form
     {
-        private Color _backColor0;
-        private Color _backColor1;
-
         private TSConfiguration _configuration;
         public TSConfiguration Configuration
         {
@@ -30,9 +26,6 @@ namespace rNascarTimingAndScoring.Dialogs
         public ConfigurationDialog()
         {
             InitializeComponent();
-
-            _backColor0 = TSColorMap.PrimaryBackColor;
-            _backColor1 = TSColorMap.AlternateBackColor;
         }
 
         protected virtual void ExceptionHandler(Exception ex)
@@ -46,14 +39,14 @@ namespace rNascarTimingAndScoring.Dialogs
             try
             {
                 numBattleGap.Value = (decimal)configuration.BattleGap;
-                numPitWindow.Value = configuration.PitWindow;
+                numPitWindow.Value = configuration.PitWindow.HasValue ? configuration.PitWindow.Value : (decimal)0.0;
                 numPitWindowWarning.Value = configuration.PitWindowWarning;
                 numPollInterval.Value = configuration.PollInterval < TSConfiguration.DefaultPollInterval ?
                     TSConfiguration.DefaultPollInterval :
                     configuration.PollInterval;
 
-                picBackground1.BackColor = _backColor0;
-                picBackground2.BackColor = _backColor1;
+                picBackground1.BackColor = TSColorMap.PrimaryBackColor;
+                picBackground2.BackColor = TSColorMap.AlternateBackColor;
             }
             catch (Exception ex)
             {
@@ -66,14 +59,14 @@ namespace rNascarTimingAndScoring.Dialogs
             try
             {
                 Configuration.BattleGap = (double)numBattleGap.Value;
-                Configuration.PitWindow = (int)numPitWindow.Value;
+                Configuration.PitWindow = numPitWindow.Value > 0 ? (int?)numPitWindow.Value : null;
                 Configuration.PitWindowWarning = (int)numPitWindowWarning.Value;
                 Configuration.PollInterval = (int)numPollInterval.Value;
 
-                TSColorMap.PrimaryBackColor = _backColor0;
-                TSColorMap.AlternateBackColor = _backColor1;
-                TSColorMap.AlternatingRowBackColor1 = _backColor0;
-                TSColorMap.AlternatingRowBackColor0 = _backColor1;
+                TSColorMap.PrimaryBackColor = picBackground1.BackColor;
+                TSColorMap.AlternateBackColor = picBackground2.BackColor;
+                TSColorMap.AlternatingRowBackColor1 = picBackground1.BackColor;
+                TSColorMap.AlternatingRowBackColor0 = picBackground2.BackColor;
 
                 DialogResult = DialogResult.OK;
             }
@@ -89,14 +82,13 @@ namespace rNascarTimingAndScoring.Dialogs
             {
                 var colorPickerDialog = new ColorDialog()
                 {
-                    Color = _backColor0,
+                    Color = picBackground1.BackColor,
                     AllowFullOpen = true
                 };
 
                 if (colorPickerDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    _backColor0 = colorPickerDialog.Color;
-                    picBackground1.BackColor = _backColor0;
+                    picBackground1.BackColor = colorPickerDialog.Color;
                 }
             }
             catch (Exception ex)
@@ -111,14 +103,13 @@ namespace rNascarTimingAndScoring.Dialogs
             {
                 var colorPickerDialog = new ColorDialog()
                 {
-                    Color = _backColor1,
+                    Color = picBackground2.BackColor,
                     AllowFullOpen = true
                 };
 
                 if (colorPickerDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    _backColor1 = colorPickerDialog.Color;
-                    picBackground2.BackColor = _backColor1;
+                    picBackground2.BackColor = colorPickerDialog.Color;
                 }
             }
             catch (Exception ex)
@@ -131,12 +122,13 @@ namespace rNascarTimingAndScoring.Dialogs
         {
             try
             {
-                Configuration.BattleGap = 0.2;
-                Configuration.PitWindow = 100;
-                Configuration.PitWindowWarning = 5;
-                Configuration.PollInterval = 5;
-                _backColor0 = TSColorMap.DefaultPrimaryBackColor;
-                _backColor1 = TSColorMap.DefaultAlternateBackColor;
+                numBattleGap.Value = (decimal)TSConfiguration.DefaultBattleGap;
+                numPitWindow.Value = 0;
+                numPitWindowWarning.Value = TSConfiguration.DefaultPitWindowWarning;
+                numPollInterval.Value = TSConfiguration.DefaultPollInterval;
+
+                picBackground1.BackColor = TSColorMap.DefaultPrimaryBackColor;
+                picBackground2.BackColor = TSColorMap.DefaultAlternateBackColor;
 
                 DisplayConfiguration(Configuration);
             }

@@ -113,11 +113,6 @@
             0,
             0,
             0});
-            this.numPitWindow.Minimum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
             this.numPitWindow.Name = "numPitWindow";
             this.numPitWindow.Size = new System.Drawing.Size(71, 22);
             this.numPitWindow.TabIndex = 4;
