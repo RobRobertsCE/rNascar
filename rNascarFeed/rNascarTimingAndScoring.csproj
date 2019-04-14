@@ -146,6 +146,7 @@
     <Compile Include="Models\TSGridRowModel.cs" />
     <Compile Include="Models\TSLapLeaderGridRowModel.cs" />
     <Compile Include="Models\TSTenLapAverageGridRowModel.cs" />
+    <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Models\VehicleStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

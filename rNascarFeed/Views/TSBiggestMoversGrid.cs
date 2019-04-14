@@ -1,4 +1,6 @@
-﻿namespace rNascarTimingAndScoring.Views
+﻿using rNascarTimingAndScoring.Models;
+
+namespace rNascarTimingAndScoring.Views
 {
     public partial class TSBiggestMoversGrid : TSGridView
     {

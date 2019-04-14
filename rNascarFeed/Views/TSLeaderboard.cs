@@ -42,7 +42,7 @@ namespace rNascarTimingAndScoring.Views
         }
 
         public TSLeaderboard(TSConfiguration configuration)
-            :this()
+            : this()
         {
             Configuration = configuration;
         }
@@ -52,13 +52,24 @@ namespace rNascarTimingAndScoring.Views
             InitializeComponent();
 
             tsLeaderboardGrid0.MaxRowCount = this.MaxRowCount;
-            tsLeaderboardGrid0.BackColor = TSColorMap.PrimaryBackColor;
             tsLeaderboardGrid1.MaxRowCount = this.MaxRowCount;
+
+            UpdateTheme();
+        }
+
+        protected virtual void UpdateTheme()
+        {
+            BackColor = TSColorMap.AlternateBackColor;
+            tableLayoutPanel1.BackColor = TSColorMap.AlternateBackColor;
+
+            tsLeaderboardGrid0.BackColor = TSColorMap.PrimaryBackColor;
             tsLeaderboardGrid1.BackColor = TSColorMap.PrimaryBackColor;
         }
 
         protected virtual void UpdateDisplay(IEnumerable<TSDriverModel> models)
         {
+            UpdateTheme();
+
             tsLeaderboardGrid0.Models = models.Where(m => m.Position <= MaxRowCount);
             tsLeaderboardGrid1.Models = models.Where(m => m.Position > MaxRowCount);
         }
@@ -67,6 +78,11 @@ namespace rNascarTimingAndScoring.Views
         {
             tsLeaderboardGrid0.Configuration = this.Configuration;
             tsLeaderboardGrid1.Configuration = this.Configuration;
+        }
+
+        private void TSLeaderboard_BackColorChanged(object sender, System.EventArgs e)
+        {
+            UpdateTheme();
         }
     }
 }

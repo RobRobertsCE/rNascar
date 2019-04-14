@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,10 @@ namespace rNascarTimingAndScoring
 
         private IApiClient _apiClient;
         private bool _isFullscreen = false;
+        private UserSettings _userSettings;
+        private NascarFeed.Models.LiveFeed.RootObject _feedData;
+        private IList<NascarFeed.Models.LiveFlagData.RootObject> _liveFlagData;
+        private IList<NascarFeed.Models.LivePoints.RootObject> _pointsFeedData;
 
         #endregion
 
@@ -92,45 +97,15 @@ namespace rNascarTimingAndScoring
                 if (_apiClient == null)
                     return;
 
-                var feedData = await _apiClient.GetLiveFeedAsync(EventSettings);
+                _feedData = await _apiClient.GetLiveFeedAsync(EventSettings);
+                _liveFlagData = await _apiClient.GetLiveFlagDataAsync();
+                _pointsFeedData = await _apiClient.GetLivePointsAsync(EventSettings);
 
 #if DEBUG
                 //FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
 #endif
-                if (feedData.vehicles.Count == 0)
-                {
-                    MessageBox.Show("No data available for the selected event");
-                    return;
-                }
 
-                Configuration.RunType = (RunType)feedData.run_type;
-
-                this.SuspendLayout();
-
-                DisplayTrackState(feedData);
-
-                DisplayRaceState(feedData);
-
-                tsLeaderboard1.Models = FormatLeaderboardData(feedData);
-
-                tsLapLeaderGrid1.Models = FormatLapLeaders(feedData);
-
-                if (Configuration.RunType == RunType.Race)
-                {
-                    tsBiggestMoversGrid1.Models = FormatBiggestMoversData(feedData);
-
-                    tsOffThePaceGrid1.Models = FormatOffThePaceData(feedData);
-                }
-
-                DisplayLeadersStatus(feedData);
-
-                var liveFlagData = await _apiClient.GetLiveFlagDataAsync();
-                DisplayCautionsStatus(liveFlagData, feedData);
-
-                tsFastestLaps1.Models = FormatFastestLapData(feedData);
-
-                var pointsFeedData = await _apiClient.GetLivePointsAsync(EventSettings);
-                tsPoints1.Models = FormatPointsData(pointsFeedData);
+                DisplayFeedData(_feedData, _liveFlagData, _pointsFeedData);
             }
             catch (Exception ex)
             {
@@ -140,6 +115,48 @@ namespace rNascarTimingAndScoring
             {
                 this.ResumeLayout(true);
             }
+        }
+
+        protected virtual void DisplayFeedData(
+            NascarFeed.Models.LiveFeed.RootObject feedData,
+            IList<NascarFeed.Models.LiveFlagData.RootObject> liveFlagData,
+            IList<NascarFeed.Models.LivePoints.RootObject> pointsFeedData)
+        {
+            if (feedData == null)
+                return;
+
+            if (feedData.vehicles.Count == 0)
+            {
+                MessageBox.Show("No data available for the selected event");
+                return;
+            }
+
+            Configuration.RunType = (RunType)feedData.run_type;
+
+            this.SuspendLayout();
+
+            DisplayTrackState(feedData);
+
+            DisplayRaceState(feedData);
+
+            tsLeaderboard1.Models = FormatLeaderboardData(feedData);
+
+            tsLapLeaderGrid1.Models = FormatLapLeaders(feedData);
+
+            if (Configuration.RunType == RunType.Race)
+            {
+                tsBiggestMoversGrid1.Models = FormatBiggestMoversData(feedData);
+
+                tsOffThePaceGrid1.Models = FormatOffThePaceData(feedData);
+            }
+
+            DisplayLeadersStatus(feedData);
+
+            DisplayCautionsStatus(liveFlagData, feedData);
+
+            tsFastestLaps1.Models = FormatFastestLapData(feedData);
+
+            tsPoints1.Models = FormatPointsData(pointsFeedData);
         }
 
         protected virtual IList<TSDriverModel> FormatLeaderboardData(NascarFeed.Models.LiveFeed.RootObject feedData)
@@ -517,7 +534,12 @@ namespace rNascarTimingAndScoring
             if (liveEventSettings == null || liveEventSettings.eventId == -1)
             {
                 MessageBox.Show(this, "No Live Event Right Now");
+                autoRefreshToolStripMenuItem.Checked = false;
                 return false;
+            }
+            else
+            {
+                autoRefreshToolStripMenuItem.Checked = true;
             }
 
             Configuration.PitWindow = PitWindowCalculator.CalculatePitWindow(liveEventSettings.trackLength);
@@ -529,15 +551,66 @@ namespace rNascarTimingAndScoring
             return true;
         }
 
+        protected virtual void UpdateTheme()
+        {
+            pnlFastLapsAndPoints.BackColor = TSColorMap.AlternateBackColor;
+            pnlRaceInfo.BackColor = TSColorMap.AlternateBackColor;
+            tableLayoutPanel1.BackColor = TSColorMap.AlternateBackColor;
+            tsLeaderboard1.BackColor = TSColorMap.AlternateBackColor;
+            tsBiggestMoversGrid1.UpdateTheme();
+            tsLapLeaderGrid1.UpdateTheme();
+            tsOffThePaceGrid1.UpdateTheme();
+            tsPitPenaltiesGrid1.UpdateTheme();
+            tsFastestLaps1.UpdateTheme();
+            tsPoints1.UpdateTheme();
+
+            SaveUserSettings();
+
+            DisplayFeedData(_feedData, _liveFlagData, _pointsFeedData);
+        }
+
+        protected virtual void LoadUserSettings()
+        {
+            try
+            {
+                _userSettings = UserSettings.Load();
+
+                TSColorMap.PrimaryBackColor = Color.FromArgb(_userSettings.PrimaryBackgroundColorArgb);
+                TSColorMap.AlternateBackColor = Color.FromArgb(_userSettings.SecondaryBackgroundColorArgb);
+                TSColorMap.AlternatingRowBackColor0 = TSColorMap.AlternateBackColor;
+                TSColorMap.AlternatingRowBackColor1 = TSColorMap.AlternateBackColor;
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler(ex);
+            }
+        }
+
+        protected virtual void SaveUserSettings()
+        {
+            try
+            {
+                _userSettings.Save();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler(ex);
+            }
+        }
+
         #endregion
 
         #region private
 
         private async void TimingAndScoring_Load(object sender, EventArgs e)
         {
+            LoadUserSettings();
+
+            UpdateTheme();
+
             _apiClient = ServiceProvider.Instance.GetRequiredService<IApiClient>();
 
-            if (! await GetLiveEventSettingsAsync())
+            if (!await GetLiveEventSettingsAsync())
             {
                 EventSettings = new EventSettings()
                 {
@@ -554,11 +627,11 @@ namespace rNascarTimingAndScoring
             }
         }
 
-        private void pollFeed_Tick(object sender, EventArgs e)
+        private async void pollFeed_Tick(object sender, EventArgs e)
         {
             try
             {
-                ReadFeedDataAsync();
+                await ReadFeedDataAsync();
             }
             catch (Exception ex)
             {
@@ -610,6 +683,8 @@ namespace rNascarTimingAndScoring
                 {
                     Configuration = dialog.Configuration;
                 }
+
+                UpdateTheme();
             }
             catch (Exception ex)
             {
@@ -617,11 +692,11 @@ namespace rNascarTimingAndScoring
             }
         }
 
-        private void getFeedDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void getFeedDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                ReadFeedDataAsync();
+                await ReadFeedDataAsync();
             }
             catch (Exception ex)
             {
@@ -629,11 +704,11 @@ namespace rNascarTimingAndScoring
             }
         }
 
-        private void getLiveEventSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void getLiveEventSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                GetLiveEventSettingsAsync();
+                await GetLiveEventSettingsAsync();
             }
             catch (Exception ex)
             {

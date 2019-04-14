@@ -141,6 +141,8 @@
             this.tsTrackState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tsTrackState.BackColor = System.Drawing.Color.Black;
+            this.tsTrackState.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsTrackState.ForeColor = System.Drawing.Color.White;
             this.tsTrackState.LapInfo = "";
             this.tsTrackState.Location = new System.Drawing.Point(508, 8);
             this.tsTrackState.Margin = new System.Windows.Forms.Padding(0);
@@ -550,7 +552,7 @@
             this.toolStripMenuItem2,
             this.getLiveEventSettingsToolStripMenuItem});
             this.ctxMain.Name = "ctxMain";
-            this.ctxMain.Size = new System.Drawing.Size(194, 126);
+            this.ctxMain.Size = new System.Drawing.Size(194, 148);
             // 
             // autoRefreshToolStripMenuItem
             // 

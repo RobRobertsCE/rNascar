@@ -117,6 +117,7 @@
             this.Name = "TSLeaderboard";
             this.Size = new System.Drawing.Size(772, 235);
             this.Load += new System.EventHandler(this.TSLeaderboard_Load);
+            this.BackColorChanged += new System.EventHandler(this.TSLeaderboard_BackColorChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

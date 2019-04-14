@@ -38,10 +38,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.picBackground1 = new System.Windows.Forms.PictureBox();
+            this.picBackground2 = new System.Windows.Forms.PictureBox();
+            this.btnBackground1 = new System.Windows.Forms.Button();
+            this.btnBackground2 = new System.Windows.Forms.Button();
+            this.btnDefaults = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindowWarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBattleGap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPollInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -183,7 +192,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(15, 118);
+            this.btnSave.Location = new System.Drawing.Point(15, 117);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 31);
             this.btnSave.TabIndex = 8;
@@ -197,19 +206,97 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(172, 118);
+            this.btnCancel.Location = new System.Drawing.Point(315, 117);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(105, 31);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(292, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Background 2";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(292, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Background 1";
+            // 
+            // picBackground1
+            // 
+            this.picBackground1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBackground1.Location = new System.Drawing.Point(295, 28);
+            this.picBackground1.Name = "picBackground1";
+            this.picBackground1.Size = new System.Drawing.Size(83, 20);
+            this.picBackground1.TabIndex = 12;
+            this.picBackground1.TabStop = false;
+            // 
+            // picBackground2
+            // 
+            this.picBackground2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBackground2.Location = new System.Drawing.Point(295, 80);
+            this.picBackground2.Name = "picBackground2";
+            this.picBackground2.Size = new System.Drawing.Size(83, 20);
+            this.picBackground2.TabIndex = 13;
+            this.picBackground2.TabStop = false;
+            // 
+            // btnBackground1
+            // 
+            this.btnBackground1.Location = new System.Drawing.Point(384, 27);
+            this.btnBackground1.Name = "btnBackground1";
+            this.btnBackground1.Size = new System.Drawing.Size(37, 23);
+            this.btnBackground1.TabIndex = 14;
+            this.btnBackground1.Text = "Set";
+            this.btnBackground1.UseVisualStyleBackColor = true;
+            this.btnBackground1.Click += new System.EventHandler(this.btnBackground1_Click);
+            // 
+            // btnBackground2
+            // 
+            this.btnBackground2.Location = new System.Drawing.Point(384, 77);
+            this.btnBackground2.Name = "btnBackground2";
+            this.btnBackground2.Size = new System.Drawing.Size(37, 23);
+            this.btnBackground2.TabIndex = 15;
+            this.btnBackground2.Text = "Set";
+            this.btnBackground2.UseVisualStyleBackColor = true;
+            this.btnBackground2.Click += new System.EventHandler(this.btnBackground2_Click);
+            // 
+            // btnDefaults
+            // 
+            this.btnDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDefaults.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDefaults.ForeColor = System.Drawing.Color.Black;
+            this.btnDefaults.Location = new System.Drawing.Point(126, 117);
+            this.btnDefaults.Name = "btnDefaults";
+            this.btnDefaults.Size = new System.Drawing.Size(105, 31);
+            this.btnDefaults.TabIndex = 16;
+            this.btnDefaults.Text = "Defaults";
+            this.btnDefaults.UseVisualStyleBackColor = true;
+            this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
+            // 
             // ConfigurationDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(289, 161);
+            this.ClientSize = new System.Drawing.Size(432, 160);
+            this.Controls.Add(this.btnDefaults);
+            this.Controls.Add(this.btnBackground2);
+            this.Controls.Add(this.btnBackground1);
+            this.Controls.Add(this.picBackground2);
+            this.Controls.Add(this.picBackground1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numPollInterval);
@@ -231,6 +318,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBattleGap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPollInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +337,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox picBackground1;
+        private System.Windows.Forms.PictureBox picBackground2;
+        private System.Windows.Forms.Button btnBackground1;
+        private System.Windows.Forms.Button btnBackground2;
+        private System.Windows.Forms.Button btnDefaults;
     }
 }

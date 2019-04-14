@@ -45,9 +45,15 @@ namespace rNascarTimingAndScoring.Views
         {
             InitializeComponent();
 
-            BackColor = TSColorMap.PrimaryBackColor;
+            UpdateTheme();
 
             RightTitle.Width = ValueColumnWidth;
+        }
+
+        public void UpdateTheme()
+        {
+            BackColor = TSColorMap.AlternateBackColor;
+            pnlGridRows.BackColor = TSColorMap.PrimaryBackColor;
         }
 
         protected virtual void DisplayModels(IList<TSGridRowModel> models)

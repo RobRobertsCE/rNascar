@@ -4,7 +4,11 @@ namespace rNascarTimingAndScoring.Models
 {
     static class TSColorMap
     {
-        public static Color PrimaryBackColor = Color.MidnightBlue;
+        public static Color DefaultPrimaryBackColor = Color.MidnightBlue;
+        public static Color DefaultAlternateBackColor = Color.DarkBlue;
+
+        public static Color PrimaryBackColor = DefaultPrimaryBackColor;
+        public static Color AlternateBackColor = DefaultAlternateBackColor;
 
         public static Color LastLapForeColor = Color.Gold;
         public static Color FastestLapTimeForeColor = Color.SkyBlue;
@@ -30,7 +34,7 @@ namespace rNascarTimingAndScoring.Models
         public static Color LastPitWarningForeColor = Color.GreenYellow;
         public static Color LastPitOverLimitForeColor = Color.Red;
 
-        public static Color AlternatingRowBackColor0 = Color.DarkBlue;
+        public static Color AlternatingRowBackColor0 = AlternateBackColor;
         public static Color AlternatingRowBackColor1 = PrimaryBackColor;
     }
 }
