@@ -585,8 +585,6 @@ namespace rNascarTimingAndScoring
             tsFastestLaps1.UpdateTheme();
             tsPoints1.UpdateTheme();
 
-            SaveUserSettings();
-
             DisplayFeedData(_feedData, _liveFlagData, _pointsFeedData);
         }
 
@@ -600,6 +598,10 @@ namespace rNascarTimingAndScoring
                 TSColorMap.AlternateBackColor = Color.FromArgb(_userSettings.SecondaryBackgroundColorArgb);
                 TSColorMap.AlternatingRowBackColor0 = TSColorMap.AlternateBackColor;
                 TSColorMap.AlternatingRowBackColor1 = TSColorMap.AlternateBackColor;
+
+                Configuration.BattleGap = _userSettings.BattleGap;
+                Configuration.PollInterval = _userSettings.PollInterval;
+                Configuration.PitWindowWarning = _userSettings.PitWindowWarning;
             }
             catch (Exception ex)
             {
@@ -611,6 +613,12 @@ namespace rNascarTimingAndScoring
         {
             try
             {
+                _userSettings.PrimaryBackgroundColorArgb = TSColorMap.PrimaryBackColor.ToArgb();
+                _userSettings.SecondaryBackgroundColorArgb = TSColorMap.AlternateBackColor.ToArgb();
+                _userSettings.BattleGap = Configuration.BattleGap;
+                _userSettings.PollInterval = Configuration.PollInterval;
+                _userSettings.PitWindowWarning = Configuration.PitWindowWarning;
+
                 _userSettings.Save();
             }
             catch (Exception ex)
@@ -703,6 +711,7 @@ namespace rNascarTimingAndScoring
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     Configuration = dialog.Configuration;
+                    SaveUserSettings();
                 }
 
                 UpdateTheme();

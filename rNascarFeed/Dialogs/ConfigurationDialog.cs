@@ -48,7 +48,9 @@ namespace rNascarTimingAndScoring.Dialogs
                 numBattleGap.Value = (decimal)configuration.BattleGap;
                 numPitWindow.Value = configuration.PitWindow;
                 numPitWindowWarning.Value = configuration.PitWindowWarning;
-                numPollInterval.Value = configuration.PollInterval;
+                numPollInterval.Value = configuration.PollInterval < TSConfiguration.DefaultPollInterval ?
+                    TSConfiguration.DefaultPollInterval :
+                    configuration.PollInterval;
 
                 picBackground1.BackColor = _backColor0;
                 picBackground2.BackColor = _backColor1;

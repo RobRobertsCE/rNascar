@@ -8,6 +8,9 @@ namespace rNascarTimingAndScoring.Models
     {
         public int PrimaryBackgroundColorArgb { get; set; }
         public int SecondaryBackgroundColorArgb { get; set; }
+        public double BattleGap { get; set; }
+        public int PitWindowWarning { get; set; }
+        public int PollInterval { get; set; }
 
         public static UserSettings Load()
         {
@@ -15,11 +18,18 @@ namespace rNascarTimingAndScoring.Models
 
             if (!File.Exists(filePath))
             {
-                return new UserSettings()
+                var newSettings = new UserSettings()
                 {
                     PrimaryBackgroundColorArgb = TSColorMap.PrimaryBackColor.ToArgb(),
-                    SecondaryBackgroundColorArgb = TSColorMap.AlternateBackColor.ToArgb()
+                    SecondaryBackgroundColorArgb = TSColorMap.AlternateBackColor.ToArgb(),
+                    BattleGap = TSConfiguration.DefaultBattleGap,
+                    PitWindowWarning = TSConfiguration.DefaultPitWindowWarning,
+                    PollInterval = TSConfiguration.DefaultPollInterval,
                 };
+
+                newSettings.Save();
+
+                return newSettings;
             }
 
             var settingsContent = File.ReadAllText(filePath);
@@ -31,13 +41,7 @@ namespace rNascarTimingAndScoring.Models
         {
             var filePath = GetSettingsFilePath();
 
-            var settings = new UserSettings()
-            {
-                PrimaryBackgroundColorArgb = TSColorMap.PrimaryBackColor.ToArgb(),
-                SecondaryBackgroundColorArgb = TSColorMap.AlternateBackColor.ToArgb()
-            };
-
-            var settingsContent = JsonConvert.SerializeObject(settings);
+            var settingsContent = JsonConvert.SerializeObject(this);
 
             File.WriteAllText(filePath, settingsContent);
 
