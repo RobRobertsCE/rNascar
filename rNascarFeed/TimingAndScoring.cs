@@ -24,6 +24,7 @@ namespace rNascarTimingAndScoring
         private NascarFeed.Models.LiveFeed.RootObject _feedData;
         private IList<NascarFeed.Models.LiveFlagData.RootObject> _liveFlagData;
         private IList<NascarFeed.Models.LivePoints.RootObject> _pointsFeedData;
+        private EventLapAverages _eventLapAverages;
 
         #endregion
 
@@ -104,6 +105,8 @@ namespace rNascarTimingAndScoring
 #if DEBUG
                 //FeedWriter.LogFeedData(EventSettings, feedData.lap_number, feedData.ToString());
 #endif
+
+                ReadLapTimes(_feedData);
 
                 DisplayFeedData(_feedData, _liveFlagData, _pointsFeedData);
             }
@@ -400,7 +403,7 @@ namespace rNascarTimingAndScoring
 
         protected virtual void DisplayTrackState(NascarFeed.Models.LiveFeed.RootObject feed)
         {
-            tsTrackState.TrackState = (TrackStates)feed.flag_state;
+            tsTrackState.TrackState = (TrackState)feed.flag_state;
         }
 
         protected virtual void DisplayRaceState(NascarFeed.Models.LiveFeed.RootObject feed)
@@ -494,6 +497,8 @@ namespace rNascarTimingAndScoring
         {
             if (eventSettings.activityId != (int)RunType.Race)
                 Configuration.BattleGap = 0.0;
+
+            _eventLapAverages = new EventLapAverages();
         }
 
         protected virtual void DisplayLeadersStatus(NascarFeed.Models.LiveFeed.RootObject feed)
@@ -508,6 +513,22 @@ namespace rNascarTimingAndScoring
             var cautions = liveFlagData.Where(f => f.elapsed_time >= 0 && f.flag_state == 2);
             var cautionCount = cautions.Select(c => c.lap_number).Distinct().Count();
             tsCautionLapsDisplay1.Model = new SingleFieldModel() { Count = cautionCount, SubCount = feed.number_of_caution_laps };
+        }
+
+        protected virtual void ReadLapTimes(NascarFeed.Models.LiveFeed.RootObject feed)
+        {
+            foreach (var vehicle in feed.vehicles)
+            {
+                _eventLapAverages.AddLapTime(new VehicleLapTime()
+                {
+                    CarNumber = vehicle.vehicle_number,
+                    LapNumber = feed.lap_number,
+                    LapTime = vehicle.last_lap_time,
+                    LapSpeed = vehicle.last_lap_speed,
+                    VehicleStatus = (VehicleStatus)vehicle.status,
+                    TrackState = (TrackState)feed.flag_state
+                });
+            }
         }
 
         protected virtual void SetFullscreenState(bool fullscreen)

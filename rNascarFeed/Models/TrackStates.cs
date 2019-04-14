@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace rNascarTimingAndScoring.Models
+﻿namespace rNascarTimingAndScoring.Models
 {
-    public enum TrackStates
+    public enum TrackState
     {
         Green = 1,
         Caution = 2,

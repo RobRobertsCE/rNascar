@@ -10,8 +10,8 @@ namespace rNascarTimingAndScoring.Views
         public Color OutlineForeColor { get; set; }
         public float OutlineWidth { get; set; }
 
-        private TrackStates _trackState;
-        public TrackStates TrackState
+        private TrackState _trackState;
+        public TrackState TrackState
         {
             get
             {
@@ -84,41 +84,41 @@ namespace rNascarTimingAndScoring.Views
 
         }
 
-        protected virtual void DisplayTrackState(TrackStates trackState)
+        protected virtual void DisplayTrackState(TrackState trackState)
         {
             switch (trackState)
             {
-                case TrackStates.Green:
+                case TrackState.Green:
                     {
                         picTrackState.Image = Properties.Resources.track_state_green;
                         toolTip1.SetToolTip(picTrackState, "Green");
                         break;
                     }
-                case TrackStates.Caution:
+                case TrackState.Caution:
                     {
                         picTrackState.Image = Properties.Resources.track_state_yellow;
                         toolTip1.SetToolTip(picTrackState, "Caution");
                         break;
                     }
-                case TrackStates.Red:
+                case TrackState.Red:
                     {
                         picTrackState.Image = Properties.Resources.track_state_red;
                         toolTip1.SetToolTip(picTrackState, "Red Flag");
                         break;
                     }
-                case TrackStates.Checkered:
+                case TrackState.Checkered:
                     {
                         picTrackState.Image = Properties.Resources.track_state_checkers;
                         toolTip1.SetToolTip(picTrackState, "Checkered Flag");
                         break;
                     }
-                case TrackStates.Warm:
+                case TrackState.Warm:
                     {
                         picTrackState.Image = Properties.Resources.track_state_warm;
                         toolTip1.SetToolTip(picTrackState, "Track Is Warm");
                         break;
                     }
-                case TrackStates.NotActive:
+                case TrackState.NotActive:
                     {
                         picTrackState.Image = Properties.Resources.track_state_cold;
                         toolTip1.SetToolTip(picTrackState, "Not Active");

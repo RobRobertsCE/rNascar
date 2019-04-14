@@ -135,8 +135,10 @@
     </Compile>
     <Compile Include="Helpers\FeedWriter.cs" />
     <Compile Include="Helpers\PitWindowCalculator.cs" />
+    <Compile Include="Models\EventLapAverages.cs" />
     <Compile Include="Models\LeaderboardColumns.cs" />
     <Compile Include="Models\LeaderboardRowWidths.cs" />
+    <Compile Include="Models\NLapAverage.cs" />
     <Compile Include="Models\RunType.cs" />
     <Compile Include="Models\SingleFieldModel.cs" />
     <Compile Include="Models\TSColorMap.cs" />
@@ -147,6 +149,8 @@
     <Compile Include="Models\TSLapLeaderGridRowModel.cs" />
     <Compile Include="Models\TSTenLapAverageGridRowModel.cs" />
     <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="Models\VehicleLapTime.cs" />
+    <Compile Include="Models\VehicleLapTimes.cs" />
     <Compile Include="Models\VehicleStatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

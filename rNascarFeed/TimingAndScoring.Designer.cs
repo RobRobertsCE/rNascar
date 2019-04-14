@@ -152,7 +152,7 @@
             this.tsTrackState.Padding = new System.Windows.Forms.Padding(1);
             this.tsTrackState.Size = new System.Drawing.Size(554, 67);
             this.tsTrackState.TabIndex = 3;
-            this.tsTrackState.TrackState = rNascarTimingAndScoring.Models.TrackStates.NotActive;
+            this.tsTrackState.TrackState = rNascarTimingAndScoring.Models.TrackState.NotActive;
             // 
             // pollFeedTimer
             // 
