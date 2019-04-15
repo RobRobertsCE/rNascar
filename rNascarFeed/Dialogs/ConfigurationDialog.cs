@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using log4net;
+using log4net.Core;
+using rNascarTimingAndScoring.Logging;
 using rNascarTimingAndScoring.Models;
 
 namespace rNascarTimingAndScoring.Dialogs
 {
     public partial class ConfigurationDialog : Form
     {
+        #region fields
+
         private IList<FavoriteDriver> _added = new List<FavoriteDriver>();
         private IList<FavoriteDriver> _removed = new List<FavoriteDriver>();
+
+        #endregion
+
+        #region properties
 
         private TSConfiguration _configuration;
         public TSConfiguration Configuration
@@ -32,23 +41,36 @@ namespace rNascarTimingAndScoring.Dialogs
 
         public IList<FavoriteDriver> AllDrivers { get; set; }
 
+        public ILog Log { get; set; }
+
+        #endregion
+
+        #region ctor
+
+        public ConfigurationDialog(ILog log)
+            : this()
+        {
+
+            this.Log = log;
+        }
+
         public ConfigurationDialog()
         {
             InitializeComponent();
         }
 
-        private void ConfigurationDialog_Load(object sender, EventArgs e)
-        {
-            foreach (var driver in AllDrivers)
-            {
-                chkFavorites.Items.Add(driver, Favorites.Any(f => f.Driver == driver.Driver));
-            }
-        }
+        #endregion
 
-        protected virtual void ExceptionHandler(Exception ex)
+        #region protected
+
+        protected virtual void ExceptionHandler(string message, Exception ex)
         {
+            if (Log != null)
+                Log.Error(message, ex);
+#if DEBUG
             Console.WriteLine(ex);
-            MessageBox.Show(ex.Message);
+#endif
+            MessageBox.Show($"{message}: {ex.Message}");
         }
 
         protected virtual void DisplayConfiguration(TSConfiguration configuration)
@@ -64,10 +86,24 @@ namespace rNascarTimingAndScoring.Dialogs
 
                 picBackground1.BackColor = TSColorMap.PrimaryBackColor;
                 picBackground2.BackColor = TSColorMap.AlternateBackColor;
+
+                chkVerboseLogging.Checked = Configuration.UseVerboseLogging;
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error displaying configuration", ex);
+            }
+        }
+
+        #endregion
+
+        #region private
+
+        private void ConfigurationDialog_Load(object sender, EventArgs e)
+        {
+            foreach (var driver in AllDrivers)
+            {
+                chkFavorites.Items.Add(driver, Favorites.Any(f => f.Driver == driver.Driver));
             }
         }
 
@@ -75,6 +111,7 @@ namespace rNascarTimingAndScoring.Dialogs
         {
             try
             {
+                Configuration.UseVerboseLogging = chkVerboseLogging.Checked;
                 Configuration.BattleGap = (double)numBattleGap.Value;
                 Configuration.PitWindow = numPitWindow.Value > 0 ? (int?)numPitWindow.Value : null;
                 Configuration.PitWindowWarning = (int)numPitWindowWarning.Value;
@@ -107,7 +144,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error saving configuration", ex);
             }
         }
 
@@ -128,7 +165,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error setting background color", ex);
             }
         }
 
@@ -149,7 +186,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error setting background color", ex);
             }
         }
 
@@ -169,7 +206,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error setting configuration defaults", ex);
             }
         }
 
@@ -194,5 +231,7 @@ namespace rNascarTimingAndScoring.Dialogs
                     _added.Remove(item);
             }
         }
+
+        #endregion
     }
 }

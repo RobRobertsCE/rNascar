@@ -2,45 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using log4net;
 using NascarFeed.Data.Models;
 using NascarFeed.Models;
-using rNascarTimingAndScoring.Models;
 using rNascarTimingAndScoring.Factories;
+using rNascarTimingAndScoring.Logging;
+using rNascarTimingAndScoring.Models;
 
 namespace rNascarTimingAndScoring.Dialogs
 {
     public partial class EventSettingsDialog : Form
     {
+        #region fields
+
         private IList<ScheduledEvent> _scheduledEvents { get; set; }
 
+        #endregion
+
+        #region properties
+
         public EventSettings EventSettings { get; set; }
+
+        public ILog Log { get; set; }
+
+        #endregion
+
+        #region ctor
+
+        public EventSettingsDialog(ILog log)
+            : this()
+        {
+
+            this.Log = log;
+        }
 
         public EventSettingsDialog()
         {
             InitializeComponent();
         }
 
-        private void ExceptionHandler(Exception ex)
+        #endregion
+
+        #region protected
+
+        protected virtual void ExceptionHandler(string message, Exception ex)
         {
+            if (Log != null)
+                Log.Error(message, ex);
+#if DEBUG
             Console.WriteLine(ex);
-            MessageBox.Show(ex.Message);
+#endif
+            MessageBox.Show($"{message}: {ex.Message}");
         }
 
-        private void EventSettingsView_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                PopulateDisplayControls();
-
-                DisplayEventSettings(EventSettings);
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler(ex);
-            }
-        }
-
-        private void PopulateDisplayControls()
+        protected virtual void PopulateDisplayControls()
         {
             var eventFactory = new EventFactory();
 
@@ -64,7 +79,7 @@ namespace rNascarTimingAndScoring.Dialogs
             txtSeason.Text = DateTime.Now.Year.ToString();
         }
 
-        private IList<SeriesModel> BuildDefaultSeriesList()
+        protected virtual IList<SeriesModel> BuildDefaultSeriesList()
         {
             var defaultSeriesList = new List<SeriesModel>();
 
@@ -92,7 +107,7 @@ namespace rNascarTimingAndScoring.Dialogs
             return defaultSeriesList;
         }
 
-        private IList<ActivityType> BuildDefaultActivityList()
+        protected virtual IList<ActivityType> BuildDefaultActivityList()
         {
             var activities = new List<ActivityType>();
 
@@ -171,7 +186,7 @@ namespace rNascarTimingAndScoring.Dialogs
             return activities;
         }
 
-        private void DisplayEventSettings(EventSettings settings)
+        protected virtual void DisplayEventSettings(EventSettings settings)
         {
             if (settings == null)
                 return;
@@ -184,7 +199,7 @@ namespace rNascarTimingAndScoring.Dialogs
             txtEventId.Text = settings.eventId.ToString();
         }
 
-        private void UpdateEventSettings()
+        protected virtual void UpdateEventSettings()
         {
             if (EventSettings == null)
                 EventSettings = new EventSettings();
@@ -197,6 +212,24 @@ namespace rNascarTimingAndScoring.Dialogs
             EventSettings.eventId = Int32.Parse(txtEventId.Text);
         }
 
+        #endregion
+
+        #region private
+
+        private void EventSettingsView_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                PopulateDisplayControls();
+
+                DisplayEventSettings(EventSettings);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler("Error loading event settings dialog", ex);
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -207,7 +240,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error saving event settings dialog", ex);
             }
         }
 
@@ -229,7 +262,7 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error selecting activity", ex);
             }
         }
 
@@ -251,37 +284,52 @@ namespace rNascarTimingAndScoring.Dialogs
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error selecting series", ex);
             }
         }
 
-        private class SeriesType
+        private void cboEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtEventId.Clear();
+
+                if (cboEvents.SelectedItem == null)
+                    return;
+
+                var selectedEvent = (ScheduledEvent)cboEvents.SelectedItem;
+
+                txtEventId.Text = selectedEvent.id.ToString();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler("Error selecting event", ex);
+            }
+        }
+
+        #endregion
+
+        #region private classes
+
+        protected class SeriesType
         {
             public int id { get; set; }
             public string name { get; set; }
         }
-        private class ActivityType
+
+        protected class ActivityType
         {
             public int id { get; set; }
             public string name { get; set; }
             public IList<SessionType> sessions { get; set; } = new List<SessionType>();
         }
-        private class SessionType
+
+        protected class SessionType
         {
             public int id { get; set; }
             public string name { get; set; }
         }
 
-        private void cboEvents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtEventId.Clear();
-
-            if (cboEvents.SelectedItem == null)
-                return;
-
-            var selectedEvent = (ScheduledEvent)cboEvents.SelectedItem;
-
-            txtEventId.Text = selectedEvent.id.ToString();
-        }
+        #endregion
     }
 }

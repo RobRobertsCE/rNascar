@@ -14,6 +14,7 @@ namespace rNascarTimingAndScoring.Models
         public int PitWindowWarning { get; set; }
         public int PollInterval { get; set; }
         public List<FavoriteDriver> FavoriteDrivers { get; set; } = new List<FavoriteDriver>();
+        public bool UseVerboseLogging { get; set; }
 
         public static UserSettings Load()
         {

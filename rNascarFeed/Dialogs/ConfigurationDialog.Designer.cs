@@ -47,6 +47,7 @@
             this.btnDefaults = new System.Windows.Forms.Button();
             this.chkFavorites = new System.Windows.Forms.CheckedListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.chkVerboseLogging = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindowWarning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPitWindow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBattleGap)).BeginInit();
@@ -189,7 +190,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(12, 284);
+            this.btnSave.Location = new System.Drawing.Point(12, 320);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 31);
             this.btnSave.TabIndex = 8;
@@ -203,7 +204,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(331, 284);
+            this.btnCancel.Location = new System.Drawing.Point(331, 320);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(105, 31);
             this.btnCancel.TabIndex = 9;
@@ -273,7 +274,7 @@
             this.btnDefaults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDefaults.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDefaults.ForeColor = System.Drawing.Color.Black;
-            this.btnDefaults.Location = new System.Drawing.Point(126, 284);
+            this.btnDefaults.Location = new System.Drawing.Point(126, 320);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(105, 31);
             this.btnDefaults.TabIndex = 16;
@@ -300,12 +301,23 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Favorites";
             // 
+            // chkVerboseLogging
+            // 
+            this.chkVerboseLogging.AutoSize = true;
+            this.chkVerboseLogging.Location = new System.Drawing.Point(12, 284);
+            this.chkVerboseLogging.Name = "chkVerboseLogging";
+            this.chkVerboseLogging.Size = new System.Drawing.Size(159, 20);
+            this.chkVerboseLogging.TabIndex = 19;
+            this.chkVerboseLogging.Text = "Use Verbose Logging";
+            this.chkVerboseLogging.UseVisualStyleBackColor = true;
+            // 
             // ConfigurationDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(448, 327);
+            this.ClientSize = new System.Drawing.Size(448, 363);
+            this.Controls.Add(this.chkVerboseLogging);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.chkFavorites);
             this.Controls.Add(this.btnDefaults);
@@ -365,5 +377,6 @@
         private System.Windows.Forms.Button btnDefaults;
         private System.Windows.Forms.CheckedListBox chkFavorites;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkVerboseLogging;
     }
 }

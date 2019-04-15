@@ -11,5 +11,6 @@
         public int? PitWindow { get; set; }
         public int PollInterval { get; set; } = DefaultPollInterval;
         public RunType RunType { get; set; }
+        public bool UseVerboseLogging { get; set; }
     }
 }

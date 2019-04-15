@@ -5,11 +5,14 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
+using log4net.Core;
 using Microsoft.Extensions.DependencyInjection;
 using NascarFeed.Models;
 using NascarFeed.Ports;
 using rNascarTimingAndScoring.Dialogs;
 using rNascarTimingAndScoring.Helpers;
+using rNascarTimingAndScoring.Logging;
 using rNascarTimingAndScoring.Models;
 
 namespace rNascarTimingAndScoring
@@ -58,6 +61,8 @@ namespace rNascarTimingAndScoring
             }
         }
 
+        public ILog Log { get; set; }
+
         #endregion
 
         #region ctor
@@ -65,6 +70,8 @@ namespace rNascarTimingAndScoring
         public TimingAndScoring()
         {
             InitializeComponent();
+
+            Logger.Setup();
 
             Configuration = new TSConfiguration();
 
@@ -85,10 +92,14 @@ namespace rNascarTimingAndScoring
             }
         }
 
-        protected virtual void ExceptionHandler(Exception ex)
+        protected virtual void ExceptionHandler(string message, Exception ex)
         {
+            if (Log != null)
+                Log.Error(message, ex);
+#if DEBUG
             Console.WriteLine(ex);
-            MessageBox.Show(ex.Message);
+#endif
+            MessageBox.Show($"{message}: {ex.Message}");
         }
 
         protected virtual async Task ReadFeedDataAsync()
@@ -112,7 +123,7 @@ namespace rNascarTimingAndScoring
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error reading feed", ex);
             }
             finally
             {
@@ -563,11 +574,13 @@ namespace rNascarTimingAndScoring
             if (liveEventSettings == null || liveEventSettings.eventId == -1)
             {
                 MessageBox.Show(this, "No Live Event Right Now");
+                Log.Info("No live event found");
                 autoRefreshToolStripMenuItem.Checked = false;
                 return false;
             }
             else
             {
+                Log.Info($"Live event found: {liveEventSettings.eventId}");
                 autoRefreshToolStripMenuItem.Checked = true;
             }
 
@@ -611,10 +624,13 @@ namespace rNascarTimingAndScoring
                 Configuration.PollInterval = _userSettings.PollInterval;
                 Configuration.PitWindowWarning = _userSettings.PitWindowWarning;
                 Configuration.PitWindow = _userSettings.PitWindow;
+                Configuration.UseVerboseLogging = _userSettings.UseVerboseLogging;
+
+                SetLogLevel(Configuration.UseVerboseLogging);
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error loading user settings", ex);
             }
         }
 
@@ -628,13 +644,83 @@ namespace rNascarTimingAndScoring
                 _userSettings.PollInterval = Configuration.PollInterval;
                 _userSettings.PitWindowWarning = Configuration.PitWindowWarning;
                 _userSettings.PitWindow = Configuration.PitWindow;
+                _userSettings.UseVerboseLogging = Configuration.UseVerboseLogging;
 
                 _userSettings.Save();
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error saving user settings", ex);
             }
+        }
+
+        protected virtual async Task DisplayEventSettingsDialog()
+        {
+            try
+            {
+                var dialog = new EventSettingsDialog(this.Log)
+                {
+                    EventSettings = this.EventSettings
+                };
+
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    EventSettings = dialog.EventSettings;
+
+                    await ReadFeedDataAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler("Error loading Event", ex);
+            }
+        }
+
+        protected virtual void DisplayConfigurationDialog()
+        {
+            try
+            {
+                var dialog = new ConfigurationDialog(this.Log)
+                {
+                    Configuration = _configuration,
+                    AllDrivers = _feedData != null ?
+                        _feedData.vehicles.Select(v => new FavoriteDriver() { SeriesId = _feedData.series_id, Driver = v.driver.full_name }).ToList() :
+                        new List<FavoriteDriver>(),
+                    Favorites = _userSettings.FavoriteDrivers.ToList()
+                };
+
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    Configuration = dialog.Configuration;
+
+                    SetLogLevel(Configuration.UseVerboseLogging);
+
+                    _userSettings.FavoriteDrivers = dialog.Favorites.ToList();
+
+                    SaveUserSettings();
+                }
+
+                UpdateTheme();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler("Error loading Settings", ex);
+            }
+        }
+
+        protected virtual void SetLogLevel(bool verboseLogging)
+        {
+            if (verboseLogging)
+                SetLogLevel(Level.Info);
+            else
+                SetLogLevel(Level.Error);
+        }
+
+        protected virtual void SetLogLevel(Level logLevel)
+        {
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level = logLevel;
+            ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
+            Log.Info($"Log level set to {logLevel.ToString()}");
         }
 
         #endregion
@@ -643,26 +729,37 @@ namespace rNascarTimingAndScoring
 
         private async void TimingAndScoring_Load(object sender, EventArgs e)
         {
-            LoadUserSettings();
-
-            UpdateTheme();
-
-            _apiClient = ServiceProvider.Instance.GetRequiredService<IApiClient>();
-
-            if (!await GetLiveEventSettingsAsync())
+            try
             {
-                EventSettings = new EventSettings()
+                Log = LogManager.GetLogger("rNascar.Main");
+
+                Log.Info("rNascar App Started");
+
+                LoadUserSettings();
+
+                UpdateTheme();
+
+                _apiClient = ServiceProvider.Instance.GetRequiredService<IApiClient>();
+
+                if (!await GetLiveEventSettingsAsync())
                 {
-                    season = 2019,
-                    seriesId = 1,
-                    sessionId = 3,
-                    activityId = 3,
-                    eventId = 4780
-                };
+                    EventSettings = new EventSettings()
+                    {
+                        season = 2019,
+                        seriesId = 1,
+                        sessionId = 3,
+                        activityId = 3,
+                        eventId = 4780
+                    };
+                }
+                else
+                {
+                    pollFeedTimer.Enabled = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                pollFeedTimer.Enabled = true;
+                ExceptionHandler("Error loading main form", ex);
             }
         }
 
@@ -674,7 +771,7 @@ namespace rNascarTimingAndScoring
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Timer Error", ex);
             }
         }
 
@@ -691,52 +788,12 @@ namespace rNascarTimingAndScoring
 
         private async void eventToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var dialog = new EventSettingsDialog()
-                {
-                    EventSettings = this.EventSettings
-                };
-
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    EventSettings = dialog.EventSettings;
-
-                    await ReadFeedDataAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler(ex);
-            }
+            await DisplayEventSettingsDialog();
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var dialog = new ConfigurationDialog()
-                {
-                    Configuration = _configuration,
-                    AllDrivers = _feedData != null ?
-                        _feedData.vehicles.Select(v => new FavoriteDriver() { SeriesId = _feedData.series_id, Driver = v.driver.full_name }).ToList() :
-                        new List<FavoriteDriver>(),
-                    Favorites = _userSettings.FavoriteDrivers.ToList()
-                };
-
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    Configuration = dialog.Configuration;
-                    _userSettings.FavoriteDrivers = dialog.Favorites.ToList();
-                    SaveUserSettings();
-                }
-
-                UpdateTheme();
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler(ex);
-            }
+            DisplayConfigurationDialog();
         }
 
         private async void getFeedDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -747,7 +804,7 @@ namespace rNascarTimingAndScoring
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error reading feed data", ex);
             }
         }
 
@@ -759,7 +816,7 @@ namespace rNascarTimingAndScoring
             }
             catch (Exception ex)
             {
-                ExceptionHandler(ex);
+                ExceptionHandler("Error reading live event settings", ex);
             }
         }
 
