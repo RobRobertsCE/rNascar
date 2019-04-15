@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi", "NascarApi\NascarApi.csproj", "{469A01CC-389E-4C5E-887D-21C19D8FEE38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Client", "NascarApi.Client\NascarApi.Client.csproj", "{17D78F51-5473-4A91-B5FA-42F696F0F442}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Data", "NascarApi.Data\NascarApi.Data.csproj", "{7518C1D3-1FC9-4C9D-8DDE-34886226809A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Simulation", "NascarApi.Simulation\NascarApi.Simulation.csproj", "{E28FE046-40CF-4160-BA62-F39EAB38FB4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Simulation.TestApp", "NascarApi.Simulation.TestApp\NascarApi.Simulation.TestApp.csproj", "{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Core", "NascarApi.Core\NascarApi.Core.csproj", "{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{469A01CC-389E-4C5E-887D-21C19D8FEE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469A01CC-389E-4C5E-887D-21C19D8FEE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469A01CC-389E-4C5E-887D-21C19D8FEE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469A01CC-389E-4C5E-887D-21C19D8FEE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D78F51-5473-4A91-B5FA-42F696F0F442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D78F51-5473-4A91-B5FA-42F696F0F442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D78F51-5473-4A91-B5FA-42F696F0F442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D78F51-5473-4A91-B5FA-42F696F0F442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7518C1D3-1FC9-4C9D-8DDE-34886226809A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7518C1D3-1FC9-4C9D-8DDE-34886226809A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7518C1D3-1FC9-4C9D-8DDE-34886226809A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7518C1D3-1FC9-4C9D-8DDE-34886226809A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E28FE046-40CF-4160-BA62-F39EAB38FB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E28FE046-40CF-4160-BA62-F39EAB38FB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E28FE046-40CF-4160-BA62-F39EAB38FB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E28FE046-40CF-4160-BA62-F39EAB38FB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E48DF80-5F34-470E-843B-01158CC96135}
+	EndGlobalSection
+EndGlobal

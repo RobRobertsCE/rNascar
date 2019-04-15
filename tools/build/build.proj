@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Executables" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup >
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <BuildTarget Condition="'$(BuildTarget)' == ''">Build</BuildTarget>
+    <SetupDependsOn Condition="'$(SetupDependsOn)' == ''">Executables</SetupDependsOn>
+    <MetaProjectDirectory>$(MSBuildThisFileDirectory)..\..\bin\meta\</MetaProjectDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<DllSolution Include="..\..\src\NascarApi\NascarApi.sln">
+      <Dependencies>
+      </Dependencies>
+    </DllSolution>
+  </ItemGroup>
+
+  <ItemGroup>
+	<ExecutableSolution Include="..\..\src\rNascarTimingAndScoring\rNascarTimingAndScoring.sln">
+      <Dependencies>
+      </Dependencies>
+    </ExecutableSolution>
+	<ExecutableSolution Include="..\..\src\rNascarTS\rNascarTS.sln">
+      <Dependencies>
+      </Dependencies>
+    </ExecutableSolution>
+  </ItemGroup>
+
+  <Target Name="Dlls">
+    <Message Text="Building DLLs..." Importance="high"  />
+    <MSBuild Projects="@(DllMetaProjects)"
+             Properties="Configuration=$(Configuration)"
+             Targets="$(BuildTarget)"
+             ToolsVersion="$(ProjectToolsVersion)"
+             BuildInParallel="True" />
+  </Target>
+
+  <Target Name="Executables" DependsOnTargets="Dlls">
+    <Message Text="Building Executables..." Importance="high"  />
+    <MSBuild Projects="@(ExecutableMetaProjects)"
+             Properties="Configuration=$(Configuration)"
+             Targets="$(BuildTarget)"
+             ToolsVersion="$(ProjectToolsVersion)"
+             BuildInParallel="True" />
+  </Target>
+
+  <Target Name="Clean">
+    <RemoveDir Directories="$(MSBuildThisFileDirectory)..\..\bin" />
+    <MakeDir Directories="$(MSBuildThisFileDirectory)..\..\bin" />
+  </Target>
+
+</Project>

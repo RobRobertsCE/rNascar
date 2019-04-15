@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{469A01CC-389E-4C5E-887D-21C19D8FEE38}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NascarApi</RootNamespace>
+    <AssemblyName>NascarApi</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ProductAssemblyInfo.cs" />
+    <Compile Include="Adapters\ApiClient.cs" />
+    <Compile Include="Adapters\ServiceCollectionExtensions.cs" />
+    <Compile Include="Adapters\UrlService.cs" />
+    <Compile Include="Models\AudioFeed\AudioConfig.cs" />
+    <Compile Include="Models\AudioFeed\RootObject.cs" />
+    <Compile Include="Models\Drive\Analytics.cs" />
+    <Compile Include="Models\Drive\Broadcaster.cs" />
+    <Compile Include="Models\Drive\Config.cs" />
+    <Compile Include="Models\Drive\Data.cs" />
+    <Compile Include="Models\Drive\DefaultTab.cs" />
+    <Compile Include="Models\Drive\DefaultVideoID.cs" />
+    <Compile Include="Models\Drive\DraftablesConfig.cs" />
+    <Compile Include="Models\Drive\Draftkings.cs" />
+    <Compile Include="Models\Drive\DraftpoolConfig.cs" />
+    <Compile Include="Models\Drive\EventTabGroup.cs" />
+    <Compile Include="Models\Drive\Ima.cs" />
+    <Compile Include="Models\Drive\Leaderboard.cs" />
+    <Compile Include="Models\Drive\LiveBroadcaster.cs" />
+    <Compile Include="Models\Drive\LiveOn.cs" />
+    <Compile Include="Models\Drive\Race.cs" />
+    <Compile Include="Models\Drive\RootObject.cs" />
+    <Compile Include="Models\Drive\Services.cs" />
+    <Compile Include="Models\Drive\Source.cs" />
+    <Compile Include="Models\Drive\Stats.cs" />
+    <Compile Include="Models\Drive\Video.cs" />
+    <Compile Include="Models\Drive\Video2.cs" />
+    <Compile Include="Models\Drive\Widgets.cs" />
+    <Compile Include="Models\EntryList\RootObject.cs" />
+    <Compile Include="Models\EventSettings.cs" />
+    <Compile Include="Models\LiveFeed\LapsLed.cs" />
+    <Compile Include="Models\LiveFeed\PitStop.cs" />
+    <Compile Include="Models\QualifyingResults\RootObject.cs" />
+    <Compile Include="Models\StageFeed\Driver.cs" />
+    <Compile Include="Models\StageFeed\PitStop.cs" />
+    <Compile Include="Models\StageFeed\RootObject.cs" />
+    <Compile Include="Models\StageFeed\Stage.cs" />
+    <Compile Include="Models\StageFeed\Vehicle.cs" />
+    <Compile Include="Ports\IApiClient.cs" />
+    <Compile Include="Models\LapAverage\TenLapAverage.cs" />
+    <Compile Include="Models\LiveFlagData\RootObject.cs" />
+    <Compile Include="Models\LivePoints\RootObject.cs" />
+    <Compile Include="Models\LiveQualifyingData\RootObject.cs" />
+    <Compile Include="Models\LivePitData\RootObject.cs" />
+    <Compile Include="Models\PointStandings\RootObject.cs" />
+    <Compile Include="Models\RaceResults\RootObject.cs" />
+    <Compile Include="Models\LiveFeed\Driver.cs" />
+    <Compile Include="Ports\IUrlService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\LiveFeed\RootObject.cs" />
+    <Compile Include="Models\LiveFeed\Stage.cs" />
+    <Compile Include="Models\LiveFeed\Vehicle.cs" />
+    <Compile Include="Models\LapAverage\RootObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\LiveFeed\k-n-sample.json" />
+    <None Include="Models\WP\wp-json.json" />
+    <None Include="Models\AudioFeed\sample.json" />
+    <None Include="Models\Drive\sample.json" />
+    <None Include="Models\EntryList\sample.json" />
+    <None Include="Models\LapAverage\sample.json" />
+    <None Include="Models\LiveFlagData\sample.json" />
+    <None Include="Models\LivePoints\sample.json" />
+    <None Include="Models\LiveQualifyingData\sample.json" />
+    <None Include="Models\QualifyingResults\sample.json" />
+    <None Include="Models\StageFeed\sample.json" />
+    <None Include="packages.config" />
+    <None Include="Models\LivePitData\sample.json" />
+    <None Include="Models\PointStandings\sample.json" />
+    <None Include="Models\RaceResults\sample.json" />
+    <None Include="Models\LiveFeed\sample.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\WP\link.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(TargetDir)*.*" "$(SolutionDir)..\..\bin"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<BuildDependsOn>
+			$(BuildDependsOn);
+			CopyBin
+		</BuildDependsOn>
+		<CleanDependsOn>
+			$(CleanDependsOn);
+			CleanBin
+		</CleanDependsOn>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(CopyBinTargetDirectory)' == ''">
+		<CopyBinTargetDirectory>$(MSBuildThisFileDirectory)..\..\bin\</CopyBinTargetDirectory>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(CopyBinInclude)' == ''">
+		<CopyBinInclude>$(OutputPath)**\$(AssemblyName).*</CopyBinInclude>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(CopyBinExclude)' == ''">
+		<CopyBinExclude>$(OutputPath)**\*.vshost.*</CopyBinExclude>
+	</PropertyGroup>
+	
+	<Target Name="CleanBin">
+		<ItemGroup>
+			<CleanBinFiles Include="$(CopyBinTargetDirectory)$(CopyBinInclude)" />
+		</ItemGroup>
+
+		<Delete Files="@(CleanBinFiles)" />
+	</Target>
+	
+	<Target Name="CopyBin">
+		<ItemGroup>
+			<CopyBinFiles Include="$(CopyBinInclude)" Exclude="$(CopyBinExclude)" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(CopyBinFiles)" DestinationFiles="@(CopyBinFiles->'$(CopyBinTargetDirectory)%(RecursiveDir)%(Filename)%(Extension)')" ContinueOnError="false" />
+	</Target>
+</Project>
