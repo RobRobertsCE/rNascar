@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using NascarApi.Mock.Internal.Factories;
-using NascarApi.Mock.Ports;
+using NascarApi.Simulation.Internal.Factories;
+using NascarApi.Simulation.Ports;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     public static class ServiceCollectionExtensions
     {

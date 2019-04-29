@@ -1,6 +1,6 @@
-﻿using NascarApi.Mock.Adapters;
+﻿using NascarApi.Simulation.Adapters;
 
-namespace NascarApi.Mock.Models
+namespace NascarApi.Simulation.Models
 {
     public class NascarDriver : IKeyedItem<int>
     {

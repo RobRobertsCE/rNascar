@@ -1,4 +1,4 @@
-﻿namespace NascarApi.Mock.Adapters
+﻿namespace NascarApi.Simulation.Adapters
 {
     public interface IKeyedItem<Key>
     {

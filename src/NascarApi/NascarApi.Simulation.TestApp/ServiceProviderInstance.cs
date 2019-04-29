@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using NascarApi.Mock.Adapters;
+using NascarApi.Simulation.Adapters;
 
-namespace NascarApi.Mock.TestApp
+namespace NascarApi.Simulation.TestApp
 {
     static class ServiceProvider
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NascarApi.Mock.Models
+namespace NascarApi.Simulation.Models
 {
     [Flags()]
     public enum NascarRunType

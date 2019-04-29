@@ -1,6 +1,6 @@
-﻿namespace NascarApi.Mock.Models
+﻿namespace NascarApi.Simulation.Models
 {
-    public enum VehicleLapState
+    public enum LapState
     {
         OneToGreenFlag,
         GreenFlag,

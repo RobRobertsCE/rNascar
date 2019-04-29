@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using NascarApi.Mock.Models;
+using NascarApi.Simulation.Models;
 
-namespace NascarApi.Mock.Ports
+namespace NascarApi.Simulation.Ports
 {
     public interface IEventRepository
     {

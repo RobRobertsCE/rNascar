@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NascarApi.Mock.Models
+namespace NascarApi.Simulation.Models
 {
     public class NascarConsecutiveLaps
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     abstract class JsonRepository<T, Key> : Repository<T, Key> where T : IKeyedItem<Key>, new()
     {

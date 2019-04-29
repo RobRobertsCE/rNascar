@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using NascarApi.Mock.Internal.Factories;
-using NascarApi.Mock.Models;
-using NascarApi.Mock.Ports;
+using NascarApi.Simulation.Internal.Factories;
+using NascarApi.Simulation.Models;
+using NascarApi.Simulation.Ports;
 using System.Linq;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     class SeriesRepository : JsonRepository<NascarSeries, int>, ISeriesRepository
     {

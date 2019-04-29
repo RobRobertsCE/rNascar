@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using NascarApi.Mock.Models;
+using NascarApi.Simulation.Models;
 
-namespace NascarApi.Mock.Internal.Factories
+namespace NascarApi.Simulation.Internal.Factories
 {
     class VehicleFactory : Factory<NascarVehicle, int>
     {

@@ -43,7 +43,7 @@ namespace rNascarTimingAndScoring.Models
 
         public bool Save()
         {
-            var filePath = GetSettingsFilePath();
+            var filePath = GetAppDirectory();
 
             var settingsContent = JsonConvert.SerializeObject(
                 this,
@@ -55,9 +55,11 @@ namespace rNascarTimingAndScoring.Models
             return true;
         }
 
-        protected static string GetSettingsFilePath()
+        protected static string GetAppDirectory()
         {
-            return $"{System.IO.Path.GetDirectoryName(Application.ExecutablePath)}\\settings\\rNascarUserSettings.json";
+            string path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+
+            return Path.GetDirectoryName(path);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NascarApi.Mock.TestApp
+namespace NascarApi.Simulation.TestApp
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace NascarApi.Mock.TestApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new TestForm());
         }
     }
 }

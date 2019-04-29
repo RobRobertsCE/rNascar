@@ -1,14 +1,27 @@
 ﻿using System.Collections.Generic;
-using NascarApi.Mock.Models;
+using NascarApi.Simulation.Models;
 
-namespace NascarApi.Mock.Internal.Factories
+namespace NascarApi.Simulation.Internal.Factories
 {
     class SeriesFactory : Factory<NascarSeries, int>
     {
         public override IList<NascarSeries> GetList()
         {
             IList<NascarSeries> items = new List<NascarSeries>();
-
+            items.Add(new NascarSeries()
+            {
+                SeriesId = 1,
+                SeriesType = SeriesType.Other,
+                Name = "Test Series",
+                CarCount = 8,
+                QualifyingRound1Count = 8,
+                QualifyingRound2Count = 5,
+                QualifyingFinalRoundCount = 3,
+                RaceStage1Percent = .02,
+                RaceStage2Percent = .02,
+                RaceFinalStagePercent = .06,
+                RaceLapPercent = 0.1
+            });
             items.Add(new NascarSeries()
             {
                 SeriesId = 1,

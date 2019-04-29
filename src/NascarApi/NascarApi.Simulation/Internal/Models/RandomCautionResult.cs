@@ -1,4 +1,4 @@
-﻿namespace NascarApi.Mock.Internal.Models
+﻿namespace NascarApi.Simulation.Internal.Models
 {
     class RandomCautionResult
     {

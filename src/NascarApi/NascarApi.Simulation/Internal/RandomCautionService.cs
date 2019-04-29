@@ -1,7 +1,7 @@
 ﻿using System;
-using NascarApi.Mock.Internal.Models;
+using NascarApi.Simulation.Internal.Models;
 
-namespace NascarApi.Mock.Internal
+namespace NascarApi.Simulation.Internal
 {
     class RandomCautionService
     {

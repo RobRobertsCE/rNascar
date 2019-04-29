@@ -1,4 +1,4 @@
-﻿namespace NascarApi.Mock.Models
+﻿namespace NascarApi.Simulation.Models
 {
     public class PracticeResult : LapTimeResult
     {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NascarApi.Mock.Models;
-using NascarApi.Mock.Ports;
-using NascarApi.Mock.Extensions;
-using NascarApi.Mock.Internal;
+using NascarApi.Simulation.Models;
+using NascarApi.Simulation.Ports;
+using NascarApi.Simulation.Extensions;
+using NascarApi.Simulation.Internal;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     class EventGenerator : IEventGenerator
     {

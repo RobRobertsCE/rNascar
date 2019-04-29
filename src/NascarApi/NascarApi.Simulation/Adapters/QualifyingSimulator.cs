@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NascarApi.Mock.Internal;
-using NascarApi.Mock.Models;
-using NascarApi.Mock.Ports;
+using NascarApi.Simulation.Internal;
+using NascarApi.Simulation.Models;
+using NascarApi.Simulation.Ports;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     class QualifyingSimulator : IQualifyingSimulator
     {

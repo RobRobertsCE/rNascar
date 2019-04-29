@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NascarApi.Mock.Internal;
-using NascarApi.Mock.Models;
-using NascarApi.Mock.Ports;
+using NascarApi.Simulation.Internal;
+using NascarApi.Simulation.Models;
+using NascarApi.Simulation.Ports;
 
-namespace NascarApi.Mock.Adapters
+namespace NascarApi.Simulation.Adapters
 {
     class RaceSimulator : IRaceSimulator
     {
@@ -16,7 +16,6 @@ namespace NascarApi.Mock.Adapters
         private VehicleLapService _vehicleLapService;
         private readonly RandomCautionService _cautionService;
         private readonly Random _pitRandom = new Random(DateTime.Now.Millisecond);
-        private int _baseLapTime = 0;
 
         #endregion
 
@@ -40,9 +39,10 @@ namespace NascarApi.Mock.Adapters
 
         public async virtual Task<NascarEvent> SimulateRaceAsync(NascarEvent raceEvent)
         {
-            _lapTimeService = new LapTimeService(raceEvent.Track);
-            _baseLapTime = raceEvent.Track.BaseLapTime;
-            _vehicleLapService = new VehicleLapService(raceEvent);
+            _lapTimeService = new LapTimeService(raceEvent.Track);            
+
+            _vehicleLapService = new VehicleLapService2(_lapTimeService);
+
             StateService.Initialize();
 
             int cautionLapsRemaining = 0;
@@ -66,7 +66,7 @@ namespace NascarApi.Mock.Adapters
             int advertisedRaceEndLap = finalStage.EndLap;
             int actualRaceEndLap = advertisedRaceEndLap;
 
-            List<NascarRaceLap> raceLaps = _vehicleLapService.GetStartingLineup(raceEvent, firstStage);
+            List<NascarRaceLap> raceLaps = _vehicleLapService.GetStartingLineup(raceEvent);
             List<NascarRaceLap> laps = new List<NascarRaceLap>();
 
             StateService.GreenFlagOn();
@@ -172,6 +172,11 @@ namespace NascarApi.Mock.Adapters
                     StateService.GreenFlagOn();
                     lapsRunUnderThisCaution = 0;
                     raceEvent.Cautions.LastOrDefault().EndLap = lapNumber;
+                    var luckyDog = raceLaps.FirstOrDefault(l => l.IsLuckyDog);
+                    if (luckyDog != null)
+                    {
+                        luckyDog.IsLuckyDog = false;
+                    }
                 }
 
                 // vehicle pit stops
@@ -180,15 +185,15 @@ namespace NascarApi.Mock.Adapters
 
                 // vehicle lap times
                 if (StateService.IsGreenFlag)
-                    laps = _vehicleLapService.UpdateRaceLaps(raceLaps, VehicleLapState.GreenFlag);
+                    laps = _vehicleLapService.UpdateRaceLaps(raceLaps, LapState.GreenFlag);
                 else if (StateService.IsCaution)
                 {
                     if (isFirstCautionLap)
-                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, VehicleLapState.CautionFlag);
+                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, LapState.CautionFlag);
                     else if (cautionLapsRemaining == 1)
-                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, VehicleLapState.OneToGreenFlag);
+                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, LapState.OneToGreenFlag);
                     else
-                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, VehicleLapState.CautionFlag);
+                        laps = _vehicleLapService.UpdateRaceLaps(raceLaps, LapState.CautionFlag);
                 }
 
                 ((List<NascarRaceLap>)run.Laps).AddRange(laps.ToList());
@@ -223,6 +228,22 @@ namespace NascarApi.Mock.Adapters
         {
             if (underCaution)
             {
+                if (!thisLaps.Any(l => l.IsLuckyDog))
+                {
+                    int maxLapsDown = thisLaps.Max(l => l.LapsBehind);
+
+                    for (int i = 1; i <= maxLapsDown; i++)
+                    {
+                        var luckyDog = thisLaps.Where(l => l.LapsBehind == i).OrderBy(l => l.Position).FirstOrDefault();
+
+                        if (luckyDog != null)
+                        {
+                            luckyDog.IsLuckyDog = true;
+                            break;
+                        }
+                    }
+                }
+
                 var leadLapCount = thisLaps.Count(l => l.IsLeadLap);
 
                 for (int i = 0; i < thisLaps.Count; i++)
@@ -233,29 +254,29 @@ namespace NascarApi.Mock.Adapters
                     {
                         if (thisLap.LapsSincePit > (pitWindow * .25))
                         {
-                            thisLap.PitThisLap = true;
+                            thisLap.PitInLap = true;
                         }
                         else if (i > (leadLapCount / 2))
                         {
                             // end of lead lap
-                            thisLap.PitThisLap = true;
+                            thisLap.PitInLap = true;
                         }
                     }
                     else if (!leadLapOnly && !thisLap.IsLeadLap)
                     {
                         if (thisLap.LapsSincePit > (pitWindow * .6))
                         {
-                            thisLap.PitThisLap = true;
+                            thisLap.PitInLap = true;
                         }
                     }
-                    else if (i == leadLapCount - 1 && !thisLaps.Any(l => l.IsLuckyDog))
-                    {
-                        // lucky dog
-                        // TODO: FIX LUCKY DOG
-                        // TODO: FIX WAVE-AROUNDS
-                        thisLap.IsLuckyDog = true;
-                        thisLap.PitThisLap = true;
-                    }
+                    //else if (i == leadLapCount - 1 && !thisLaps.Any(l => l.IsLuckyDog))
+                    //{
+                    //    // lucky dog
+                    //    // TODO: FIX LUCKY DOG
+                    //    // TODO: FIX WAVE-AROUNDS
+                    //    thisLap.IsLuckyDog = true;
+                    //    thisLap.PitInLap = true;
+                    //}
                 }
             }
             else
@@ -266,7 +287,7 @@ namespace NascarApi.Mock.Adapters
                 {
                     if (thisLap.LapsSincePit > pitWindow)
                     {
-                        thisLap.PitThisLap = true;
+                        thisLap.PitInLap = true;
                     }
                     else
                     {
@@ -276,7 +297,7 @@ namespace NascarApi.Mock.Adapters
                         var value = ((double)rawValue / pitWindowRange) * 10;
                         if (value > threshold)
                         {
-                            thisLap.PitThisLap = true;
+                            thisLap.PitInLap = true;
                         }
                     }
                 }

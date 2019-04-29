@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NascarApi.Mock.Extensions
+namespace NascarApi.Simulation.Extensions
 {
     static class FlagsExtensions
     {

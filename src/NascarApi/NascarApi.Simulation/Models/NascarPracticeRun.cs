@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NascarApi.Mock.Models
+namespace NascarApi.Simulation.Models
 {
     public class NascarPracticeRun : NascarRun
     {

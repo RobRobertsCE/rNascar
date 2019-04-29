@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NascarApi.Mock.Internal
+namespace NascarApi.Simulation.Internal
 {
     internal class RaceStateService
     {

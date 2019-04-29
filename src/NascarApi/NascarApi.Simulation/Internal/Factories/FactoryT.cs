@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using NascarApi.Mock.Adapters;
+using NascarApi.Simulation.Adapters;
 
-namespace NascarApi.Mock.Internal.Factories
+namespace NascarApi.Simulation.Internal.Factories
 {
     abstract class Factory<T, Key> where T : IKeyedItem<Key>, new()
     {

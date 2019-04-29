@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace NascarApi.Mock.Internal
+namespace NascarApi.Simulation.Internal
 {
     [Flags()]
-    internal enum RaceState
+    public enum RaceState
     {
         PreRace = 0,
         GreenFlag = 1,

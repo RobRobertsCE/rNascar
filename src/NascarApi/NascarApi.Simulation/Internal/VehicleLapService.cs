@@ -1,73 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using NascarApi.Mock.Models;
+using NascarApi.Simulation.Models;
+using NascarApi.Simulation.Ports;
 
-namespace NascarApi.Mock.Internal
+namespace NascarApi.Simulation.Internal
 {
-    public class VehicleLapService
+    public class VehicleLapService : IVehicleLapService
     {
         #region fields
 
-        private readonly NascarEvent _raceEvent;
-        private readonly LapTimeService _lapTimeService;
         private readonly Random _pitRandom = new Random(DateTime.Now.Millisecond);
-        private readonly int _baseLapTime;
+
+        #endregion
+
+        #region properties
+
+        public ILapTimeService LapTimeService { get; set; }
 
         #endregion
 
         #region ctor
 
-        public VehicleLapService(NascarEvent raceEvent)
+        protected VehicleLapService(ILapTimeService lapTimeService)
         {
-            _raceEvent = raceEvent ?? throw new ArgumentNullException(nameof(raceEvent));
+            LapTimeService = lapTimeService ?? throw new ArgumentNullException(nameof(lapTimeService));
+        }
 
-            if (raceEvent.Track == null)
-                throw new ArgumentNullException(nameof(raceEvent.Track));
+        public VehicleLapService(NascarTrack track)
+        {
+            if (track == null)
+                throw new ArgumentNullException(nameof(track));
 
-            _baseLapTime = raceEvent.Track.BaseLapTime;
-
-            _lapTimeService = new LapTimeService(raceEvent.Track);
+            LapTimeService = new LapTimeService(track);
         }
 
         #endregion
 
         #region public
 
-        public List<NascarRaceLap> GetStartingLineup(NascarEvent raceEvent, NascarRaceRun stage1)
+        public List<NascarRaceLap> GetStartingLineup(NascarEvent raceEvent)
         {
+            NascarRaceRun stage1 = raceEvent
+                .Runs
+                .OfType<NascarRaceRun>()
+                .FirstOrDefault(r => r.RunType == NascarRunType.RaceStage1);
+
             return StartingLineup(raceEvent, stage1);
         }
 
-        public List<NascarRaceLap> UpdateRaceLaps(List<NascarRaceLap> lastLaps, VehicleLapState state)
+        public virtual List<NascarRaceLap> UpdateRaceLaps(List<NascarRaceLap> lastLaps, RaceState state)
+        {
+            LapState lapState = LapState.OneToGreenFlag;
+            switch (state)
+            {
+                case RaceState.PreRace:
+                    {
+                        lapState = LapState.OneToGreenFlag;
+                        break;
+                    }
+                case RaceState.GreenFlag:
+                case RaceState.WhiteFlag:
+                case RaceState.Checkered:
+                case RaceState.Overdrive:
+                    {
+                        lapState = LapState.GreenFlag;
+                        break;
+                    }
+                case RaceState.Caution:
+                case RaceState.OneToGo:
+                case RaceState.EndOfStage:
+                    {
+                        lapState = LapState.CautionFlag;
+                        break;
+                    }
+            }
+            return UpdateRaceLaps(lastLaps, lapState);
+        }
+
+        public virtual List<NascarRaceLap> UpdateRaceLaps(List<NascarRaceLap> lastLaps, LapState state)
         {
             List<NascarRaceLap> newLaps = null;
 
             switch (state)
             {
-                case VehicleLapState.OneToGreenFlag:
+                case LapState.OneToGreenFlag:
                     {
                         newLaps = OneToGoLaps(lastLaps);
                         break;
                     }
-                case VehicleLapState.GreenFlag:
+                case LapState.GreenFlag:
                     {
                         newLaps = GreenFlagLaps(lastLaps);
                         break;
                     }
-                case VehicleLapState.CautionFlag:
+                case LapState.CautionFlag:
                     {
                         newLaps = CautionLaps(lastLaps);
                         break;
                     }
                 default:
                     {
-                        throw new ArgumentException($"Invalid VehicleLapState: {state.ToString()}");
+                        throw new ArgumentException($"Invalid LapState: {state.ToString()}");
                     }
             }
 
-            PrintStandings(newLaps, state == VehicleLapState.CautionFlag, state == VehicleLapState.OneToGreenFlag);
+            PrintStandings(newLaps, state);
 
             return newLaps;
         }
@@ -76,7 +114,7 @@ namespace NascarApi.Mock.Internal
 
         #region protected
 
-        protected virtual NascarRaceLap[] GetNewRaceLaps(List<NascarRaceLap> lastLaps, VehicleLapState state)
+        protected virtual NascarRaceLap[] GetNewRaceLaps(List<NascarRaceLap> lastLaps, LapState state)
         {
             NascarRaceLap[] newLaps = lastLaps.Select(l => new NascarRaceLap()
             {
@@ -86,7 +124,8 @@ namespace NascarApi.Mock.Internal
                 TotalTime = l.TotalTime,
                 LapNumber = l.LapNumber,
                 LapsSincePit = l.LapsSincePit,
-                PitThisLap = l.PitThisLap,
+                PitInLap = l.PitInLap,
+                PitOutLap = l.PitOutLap,
                 IsLuckyDog = l.IsLuckyDog,
                 LeaderLap = l.LeaderLap
             }).ToArray();
@@ -94,36 +133,80 @@ namespace NascarApi.Mock.Internal
             LapTimeResult lapTimeResult = null;
             for (int i = 0; i < newLaps.Length; i++)
             {
-                if (newLaps[i].PitThisLap)
+                if (newLaps[i].PitInLap && !newLaps[i].PitOutLap)
                 {
-                    lapTimeResult = _lapTimeService.GetPitLapTime();
                     newLaps[i].LapsSincePit = -1;
-                    newLaps[i].PitThisLap = false;
+                    newLaps[i].PitOutLap = true;
                 }
-                else if (state == VehicleLapState.CautionFlag || state == VehicleLapState.OneToGreenFlag)
+                else
                 {
-                    lapTimeResult = _lapTimeService.GetCautionLapTime();
-                }
-                else if (state == VehicleLapState.GreenFlag)
-                {
-                    lapTimeResult = _lapTimeService.GetLapTime(newLaps[i].LapsSincePit);
-                }
+                    if (!newLaps[i].PitInLap && newLaps[i].PitOutLap)
+                    {
+                        lapTimeResult = LapTimeService.GetPitInLapTime();
+                        newLaps[i].PitOutLap = false;
+                    }
 
-                newLaps[i].LapTime = lapTimeResult.LapTime;
-                newLaps[i].LapSpeed = lapTimeResult.LapSpeed;
-                newLaps[i].TotalTime += lapTimeResult.LapTime;
-                newLaps[i].LapNumber += 1;
-                newLaps[i].LeaderLap += 1;
-                newLaps[i].LapsSincePit += 1;
+                    if (newLaps[i].PitInLap && newLaps[i].PitOutLap)
+                    {
+                        lapTimeResult = LapTimeService.GetPitOutLapTime();
+                        LapTimeResult pitLapTimeResult = null;
+
+                        if (state == LapState.CautionFlag || state == LapState.OneToGreenFlag)
+                            pitLapTimeResult = LapTimeService.GetCautionLapTime();
+                        else if (state == LapState.GreenFlag)
+                            pitLapTimeResult = LapTimeService.GetLapTime(0);
+
+                        lapTimeResult.LapTime += pitLapTimeResult.LapTime;
+                        lapTimeResult.LapSpeed = LapTimeService.GetLapSpeed(lapTimeResult.LapTime);
+
+                        newLaps[i].PitInLap = false;
+                    }
+                    else if (state == LapState.CautionFlag || state == LapState.OneToGreenFlag)
+                    {
+                        lapTimeResult = LapTimeService.GetCautionLapTime();
+                    }
+                    else if (state == LapState.GreenFlag)
+                    {
+                        lapTimeResult = LapTimeService.GetLapTime(newLaps[i].LapsSincePit);
+                    }
+                    newLaps[i].LapNumber += 1;
+                    newLaps[i].LapTime = lapTimeResult.LapTime;
+                    newLaps[i].LapSpeed = lapTimeResult.LapSpeed;
+                    newLaps[i].TotalTime += lapTimeResult.LapTime;
+                    newLaps[i].LapsSincePit += 1;
+                }
             }
 
             Array.Sort(newLaps);
 
-            if (newLaps[0].LapsBehind > 0)
+            newLaps[0].LeaderLap = newLaps[0].LapNumber;
+            newLaps[0].Delta = 0;
+            newLaps[0].DeltaLeader = 0;
+            newLaps[0].Position = 1;
+
+            double leaderTotalTime = newLaps[0].TotalTime;
+            int leaderLap = newLaps[0].LeaderLap;
+
+            for (int i = 1; i < newLaps.Length; i++)
             {
-                for (int i = 0; i < newLaps.Length; i++)
+                newLaps[i].Position = i + 1;
+                newLaps[i].LeaderLap = leaderLap;
+
+                if (newLaps[i].LapsBehind > 0)
                 {
-                    newLaps[i].LapNumber += newLaps[0].LapsBehind;
+                    // vehicle is laps down
+                    newLaps[i].Delta = newLaps[i].LapsBehind * -1;
+                    newLaps[i].DeltaLeader = newLaps[i].LapsBehind * -1;
+                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - (newLaps[0].AverageLapTime * newLaps[i].LapNumber)) % LapTimeService.BaseLapTime, 3);
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].TotalTime - (newLaps[0].AverageLapTime * newLaps[i].LapNumber) + (LapTimeService.BaseLapTime * newLaps[i].LapsBehind);
+                }
+                else
+                {
+                    // vehicle is on lead lap
+                    newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
+                    newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
+                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % LapTimeService.BaseLapTime, 3);
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].DeltaLeader;
                 }
             }
 
@@ -132,50 +215,22 @@ namespace NascarApi.Mock.Internal
 
         protected virtual List<NascarRaceLap> OneToGoLaps(List<NascarRaceLap> lastLaps)
         {
-            NascarRaceLap[] newLaps = GetNewRaceLaps(lastLaps, VehicleLapState.OneToGreenFlag);
+            NascarRaceLap[] newLaps = GetNewRaceLaps(lastLaps, LapState.OneToGreenFlag);
 
-            newLaps[0].Position = 1;
-            newLaps[0].Delta = 0;
-            newLaps[0].DeltaLeader = 0;
+            //////var luckyDog = newLaps.FirstOrDefault(l => l.IsLuckyDog);
 
-            int leaderLapNumber = newLaps[0].LapNumber;
+            //////if (luckyDog != null)
+            //////{
+            //////    var lastCarOnLeadLap = newLaps.Where(l => l.IsLeadLap).OrderByDescending(l => l.Position).LastOrDefault();
+            //////    var luckyDogTimeDelta = luckyDog.TotalTime - lastCarOnLeadLap.TotalTime;
+
+            //////    luckyDog.TotalTime -= (luckyDogTimeDelta + .001);
+            //////    luckyDog.LapTime -= luckyDogTimeDelta;
+            //////    luckyDog.LapNumber += 1;
+            //////    luckyDog.IsLuckyDog = false;
+            //////}
+
             double leaderTotalTime = newLaps[0].TotalTime;
-
-            for (int i = 1; i < newLaps.Length; i++)
-            {
-                newLaps[i].Position = i + 1;
-
-                double deltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                int deltaLaps = (int)(deltaLeader / _baseLapTime);
-
-                if (deltaLaps >= 1)
-                {
-                    // vehicle is laps down
-                    newLaps[i].Delta = deltaLaps * -1;
-                    newLaps[i].DeltaLeader = deltaLaps * -1;
-                    newLaps[i].LapNumber = leaderLapNumber - deltaLaps;
-                }
-                else
-                {
-                    // vehicle is on lead lap
-                    newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
-                    newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                    newLaps[i].LapNumber = leaderLapNumber;
-                }
-            }
-
-            var luckyDog = newLaps.FirstOrDefault(l => l.IsLuckyDog);
-
-            if (luckyDog != null)
-            {
-                var lastCarOnLeadLap = newLaps.Where(l => l.IsLeadLap).OrderByDescending(l => l.Position).LastOrDefault();
-                var luckyDogTimeDelta = luckyDog.TotalTime - lastCarOnLeadLap.TotalTime;
-
-                luckyDog.TotalTime -= (luckyDogTimeDelta + .001);
-                luckyDog.LapTime -= luckyDogTimeDelta;
-                luckyDog.LapNumber += 1;
-                luckyDog.IsLuckyDog = false;
-            }
 
             // close 'em up
             double cumulativeDeltaLeader = 0.0;
@@ -192,23 +247,25 @@ namespace NascarApi.Mock.Internal
                     newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
                     newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
                     newLaps[i].DeltaPhysical = newLaps[i].DeltaLeader;
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].DeltaLeader;
 
                     cumulativeDeltaLeader += newLaps[i].DeltaLeader;
                 }
                 else
                 {
                     // physical seconds behind leader, not counting laps
-                    var physicalDeltaLeader = (newLaps[i].TotalTime - leaderTotalTime) % _baseLapTime;
+                    var physicalDeltaLeader = (newLaps[i].TotalTime - leaderTotalTime) % LapTimeService.BaseLapTime;
                     var physicalDeltaGap = physicalDeltaLeader - (spacingBetweenRows * rowNumber);
 
                     newLaps[i].TotalTime -= physicalDeltaGap;
                     newLaps[i].LapTime -= physicalDeltaGap;
-                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % _baseLapTime, 3);
+                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % LapTimeService.BaseLapTime, 3);
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].TotalTime - leaderTotalTime + (LapTimeService.BaseLapTime * newLaps[i].LapsBehind);
 
                     cumulativeDeltaLeader += physicalDeltaGap;
                 }
 
-                newLaps[i].LapSpeed = _lapTimeService.GetLapSpeed(newLaps[i].LapTime);
+                newLaps[i].LapSpeed = LapTimeService.GetLapSpeed(newLaps[i].LapTime);
             }
 
             return newLaps.ToList();
@@ -216,37 +273,9 @@ namespace NascarApi.Mock.Internal
 
         protected virtual List<NascarRaceLap> CautionLaps(List<NascarRaceLap> lastLaps)
         {
-            NascarRaceLap[] newLaps = GetNewRaceLaps(lastLaps, VehicleLapState.CautionFlag);
+            NascarRaceLap[] newLaps = GetNewRaceLaps(lastLaps, LapState.CautionFlag);
 
-            newLaps[0].Position = 1;
-            newLaps[0].Delta = 0;
-            newLaps[0].DeltaLeader = 0;
-
-            int leaderLapNumber = newLaps[0].LapNumber;
             double leaderTotalTime = newLaps[0].TotalTime;
-
-            for (int i = 1; i < newLaps.Length; i++)
-            {
-                newLaps[i].Position = i + 1;
-
-                double deltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                int deltaLaps = (int)(deltaLeader / _baseLapTime);
-
-                if (deltaLaps >= 1)
-                {
-                    // vehicle is laps down
-                    newLaps[i].Delta = deltaLaps * -1;
-                    newLaps[i].DeltaLeader = deltaLaps * -1;
-                    newLaps[i].LapNumber = leaderLapNumber - deltaLaps;
-                }
-                else
-                {
-                    // vehicle is on lead lap
-                    newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
-                    newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                    newLaps[i].LapNumber = leaderLapNumber;
-                }
-            }
 
             // close 'em up
             double cumulativeDeltaLeader = 0.0;
@@ -261,23 +290,25 @@ namespace NascarApi.Mock.Internal
                     newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
                     newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
                     newLaps[i].DeltaPhysical = newLaps[i].DeltaLeader;
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].DeltaLeader;
 
                     cumulativeDeltaLeader += newLaps[i].DeltaLeader;
                 }
                 else
                 {
                     // physical seconds behind leader, not counting laps
-                    var physicalDeltaLeader = (newLaps[i].TotalTime - leaderTotalTime) % _baseLapTime;
+                    var physicalDeltaLeader = (newLaps[i].TotalTime - leaderTotalTime) % LapTimeService.BaseLapTime;
                     var physicalDeltaGap = physicalDeltaLeader - (spacingBetweenCars * i);
 
                     newLaps[i].TotalTime -= physicalDeltaGap;
                     newLaps[i].LapTime -= physicalDeltaGap;
-                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % _baseLapTime, 3);
+                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % LapTimeService.BaseLapTime, 3);
+                    newLaps[i].DeltaTravelledLeader = newLaps[i].TotalTime - leaderTotalTime + (LapTimeService.BaseLapTime * newLaps[i].LapsBehind);
 
                     cumulativeDeltaLeader += physicalDeltaGap;
                 }
 
-                newLaps[i].LapSpeed = _lapTimeService.GetLapSpeed(newLaps[i].LapTime);
+                newLaps[i].LapSpeed = LapTimeService.GetLapSpeed(newLaps[i].LapTime);
             }
 
             return newLaps.ToList();
@@ -285,40 +316,7 @@ namespace NascarApi.Mock.Internal
 
         protected virtual List<NascarRaceLap> GreenFlagLaps(List<NascarRaceLap> lastLaps)
         {
-            NascarRaceLap[] newLaps = GetNewRaceLaps(lastLaps, VehicleLapState.GreenFlag);
-
-            newLaps[0].Position = 1;
-            newLaps[0].Delta = 0;
-            newLaps[0].DeltaLeader = 0;
-
-            int leaderLapNumber = newLaps[0].LapNumber;
-            double leaderTotalTime = newLaps[0].TotalTime;
-
-            for (int i = 1; i < newLaps.Length; i++)
-            {
-                newLaps[i].Position = i + 1;
-
-                double deltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                int deltaLaps = (int)(deltaLeader / _baseLapTime);
-
-                if (deltaLaps >= 1)
-                {
-                    // vehicle is laps down
-                    newLaps[i].Delta = deltaLaps * -1;
-                    newLaps[i].DeltaLeader = deltaLaps * -1;
-                    newLaps[i].LapNumber = leaderLapNumber - deltaLaps;
-                }
-                else
-                {
-                    // vehicle is on lead lap
-                    newLaps[i].Delta = newLaps[i].TotalTime - newLaps[i - 1].TotalTime;
-                    newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-                    newLaps[i].LapNumber = leaderLapNumber;
-                    newLaps[i].DeltaPhysical = Math.Round((newLaps[i].TotalTime - leaderTotalTime) % _baseLapTime, 3);
-                }
-            }
-
-            return newLaps.ToList();
+            return GetNewRaceLaps(lastLaps, LapState.GreenFlag).ToList();
         }
 
         protected virtual List<NascarRaceLap> StartingLineup(NascarEvent raceEvent, NascarRaceRun stage1)
@@ -346,6 +344,7 @@ namespace NascarApi.Mock.Internal
                     LeaderLap = 0,
                     Delta = Math.Round(deltaNext, 3),
                     DeltaLeader = Math.Round(deltaLeader, 3),
+                    DeltaTravelledLeader = Math.Round(deltaLeader, 3),
                     LapSpeed = 0,
                     LapTime = 0,
                     TotalTime = 0
@@ -361,99 +360,21 @@ namespace NascarApi.Mock.Internal
 
             Console.WriteLine("Starting Lineup");
 
-            PrintStandings(raceLaps, false, false);
+            PrintStandings(raceLaps, LapState.OneToGreenFlag);
 
             return raceLaps;
         }
 
-        protected virtual List<NascarRaceLap> HandlePitStops(List<NascarRaceLap> thisLaps, int pitWindow, bool underCaution, bool leadLapOnly)
+        protected virtual void PrintStandings(List<NascarRaceLap> raceLaps, LapState state)
         {
-            if (underCaution)
-            {
-                foreach (NascarRaceLap thisLap in thisLaps.Where(l => l.LapsSincePit > (pitWindow * .3) && leadLapOnly ? l.IsLeadLap : true))
-                {
-                    DoPitStop(thisLap);
-                }
-            }
-            else
-            {
-                var pitWindowRange = (int)(pitWindow * .25);
-
-                foreach (NascarRaceLap thisLap in thisLaps.Where(l => l.LapsSincePit > (pitWindow - pitWindowRange)))
-                {
-                    if (thisLap.LapsSincePit > pitWindow)
-                    {
-                        // pit now
-                        DoPitStop(thisLap);
-                    }
-                    else
-                    {
-                        var margin = 1 - (thisLap.LapsSincePit / (double)pitWindow);
-                        var threshold = margin * pitWindowRange;
-                        var rawValue = _pitRandom.Next(pitWindowRange);
-                        var value = ((double)rawValue / pitWindowRange) * 10;
-                        if (value > threshold)
-                        {
-                            // pit now
-                            DoPitStop(thisLap);
-                        }
-                    }
-                }
-            }
-
-            // reset positions, deltas
-            var newLaps = thisLaps.OrderBy(l => l.TotalTime).ToList();
-
-            double leaderTotalTime = newLaps[0].TotalTime;
-
-            for (int i = 0; i < newLaps.Count; i++)
-            {
-                newLaps[i].Position = i + 1;
-                newLaps[i].Delta = Math.Round(i == 0 ? 0 : newLaps[i].TotalTime - newLaps[i - 1].TotalTime, 3);
-                newLaps[i].DeltaLeader = newLaps[i].TotalTime - leaderTotalTime;
-            }
-
-            return newLaps;
-        }
-
-        protected virtual NascarRaceLap DoPitStop(NascarRaceLap thisLap)
-        {
-            Console.WriteLine($"Car {thisLap.VehicleId} Pitting...");
-
-            var originalLapTime = thisLap.LapTime;
-            var pitLapTime = _lapTimeService.GetPitLapTime();
-            var pitTime = pitLapTime.LapTime - originalLapTime;
-
-            thisLap.LapTime = pitLapTime.LapTime;
-            thisLap.LapSpeed = pitLapTime.LapSpeed;
-            thisLap.TotalTime += pitTime;
-            thisLap.Delta += pitTime;
-            thisLap.DeltaLeader += pitTime;
-
-            thisLap.LapsSincePit = 0;
-
-            return thisLap;
-        }
-
-        #endregion
-
-        #region private
-
-        private void PrintStandings(List<NascarRaceLap> raceLaps, bool isUnderCaution, bool oneToGo = false)
-        {
-            if (oneToGo)
-                Console.WriteLine($"Lap {raceLaps[0].LapNumber} ***** ##### ONE TO GO ##### *****");
-            else if (isUnderCaution)
-                Console.WriteLine($"Lap {raceLaps[0].LapNumber} ***** CAUTION *****");
-            else
-                Console.WriteLine($"Lap {raceLaps[0].LapNumber}");
-
-            Console.WriteLine($"              Delta     Delta   Laps    Lap     Lap      Total");
-            Console.WriteLine($"     [CAR]    Next      Leader  Down    Time    Speed    Elapsed");
+            Console.WriteLine($"End of Lap {raceLaps[0].LapNumber} {state.ToString()}");
+            Console.WriteLine();
+            Console.WriteLine($"              Delta     Delta   Laps     Lap        Lap       Total        Delta    Actual              Lucky      Leader    Lap");
+            Console.WriteLine($"     [CAR]    Next      Leader  Down     Time      Speed     Elapsed      Physical  Delta     Pit       Dog         Lap     Number");
             for (int x = 0; x < raceLaps.Count; x++)
             {
                 var rl = raceLaps[x];
-                Console.WriteLine($"{String.Format("{0,-2}", rl.Position)} - [{String.Format("{0,2}", rl.VehicleId)}]   {String.Format("{0,7}", rl.Delta < 0 ? rl.Delta.ToString("####") : rl.Delta.ToString("##.##0"))}   {String.Format("{0,7}", rl.DeltaLeader < 0 ? rl.DeltaLeader.ToString("####") : rl.DeltaLeader.ToString("##.##0"))}     {(rl.IsLeadLap ? "  " : String.Format("{0,-2}", rl.LeaderLap - rl.LapNumber))}    {String.Format("{0,6}", rl.LapTime.ToString("###.##0"))}  {String.Format("{0,6}", rl.LapSpeed.ToString("###.##0"))}   {String.Format("{0,6}", rl.TotalTime.ToString("######.##0"))}  {rl.DeltaPhysical} {(rl.LapsSincePit == 0 ? "Pit Stop" : "       ")}  {(rl.IsLuckyDog ? "Lucky Dog" : "         ")}");
+                Console.WriteLine($"{String.Format("{0,-2}", rl.Position)} - [{String.Format("{0,2}", rl.VehicleId)}]   {String.Format("{0,7}", rl.Delta < 0 ? rl.Delta.ToString("####") : rl.Delta.ToString("##.##0"))}   {String.Format("{0,7}", rl.DeltaLeader < 0 ? rl.DeltaLeader.ToString("####") : rl.DeltaLeader.ToString("##.##0"))}     {(rl.IsLeadLap ? "  " : String.Format("{0,-2}", rl.LeaderLap - rl.LapNumber))}    {String.Format("{0,8}", rl.LapTime.ToString("###.##0"))}  {String.Format("{0,8}", rl.LapSpeed.ToString("###.##0"))}   {String.Format("{0,8}", rl.TotalTime.ToString("######.##0"))}    {String.Format("{0, 8}", rl.DeltaPhysical.ToString("######.##0"))} {String.Format("{0, 8}", rl.DeltaTravelledLeader.ToString("######.##0"))}    {(rl.PitInLap && rl.PitOutLap ? "Pit In  " : rl.PitOutLap ? "Pit Out " : "-       ")}  {(rl.IsLuckyDog ? "Lucky Dog" : "-        ")}   {rl.LeaderLap}      {rl.LapNumber}");
             }
 
             Console.WriteLine();
