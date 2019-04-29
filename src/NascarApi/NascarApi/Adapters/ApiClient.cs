@@ -46,6 +46,8 @@ namespace NascarApi.Adapters
                 liveEvent.sessionId = feed.run_id;
                 liveEvent.trackId = feed.track_id;
                 liveEvent.trackLength = feed.track_length;
+                liveEvent.run_name = feed.run_name;
+                liveEvent.run_type = feed.run_type;
             }
 
             return liveEvent;

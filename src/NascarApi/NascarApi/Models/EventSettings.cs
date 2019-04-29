@@ -11,5 +11,7 @@ namespace NascarApi.Models
         public int sessionId { get; set; }
         public int trackId { get; set; }
         public double trackLength { get; set; }
+        public string run_name { get; set; }
+        public int run_type { get; set; }
     }
 }
