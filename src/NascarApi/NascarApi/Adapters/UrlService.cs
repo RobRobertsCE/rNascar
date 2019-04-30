@@ -12,7 +12,7 @@ namespace NascarApi.Adapters
         private const string practiceUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/practice{3}.json";
         public string GetPracticeUrl(EventSettings settings)
         {
-            return GetPracticeUrl(settings.season, settings.seriesId, settings.eventId, settings.sessionId);
+            return GetPracticeUrl(settings.season, settings.series_id, settings.race_id, settings.run_id);
         }
         public string GetPracticeUrl(int season, int seriesId, int eventId, int sessionId)
         {
@@ -24,7 +24,7 @@ namespace NascarApi.Adapters
         private const string entryListUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/entryList.json";
         public string GetEntryListUrl(EventSettings settings)
         {
-            return GetEntryListUrl(settings.season, settings.seriesId, settings.eventId);
+            return GetEntryListUrl(settings.season, settings.series_id, settings.race_id);
         }
         public string GetEntryListUrl(int season, int seriesId, int eventId)
         {
@@ -36,7 +36,7 @@ namespace NascarApi.Adapters
         private const string lapAverageUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/lapAvg_{3}_{4}.json";
         public string GetLapAverageUrl(EventSettings settings)
         {
-            return GetLapAverageUrl(settings.season, settings.seriesId, settings.eventId, settings.sessionId);
+            return GetLapAverageUrl(settings.season, settings.series_id, settings.race_id, settings.run_id);
         }
         public string GetLapAverageUrl(int season, int seriesId, int eventId, int sessionId)
         {
@@ -52,7 +52,7 @@ namespace NascarApi.Adapters
         private const string liveFeedUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live_feed.json";
         public string GetLiveFeedUrl(EventSettings settings)
         {
-            return GetLiveFeedUrl(settings.seriesId, settings.eventId);
+            return GetLiveFeedUrl(settings.series_id, settings.race_id);
         }
         public string GetLiveFeedUrl(int seriesId, int eventId)
         {
@@ -77,7 +77,7 @@ namespace NascarApi.Adapters
         private const string livePitDataUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-pit-data.json";
         public string GetLivePitDataUrl(EventSettings settings)
         {
-            return GetLivePitDataUrl(settings.seriesId, settings.eventId);
+            return GetLivePitDataUrl(settings.series_id, settings.race_id);
         }
         public string GetLivePitDataUrl(int seriesId, int eventId)
         {
@@ -89,7 +89,7 @@ namespace NascarApi.Adapters
         private const string livePointsUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-points.json";
         public string GetLivePointsUrl(EventSettings settings)
         {
-            return GetLivePointsUrl(settings.seriesId, settings.eventId);
+            return GetLivePointsUrl(settings.series_id, settings.race_id);
         }
         public string GetLivePointsUrl(int seriesId, int eventId)
         {
@@ -100,7 +100,7 @@ namespace NascarApi.Adapters
         private const string liveQualifyingDataUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-qualifying-data.json";
         public string GetLiveQualifyingDataUrl(EventSettings settings)
         {
-            return GetLiveQualifyingDataUrl(settings.seriesId, settings.eventId);
+            return GetLiveQualifyingDataUrl(settings.series_id, settings.race_id);
         }
         public string GetLiveQualifyingDataUrl(int seriesId, int eventId)
         {
@@ -111,7 +111,7 @@ namespace NascarApi.Adapters
         private const string pointsStandingsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/points-feed.json";
         public string GetPointStandingsUrl(EventSettings settings)
         {
-            return GetPointStandingsUrl(settings.season, settings.seriesId);
+            return GetPointStandingsUrl(settings.season, settings.series_id);
         }
         public string GetPointStandingsUrl(int season, int seriesId)
         {
@@ -122,7 +122,7 @@ namespace NascarApi.Adapters
         private const string raceResultsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/raceResults.json?del=0.32764";
         public string GetRaceResultsUrl(EventSettings settings)
         {
-            return GetRaceResultsUrl(settings.season, settings.seriesId, settings.eventId);
+            return GetRaceResultsUrl(settings.season, settings.series_id, settings.race_id);
         }
         public string GetRaceResultsUrl(int season, int seriesId, int eventId)
         {
@@ -133,7 +133,7 @@ namespace NascarApi.Adapters
         private const string qualifyingResultsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/qualification.json";
         public string GetQualifyingResultsUrl(EventSettings settings)
         {
-            return GetQualifyingResultsUrl(settings.season, settings.seriesId, settings.eventId);
+            return GetQualifyingResultsUrl(settings.season, settings.series_id, settings.race_id);
         }
         public string GetQualifyingResultsUrl(int season, int seriesId, int eventId)
         {
@@ -150,7 +150,7 @@ namespace NascarApi.Adapters
         private const string stageFeedUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/stage{2}-feed.json";
         public string GetStageFeedUrl(EventSettings settings)
         {
-            return GetStageFeedUrl(settings.seriesId, settings.eventId, settings.sessionId);
+            return GetStageFeedUrl(settings.series_id, settings.race_id, settings.run_id);
         }
         public string GetStageFeedUrl(int seriesId, int eventId, int sessionId)
         {

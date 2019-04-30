@@ -36,7 +36,7 @@ namespace rNascarTimingAndScoring.Logging
 
         protected static string GetLogFilePath()
         {
-            return $"{System.IO.Path.GetDirectoryName(Application.ExecutablePath)}\\logs\\rNascarErrorLog.json";
+            return $"{System.IO.Path.GetDirectoryName(Application.ExecutablePath)}\\logs\\rNascarErrorLog.txt";
         }
     }
 }

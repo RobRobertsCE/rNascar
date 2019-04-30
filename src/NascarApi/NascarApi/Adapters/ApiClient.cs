@@ -40,14 +40,14 @@ namespace NascarApi.Adapters
 
             if (feed != null)
             {
-                liveEvent.eventId = feed.race_id;
-                liveEvent.seriesId = feed.series_id;
-                liveEvent.activityId = feed.run_type;
-                liveEvent.sessionId = feed.run_id;
-                liveEvent.trackId = feed.track_id;
-                liveEvent.trackLength = feed.track_length;
-                liveEvent.run_name = feed.run_name;
+                liveEvent.season = DateTime.Now.Year;
+                liveEvent.series_id = feed.series_id;
+                liveEvent.race_id = feed.race_id;
+                liveEvent.run_id = feed.run_id;
                 liveEvent.run_type = feed.run_type;
+                liveEvent.run_name = feed.run_name;
+                liveEvent.track_id = feed.track_id;
+                liveEvent.track_length = feed.track_length;
             }
 
             return liveEvent;
