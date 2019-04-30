@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Simulation", "Nas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Simulation.TestApp", "NascarApi.Simulation.TestApp\NascarApi.Simulation.TestApp.csproj", "{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NascarApi.Core", "NascarApi.Core\NascarApi.Core.csproj", "{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACBCE920-BD5F-426E-83C7-1CDCBFDCC15B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBE26923-FCF3-4A13-8ED3-A2601CFB9435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
