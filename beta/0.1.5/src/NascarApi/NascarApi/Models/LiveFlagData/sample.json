@@ -1,0 +1,34 @@
+﻿[
+  {
+    "lap_number": 0,
+    "flag_state": 8,
+    "elapsed_time": 0.0,
+    "comment": null,
+    "beneficiary": null,
+    "time_of_day": 53401.8674
+  },
+  {
+    "lap_number": 0,
+    "flag_state": 1,
+    "elapsed_time": 0.0,
+    "comment": null,
+    "beneficiary": null,
+    "time_of_day": 54300.7485
+  },
+  {
+    "lap_number": 0,
+    "flag_state": 2,
+    "elapsed_time": 364.673,
+    "comment": "",
+    "beneficiary": "     ",
+    "time_of_day": 54665.4215
+  },
+  {
+    "lap_number": 0,
+    "flag_state": 1,
+    "elapsed_time": 493.106,
+    "comment": null,
+    "beneficiary": null,
+    "time_of_day": 54793.8544
+  }
+]

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E28FE046-40CF-4160-BA62-F39EAB38FB4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NascarApi.Simulation</RootNamespace>
+    <AssemblyName>NascarApi.Simulation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ProductAssemblyInfo.cs" />
+    <Compile Include="Adapters\DriverRepository.cs" />
+    <Compile Include="Adapters\IKeyedItem.cs" />
+    <Compile Include="Adapters\PracticeSimulator.cs" />
+    <Compile Include="Adapters\QualifyingSimulator.cs" />
+    <Compile Include="Adapters\SeriesRepository.cs" />
+    <Compile Include="Adapters\VehicleRepository.cs" />
+    <Compile Include="Internal\Factories\FactoryT.cs" />
+    <Compile Include="Internal\Factories\SeriesFactory.cs" />
+    <Compile Include="Internal\Factories\VehicleFactory.cs" />
+    <Compile Include="Internal\VehicleLapService.cs" />
+    <Compile Include="Models\PracticeResult.cs" />
+    <Compile Include="Models\QualifyingResult.cs" />
+    <Compile Include="Models\VehicleLapState.cs" />
+    <Compile Include="Ports\IPracticeSimulator.cs" />
+    <Compile Include="Ports\IQualifyingSimulator.cs" />
+    <Compile Include="Ports\IRaceSimulator.cs" />
+    <Compile Include="Adapters\JsonRepositoryT.cs" />
+    <Compile Include="Adapters\EventRepository.cs" />
+    <Compile Include="Adapters\EventGenerator.cs" />
+    <Compile Include="Adapters\RaceSimulator.cs" />
+    <Compile Include="Adapters\RepositoryT.cs" />
+    <Compile Include="Adapters\ServiceCollectionExtensions.cs" />
+    <Compile Include="Adapters\TrackRepository.cs" />
+    <Compile Include="Extensions\FlagsExtensions.cs" />
+    <Compile Include="Internal\Factories\DriverFactory.cs" />
+    <Compile Include="Internal\Factories\TrackFactory.cs" />
+    <Compile Include="Internal\LapTimeService.cs" />
+    <Compile Include="Models\LapTimeResult.cs" />
+    <Compile Include="Internal\Models\RandomCautionResult.cs" />
+    <Compile Include="Internal\RaceState.cs" />
+    <Compile Include="Internal\RaceStateService.cs" />
+    <Compile Include="Internal\RandomCautionService.cs" />
+    <Compile Include="Models\NascarCautionSegment.cs" />
+    <Compile Include="Models\NascarConsecutiveLaps.cs" />
+    <Compile Include="Models\NascarDriver.cs" />
+    <Compile Include="Models\NascarEvent.cs" />
+    <Compile Include="Models\NascarLap.cs" />
+    <Compile Include="Models\NascarPracticeRun.cs" />
+    <Compile Include="Models\NascarQualifyingRun.cs" />
+    <Compile Include="Models\NascarRaceLap.cs" />
+    <Compile Include="Models\NascarRaceRun.cs" />
+    <Compile Include="Models\NascarRun.cs" />
+    <Compile Include="Models\NascarRunType.cs" />
+    <Compile Include="Models\NascarSeries.cs" />
+    <Compile Include="Models\NascarRaceVehicle.cs" />
+    <Compile Include="Models\NascarTrack.cs" />
+    <Compile Include="Models\NascarVehicle.cs" />
+    <Compile Include="Models\SeriesType.cs" />
+    <Compile Include="Ports\IDriverRepository.cs" />
+    <Compile Include="Ports\IEventRepository.cs" />
+    <Compile Include="Ports\IEventGenerator.cs" />
+    <Compile Include="Ports\ISeriesRepository.cs" />
+    <Compile Include="Ports\ITrackRepository.cs" />
+    <Compile Include="Ports\IVehicleRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(TargetDir)*.*" "$(SolutionDir)..\..\bin\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
