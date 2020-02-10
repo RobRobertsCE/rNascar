@@ -266,6 +266,11 @@ namespace rNascarTimingAndScoring
             return sortedModels;
         }
 
+        /// <summary>
+        /// This data only available after session is complete?
+        /// </summary>
+        /// <param name="feedData"></param>
+        /// <returns></returns>
         protected virtual IList<TSGridRowModel> FormatTenLapAverages(NascarApi.Models.LapAverage.RootObject feedData)
         {
             var models = new List<TSGridRowModel>();
@@ -299,12 +304,14 @@ namespace rNascarTimingAndScoring
         {
             var models = new List<TSGridRowModel>();
 
-            var vehicleGains = feedData.vehicles.Select(v => new
-            {
-                CarNumber = v.vehicle_number,
-                Driver = v.driver.full_name,
-                Gain = v.position_differential_last_10_percent
-            });
+            var vehicleGains = feedData.vehicles.
+                Where(v => v.status == 1). // Status 1=running, 2=off track, 3=out of event?
+                Select(v => new
+                {
+                    CarNumber = v.vehicle_number,
+                    Driver = v.driver.full_name,
+                    Gain = v.starting_position - v.running_position
+                });
 
             int index = 0;
 
@@ -336,7 +343,7 @@ namespace rNascarTimingAndScoring
                 {
                     CarNumber = v.vehicle_number,
                     Driver = v.driver.full_name,
-                    Gain = v.position_differential_last_10_percent
+                    Gain = v.starting_position - v.running_position
                 });
 
             int index = 0;
@@ -380,7 +387,7 @@ namespace rNascarTimingAndScoring
                     Index = index,
                     CarNumber = vehicle.CarNumber,
                     Driver = vehicle.Driver,
-                    Value = vehicle.FastestLap.ToString("###.##")
+                    Value = vehicle.FastestLap.ToString("###.00")
                 };
 
                 models.Add(model);
@@ -517,7 +524,7 @@ namespace rNascarTimingAndScoring
 
         protected virtual void DisplayLeadersStatus(NascarApi.Models.LiveFeed.RootObject feed)
         {
-            tsLeaders1.Model = new SingleFieldModel() { Count = feed.number_of_leaders + 1, SubCount = feed.number_of_lead_changes };
+            tsLeaders1.Model = new SingleFieldModel() { Count = feed.number_of_leaders + 1, SubCount = feed.number_of_lead_changes == -1 ? 0 : feed.number_of_lead_changes };
         }
 
         protected virtual void DisplayCautionsStatus(
