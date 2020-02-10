@@ -315,7 +315,9 @@ namespace rNascarTimingAndScoring
 
             int index = 0;
 
-            foreach (var vehicle in vehicleGains.OrderByDescending(v => v.Gain).Take(8))
+            foreach (var vehicle in vehicleGains.
+                Where(v => v.Gain >= 0).
+                OrderByDescending(v => v.Gain).Take(8))
             {
                 var model = new TSGridRowModel()
                 {
@@ -343,12 +345,14 @@ namespace rNascarTimingAndScoring
                 {
                     CarNumber = v.vehicle_number,
                     Driver = v.driver.full_name,
-                    Gain = v.starting_position - v.running_position
+                    Gain = -1 * (v.starting_position - v.running_position)
                 });
 
             int index = 0;
 
-            foreach (var vehicle in vehicleGains.OrderBy(v => v.Gain).Take(8))
+            foreach (var vehicle in vehicleGains.
+                Where(v=>v.Gain >= 0).
+                OrderByDescending(v => v.Gain).Take(8))
             {
                 var model = new TSGridRowModel()
                 {
@@ -387,7 +391,7 @@ namespace rNascarTimingAndScoring
                     Index = index,
                     CarNumber = vehicle.CarNumber,
                     Driver = vehicle.Driver,
-                    Value = vehicle.FastestLap.ToString("###.00")
+                    Value = vehicle.FastestLap.ToString("###.000")
                 };
 
                 models.Add(model);
