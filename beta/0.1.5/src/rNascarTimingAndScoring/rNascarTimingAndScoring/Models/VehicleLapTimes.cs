@@ -11,10 +11,12 @@ namespace rNascarTimingAndScoring.Models
         private IList<VehicleLapTime> _lapTimes = new List<VehicleLapTime>();
 
         public string CarNumber { get; set; }
+        public string Driver { get; set; }
 
-        public VehicleLapTimes(string carNumber)
+        public VehicleLapTimes(string carNumber, string driver)
         {
             CarNumber = carNumber;
+            Driver = driver;
         }
 
         public NLapAverage LastFiveLapAverage
@@ -78,6 +80,7 @@ namespace rNascarTimingAndScoring.Models
                 return new NLapAverage()
                 {
                     CarNumber = CarNumber,
+                    Driver = Driver,
                     StartLap = 0,
                     EndLap = 0,
                     AverageLapSpeed = 0.0,
@@ -90,6 +93,7 @@ namespace rNascarTimingAndScoring.Models
             return new NLapAverage()
             {
                 CarNumber = CarNumber,
+                Driver = Driver,
                 StartLap = orderedLaps.FirstOrDefault().LapNumber,
                 EndLap = orderedLaps.LastOrDefault().LapNumber,
                 AverageLapSpeed = orderedLaps.Average(l => l.LapSpeed),
@@ -104,6 +108,7 @@ namespace rNascarTimingAndScoring.Models
                 return new NLapAverage()
                 {
                     CarNumber = CarNumber,
+                    Driver = Driver,
                     StartLap = 0,
                     EndLap = 0,
                     AverageLapSpeed = 0.0,
@@ -121,6 +126,7 @@ namespace rNascarTimingAndScoring.Models
                 averages.Add(new NLapAverage()
                 {
                     CarNumber = CarNumber,
+                    Driver = Driver,
                     StartLap = orderedLaps[i].LapNumber,
                     EndLap = orderedLaps[i + lapCount - 1].LapNumber,
                     AverageLapSpeed = orderedLaps.Skip(i).Take(lapCount).Average(l => l.LapSpeed),

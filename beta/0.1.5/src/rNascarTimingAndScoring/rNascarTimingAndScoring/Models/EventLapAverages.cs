@@ -91,7 +91,7 @@ namespace rNascarTimingAndScoring.Models
 
             if (vehicleLaps == null)
             {
-                vehicleLaps = new VehicleLapTimes(lapTime.CarNumber);
+                vehicleLaps = new VehicleLapTimes(lapTime.CarNumber, lapTime.Driver);
                 _vehicleLapTimes.Add(vehicleLaps);
             }
 

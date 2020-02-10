@@ -173,6 +173,8 @@ namespace rNascarTimingAndScoring
             tsFastestLaps1.Models = FormatFastestLapData(feedData);
 
             tsPoints1.Models = FormatPointsData(pointsFeedData);
+
+            ts10LapAverages.Models = FormatTenLapAverages(_eventLapAverages);
         }
 
         protected virtual IList<TSDriverModel> FormatLeaderboardData(NascarApi.Models.LiveFeed.RootObject feedData)
@@ -271,7 +273,7 @@ namespace rNascarTimingAndScoring
         /// </summary>
         /// <param name="feedData"></param>
         /// <returns></returns>
-        protected virtual IList<TSGridRowModel> FormatTenLapAverages(NascarApi.Models.LapAverage.RootObject feedData)
+        protected virtual IList<TSGridRowModel> FormatTenLapAveragesFromFeed(NascarApi.Models.LapAverage.RootObject feedData)
         {
             var models = new List<TSGridRowModel>();
 
@@ -291,6 +293,41 @@ namespace rNascarTimingAndScoring
             }
 
             var sortedModels = models.OrderByDescending(m => ((TSLapLeaderGridRowModel)m).TotalLapsLed).ToList();
+
+            for (int i = 0; i < models.Count; i++)
+            {
+                sortedModels[i].Index = i;
+            }
+
+            return sortedModels;
+        }
+
+        protected virtual IList<TSGridRowModel> FormatTenLapAverages(EventLapAverages eventLapAverages)
+        {
+            var models = new List<TSGridRowModel>();
+
+            int index = 0;
+
+            foreach (var average in eventLapAverages.LastTenLapAverages.
+                Where(a => a.HasEnoughLaps = true)
+                .OrderBy(a => a.AverageLapTime))
+            {
+                var model = new TSTenLapAverageGridRowModel()
+                {
+                    Index = index,
+                    CarNumber = average.CarNumber,
+                    Driver = average.Driver,
+                    TenLapAverage = average.AverageLapTime
+                };
+
+                model.Value = $"{average.AverageLapTime.ToString("##.00")} - {average.AverageLapSpeed.ToString("###.00")}";
+
+                models.Add(model);
+
+                index++;
+            }
+
+            var sortedModels = models.OrderBy(m => ((TSTenLapAverageGridRowModel)m).TenLapAverage).ToList();
 
             for (int i = 0; i < models.Count; i++)
             {
@@ -351,7 +388,7 @@ namespace rNascarTimingAndScoring
             int index = 0;
 
             foreach (var vehicle in vehicleGains.
-                Where(v=>v.Gain >= 0).
+                Where(v => v.Gain >= 0).
                 OrderByDescending(v => v.Gain).Take(8))
             {
                 var model = new TSGridRowModel()
@@ -554,6 +591,7 @@ namespace rNascarTimingAndScoring
                 _eventLapAverages.AddLapTime(new VehicleLapTime()
                 {
                     CarNumber = vehicle.vehicle_number,
+                    Driver = vehicle.driver.last_name,
                     LapNumber = feed.lap_number,
                     LapTime = vehicle.last_lap_time,
                     LapSpeed = vehicle.last_lap_speed,
@@ -615,7 +653,7 @@ namespace rNascarTimingAndScoring
             tsBiggestMoversGrid1.UpdateTheme();
             tsLapLeaderGrid1.UpdateTheme();
             tsOffThePaceGrid1.UpdateTheme();
-            tsPitPenaltiesGrid1.UpdateTheme();
+            ts10LapAverages.UpdateTheme();
             tsFastestLaps1.UpdateTheme();
             tsPoints1.UpdateTheme();
 

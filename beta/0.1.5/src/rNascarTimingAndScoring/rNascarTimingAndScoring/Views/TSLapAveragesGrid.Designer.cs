@@ -33,23 +33,23 @@
             // LeftTitle
             // 
             this.LeftTitle.BackColor = System.Drawing.Color.SteelBlue;
-            this.LeftTitle.Size = new System.Drawing.Size(223, 18);
+            this.LeftTitle.Size = new System.Drawing.Size(65, 18);
             this.LeftTitle.Text = "10 LAP AVERAGE";
             // 
             // RightTitle
             // 
             this.RightTitle.BackColor = System.Drawing.Color.SteelBlue;
-            this.RightTitle.Location = new System.Drawing.Point(223, 0);
-            this.RightTitle.Size = new System.Drawing.Size(92, 18);
-            this.RightTitle.Text = "MPH";
+            this.RightTitle.Location = new System.Drawing.Point(65, 0);
+            this.RightTitle.Size = new System.Drawing.Size(250, 18);
+            this.RightTitle.Text = "TIME  - SPEED";
             // 
-            // TSLapAverages
+            // TSLapAveragesGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "TSLapAverages";
+            this.Name = "TSLapAveragesGrid";
             this.Size = new System.Drawing.Size(317, 341);
-            this.ValueColumnWidth = 92;
+            this.ValueColumnWidth = 250;
             this.ResumeLayout(false);
 
         }

@@ -3,6 +3,7 @@
     public class NLapAverage
     {
         public string CarNumber { get; set; }
+        public string Driver { get; set; }
         public int StartLap { get; set; }
         public int EndLap { get; set; }
         public double AverageLapTime { get; set; }

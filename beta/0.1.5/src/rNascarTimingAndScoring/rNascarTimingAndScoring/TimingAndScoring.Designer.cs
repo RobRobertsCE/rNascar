@@ -40,7 +40,7 @@
             this.tsBiggestMoversGrid1 = new rNascarTimingAndScoring.Views.TSBiggestMoversGrid();
             this.tsLapLeaderGrid1 = new rNascarTimingAndScoring.Views.TSLapLeaderGrid();
             this.tsOffThePaceGrid1 = new rNascarTimingAndScoring.Views.TSOffThePaceGrid();
-            this.tsPitPenaltiesGrid1 = new rNascarTimingAndScoring.Views.TSPitPenaltiesGrid();
+            this.ts10LapAverages = new rNascarTimingAndScoring.Views.TSLapAveragesGrid();
             this.pnlLeaderboard = new System.Windows.Forms.Panel();
             this.tsLeaderboard1 = new rNascarTimingAndScoring.Views.TSLeaderboard();
             this.pnlRaceInfo = new System.Windows.Forms.Panel();
@@ -170,7 +170,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tsBiggestMoversGrid1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tsLapLeaderGrid1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tsOffThePaceGrid1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tsPitPenaltiesGrid1, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ts10LapAverages, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 334);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
@@ -222,19 +222,19 @@
             this.tsOffThePaceGrid1.TabIndex = 5;
             this.tsOffThePaceGrid1.ValueColumnWidth = 50;
             // 
-            // tsPitPenaltiesGrid1
+            // ts10LapAverages
             // 
-            this.tsPitPenaltiesGrid1.BackColor = System.Drawing.Color.Black;
-            this.tsPitPenaltiesGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsPitPenaltiesGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsPitPenaltiesGrid1.Location = new System.Drawing.Point(898, 1);
-            this.tsPitPenaltiesGrid1.Margin = new System.Windows.Forms.Padding(1);
-            this.tsPitPenaltiesGrid1.MaxRows = 8;
-            this.tsPitPenaltiesGrid1.Name = "tsPitPenaltiesGrid1";
-            this.tsPitPenaltiesGrid1.Padding = new System.Windows.Forms.Padding(1);
-            this.tsPitPenaltiesGrid1.Size = new System.Drawing.Size(298, 239);
-            this.tsPitPenaltiesGrid1.TabIndex = 6;
-            this.tsPitPenaltiesGrid1.ValueColumnWidth = 120;
+            this.ts10LapAverages.BackColor = System.Drawing.Color.DarkBlue;
+            this.ts10LapAverages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ts10LapAverages.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ts10LapAverages.Location = new System.Drawing.Point(898, 1);
+            this.ts10LapAverages.Margin = new System.Windows.Forms.Padding(1);
+            this.ts10LapAverages.MaxRows = null;
+            this.ts10LapAverages.Name = "ts10LapAverages";
+            this.ts10LapAverages.Padding = new System.Windows.Forms.Padding(1);
+            this.ts10LapAverages.Size = new System.Drawing.Size(298, 239);
+            this.ts10LapAverages.TabIndex = 6;
+            this.ts10LapAverages.ValueColumnWidth = 150;
             // 
             // pnlLeaderboard
             // 
@@ -250,7 +250,7 @@
             // 
             // tsLeaderboard1
             // 
-            this.tsLeaderboard1.BackColor = System.Drawing.Color.Black;
+            this.tsLeaderboard1.BackColor = System.Drawing.Color.DarkBlue;
             this.tsLeaderboard1.Configuration = null;
             this.tsLeaderboard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tsLeaderboard1.Location = new System.Drawing.Point(0, 0);
@@ -552,7 +552,7 @@
             this.toolStripMenuItem2,
             this.getLiveEventSettingsToolStripMenuItem});
             this.ctxMain.Name = "ctxMain";
-            this.ctxMain.Size = new System.Drawing.Size(194, 148);
+            this.ctxMain.Size = new System.Drawing.Size(194, 126);
             // 
             // autoRefreshToolStripMenuItem
             // 
@@ -665,7 +665,6 @@
         private Views.TSLapLeaderGrid tsLapLeaderGrid1;
         private Views.TSOffThePaceGrid tsOffThePaceGrid1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Views.TSPitPenaltiesGrid tsPitPenaltiesGrid1;
         private System.Windows.Forms.Panel pnlLeaderboard;
         private System.Windows.Forms.Panel pnlRaceInfo;
         private System.Windows.Forms.Panel pnlFastLapsAndPoints;
@@ -703,5 +702,6 @@
         private System.Windows.Forms.ToolStripMenuItem getLiveEventSettingsToolStripMenuItem;
         private Views.TSCautionLapsDisplay tsCautionLapsDisplay1;
         private Views.TSLeadersDisplay tsLeaders1;
+        private Views.TSLapAveragesGrid ts10LapAverages;
     }
 }

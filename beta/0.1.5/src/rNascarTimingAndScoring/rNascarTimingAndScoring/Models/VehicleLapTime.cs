@@ -3,6 +3,7 @@
     public class VehicleLapTime
     {
         public string CarNumber { get; set; }
+        public string Driver { get; set; }
         public int LapNumber { get; set; }
         public TrackState TrackState { get; set; }
         public VehicleStatus VehicleStatus { get; set; }
