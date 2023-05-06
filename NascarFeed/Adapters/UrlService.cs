@@ -9,7 +9,7 @@ namespace NascarFeed.Adapters
         #region public
 
         // https://www.nascar.com/cacher/2019/1/4780/practice1.json
-        private const string practiceUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/practice{3}.json";
+        private const string practiceUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/{2}/practice{3}.json";
         public string GetPracticeUrl(EventSettings settings)
         {
             return GetPracticeUrl(settings.season, settings.seriesId, settings.eventId, settings.sessionId);
@@ -21,7 +21,7 @@ namespace NascarFeed.Adapters
 
         // https://www.nascar.com/cacher/2019/1/4780/entryList.json
         // https://www.nascar.com/cacher/2019/2/4817/entryList.json
-        private const string entryListUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/entryList.json";
+        private const string entryListUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/{2}/entryList.json";
         public string GetEntryListUrl(EventSettings settings)
         {
             return GetEntryListUrl(settings.season, settings.seriesId, settings.eventId);
@@ -33,7 +33,7 @@ namespace NascarFeed.Adapters
 
         // https://www.nascar.com/cacher/2019/2/4817/lapAvg_nxs_practice_1.json
         // https://www.nascar.com/cacher/2019/1/4780/lapAvg_mencs_final_practice.json
-        private const string lapAverageUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/lapAvg_{3}_{4}.json";
+        private const string lapAverageUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/{2}/lapAvg_{3}_{4}.json";
         public string GetLapAverageUrl(EventSettings settings)
         {
             return GetLapAverageUrl(settings.season, settings.seriesId, settings.eventId, settings.sessionId);
@@ -47,9 +47,9 @@ namespace NascarFeed.Adapters
         }
 
         // https://www.nascar.com/live/feeds/live-feed.json <- used for K&N race at Bristol, seriesId = 999
-        private const string genericLiveFeedUrlTemplate = "https://www.nascar.com/live/feeds/live-feed.json";
+        private const string genericLiveFeedUrlTemplate = "https://cf.nascar.com/live/feeds/live-feed.json";
         // https://www.nascar.com/live/feeds/series_2/4817/live_feed.json
-        private const string liveFeedUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live_feed.json";
+        private const string liveFeedUrlTemplate = "https://cf.nascar.com/live/feeds/series_{0}/{1}/live_feed.json";
         public string GetLiveFeedUrl(EventSettings settings)
         {
             return GetLiveFeedUrl(settings.seriesId, settings.eventId);
@@ -63,18 +63,18 @@ namespace NascarFeed.Adapters
         }
         public string GetLiveFeedUrl()
         {
-            return "https://www.nascar.com/live/feeds/live-feed.json";
+            return "https://cf.nascar.com/live/feeds/live-feed.json";
         }
 
         // https://www.nascar.com/cacher/live/live-flag-data.json
-        private const string liveFlagDataUrl = "https://www.nascar.com/cacher/live/live-flag-data.json";
+        private const string liveFlagDataUrl = "https://cf.nascar.com/cacher/live/live-flag-data.json";
         public string GetLiveFlagDataUrl()
         {
             return liveFlagDataUrl;
         }
 
         // https://www.nascar.com/live/feeds/series_1/4779/live-pit-data.json
-        private const string livePitDataUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-pit-data.json";
+        private const string livePitDataUrlTemplate = "https://cf.nascar.com/live/feeds/series_{0}/{1}/live-pit-data.json";
         public string GetLivePitDataUrl(EventSettings settings)
         {
             return GetLivePitDataUrl(settings.seriesId, settings.eventId);
@@ -86,7 +86,7 @@ namespace NascarFeed.Adapters
 
 
         // https://www.nascar.com/live/feeds/series_2/4817/live-points.json
-        private const string livePointsUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-points.json";
+        private const string livePointsUrlTemplate = "https://cf.nascar.com/live/feeds/series_{0}/{1}/live-points.json";
         public string GetLivePointsUrl(EventSettings settings)
         {
             return GetLivePointsUrl(settings.seriesId, settings.eventId);
@@ -97,7 +97,7 @@ namespace NascarFeed.Adapters
         }
 
         // https://www.nascar.com/live/feeds/series_2/4817/live-qualifying-data.json
-        private const string liveQualifyingDataUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/live-qualifying-data.json";
+        private const string liveQualifyingDataUrlTemplate = "https://cf.nascar.com/live/feeds/series_{0}/{1}/live-qualifying-data.json";
         public string GetLiveQualifyingDataUrl(EventSettings settings)
         {
             return GetLiveQualifyingDataUrl(settings.seriesId, settings.eventId);
@@ -108,7 +108,7 @@ namespace NascarFeed.Adapters
         }
 
         // https://www.nascar.com/cacher/2019/1/points-feed.json
-        private const string pointsStandingsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/points-feed.json";
+        private const string pointsStandingsUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/points-feed.json";
         public string GetPointStandingsUrl(EventSettings settings)
         {
             return GetPointStandingsUrl(settings.season, settings.seriesId);
@@ -119,7 +119,7 @@ namespace NascarFeed.Adapters
         }
 
         // https://www.nascar.com/cacher/2019/1/4779/raceResults.json?del=0.32764
-        private const string raceResultsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/raceResults.json?del=0.32764";
+        private const string raceResultsUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/{2}/raceResults.json?del=0.32764";
         public string GetRaceResultsUrl(EventSettings settings)
         {
             return GetRaceResultsUrl(settings.season, settings.seriesId, settings.eventId);
@@ -130,7 +130,7 @@ namespace NascarFeed.Adapters
         }
 
         // https://www.nascar.com/cacher/2019/1/4779/qualification.json
-        private const string qualifyingResultsUrlTemplate = "https://www.nascar.com/cacher/{0}/{1}/{2}/qualification.json";
+        private const string qualifyingResultsUrlTemplate = "https://cf.nascar.com/cacher/{0}/{1}/{2}/qualification.json";
         public string GetQualifyingResultsUrl(EventSettings settings)
         {
             return GetQualifyingResultsUrl(settings.season, settings.seriesId, settings.eventId);
@@ -140,14 +140,14 @@ namespace NascarFeed.Adapters
             return string.Format(qualifyingResultsUrlTemplate, season, seriesId, eventId);
         }
 
-        private const string audioFeedUrl = "https://www.nascar.com/config/audio/audio_mapping_2_3.json";
+        private const string audioFeedUrl = "https://cf.nascar.com/config/audio/audio_mapping_2_3.json";
         public string GetAudioFeedUrl()
         {
             return audioFeedUrl;
         }
 
         // https://www.nascar.com/live/feeds/series_2/4817/stage1-feed.json
-        private const string stageFeedUrlTemplate = "https://www.nascar.com/live/feeds/series_{0}/{1}/stage{2}-feed.json";
+        private const string stageFeedUrlTemplate = "https://cf.nascar.com/live/feeds/series_{0}/{1}/stage{2}-feed.json";
         public string GetStageFeedUrl(EventSettings settings)
         {
             return GetStageFeedUrl(settings.seriesId, settings.eventId, settings.sessionId);
@@ -157,7 +157,7 @@ namespace NascarFeed.Adapters
             return string.Format(stageFeedUrlTemplate, seriesId, eventId, sessionId);
         }
 
-        private const string driveConfigUrl = "https://www.nascar.com/drive/configs.json";
+        private const string driveConfigUrl = "https://cf.nascar.com/drive/configs.json";
         public string GetDriveConfigUrl()
         {
             return driveConfigUrl;
